@@ -1,0 +1,61 @@
+:root {
+  --soft-green: #eff6ff;
+  --brand: #2563eb;
+  --brand-strong: #1d4ed8;
+  --brand-dark: #1e40af;
+  --blue: #60a5fa;
+}
+
+.logo-mark {
+  box-shadow: 0 10px 28px rgba(37, 99, 235, .28);
+}
+
+.button:hover {
+  box-shadow: 0 16px 32px rgba(37, 99, 235, .22);
+}
+
+.product-sidebar i.active {
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, .12);
+}
+
+.metric-row em {
+  color: #1d4ed8;
+}
+
+.assistant-orb {
+  background: #dbeafe;
+}
+
+.chat-line.ai {
+  background: #eff6ff;
+}
+
+.status-dot {
+  box-shadow: 0 0 0 5px #dbeafe;
+}
+
+.receptionist-points article > span {
+  background: rgba(37, 99, 235, .14);
+}
+
+.price-featured .button:hover {
+  background: #3b82f6;
+}
+
+.lead-form input:focus,
+.lead-form select:focus,
+.lead-form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+.chart-card stop[stop-color="#51e6b1"] {
+  stop-color: #60a5fa;
+}
+
+.chart-card path[stroke="#51e6b1"] {
+  stroke: #60a5fa;
+}
+
+.chart-card g[fill="#51e6b1"] {
+  fill: #60a5fa;
+}
