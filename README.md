@@ -2,21 +2,21 @@
 
 Sito commerciale per `welora.it`, con front-end statico e endpoint PHP per il form di contatto.
 
-La landing è impostata per il **pre-lancio hospitality** e presenta Welora come gestionale completo e accessibile per piccole strutture ricettive. La comunicazione distingue la base Welora, i costi dei provider esterni e il futuro servizio Digital Receptionist.
+La landing è impostata per il **pre-lancio hospitality** e presenta Welora come gestionale completo e accessibile dalla singola struttura al multi-sede. La comunicazione distingue la base Welora, i costi dei provider esterni e il futuro servizio Digital Receptionist.
 
 ## Posizionamento corrente
 
 Target prioritario:
 
 - B&B e affittacamere;
-- piccoli hotel e residence;
+- hotel e residence;
 - appartamenti e affitti brevi;
 - strutture con servizi o vendite aggiuntive;
-- piccoli gruppi multi-sede.
+- gruppi multi-sede.
 
 Messaggio principale:
 
-> Tutto ciò che serve a una piccola struttura. In un solo gestionale.
+> Tutto ciò che serve alla tua struttura. In un solo gestionale.
 
 Welora Base parte da €29/mese + IVA e include le funzioni core; il prezzo può scalare con capacità e volumi senza usare piani superiori per sbloccare moduli essenziali.
 
@@ -55,16 +55,19 @@ La landing può essere servita come HTML statico, ma il form Founding richiede u
 
 Variabili ambiente opzionali:
 
-- `CONTACT_TO`: destinatario del form; fallback `suppor@welora.it`;
-- `CONTACT_FROM`: mittente tecnico; fallback `no-reply@welora.it`.
+- `CONTACT_TO`: destinatario del form; fallback `lancio@welora.it`;
+- `CONTACT_FROM`: mittente delle email del sito; fallback `lancio@welora.it`.
+
+Il form invia una notifica interna a `lancio@welora.it` e, dopo l'acquisizione valida del lead, prova a inviare al cliente una conferma commerciale HTML responsive con fallback `text/plain`. L'autorisposta usa `lancio@welora.it` come `Reply-To`, così il cliente può rispondere direttamente al team Welora. Il fallimento della sola autorisposta non invalida la ricezione del lead interno.
 
 ## Struttura
 
 - `index.html`: landing di pre-lancio, funzionalità, pricing Founding, ROI, FAQ e form;
 - `styles.css` e `blue-theme.css`: design system responsive;
 - `app.js`: navigazione mobile, selettore per tipo di struttura, calcolatore ROI e invio AJAX del form;
-- `contact.php`: endpoint server-side con validazione, honeypot e rate limit minimo;
+- `contact.php`: endpoint server-side con validazione, honeypot, rate limit minimo, notifica lead e autorisposta Founding;
 - `consent.js` e `consent.css`: cookie banner, preferenze e Google Consent Mode v2;
+- `favicon.svg`: favicon Welora;
 - `assets/`: mockup SVG;
 - `privacy.html`: informativa privacy;
 - `cookies.html`: cookie policy e gestione preferenze;
@@ -99,14 +102,14 @@ Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei d
 
 ## Prima della pubblicazione
 
-1. Verificare sul server reale che `contact.php` invii correttamente le email e configurare SPF/DKIM/DMARC del dominio; per affidabilità maggiore valutare SMTP transazionale.
-2. Verificare che `suppor@welora.it` sia l'indirizzo definitivo per contatti e privacy.
+1. Verificare sul server reale che `contact.php` invii correttamente sia la notifica a `lancio@welora.it` sia l'autorisposta al cliente e configurare SPF/DKIM/DMARC del dominio; per affidabilità maggiore valutare SMTP transazionale.
+2. Verificare che `suppor@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale Founding.
 3. Verificare con il consulente privacy la versione pubblicata di Privacy Policy e Cookie Policy, in particolare i periodi di conservazione e i fornitori effettivamente usati.
 4. Configurare la proprietà GA4 in coerenza con l'informativa e verificare Consent Mode con Tag Assistant.
 5. Verificare prezzi, limiti, costi provider e condizioni Founding definitive.
 6. Verificare con test reali i provider di pagamento, identità, fiscalità e compliance che saranno dichiarati disponibili al lancio.
 7. Confermare il 15 febbraio 2027 solo dopo il superamento delle stop condition del pilot.
-8. Inserire dominio canonico, immagini Open Graph, favicon e Search Console.
+8. Inserire dominio canonico, immagini Open Graph e Search Console.
 9. Verificare autorizzazioni all'uso dei marchi di integrazione prima di citarli come brand.
 
 ## Stato dei mockup
