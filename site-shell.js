@@ -7,7 +7,7 @@
     if (!document.querySelector('link[href^="home-enhancements.css"]')) {
       const homeStyles = document.createElement('link');
       homeStyles.rel = 'stylesheet';
-      homeStyles.href = 'home-enhancements.css?v=20261014-6';
+      homeStyles.href = 'home-enhancements.css?v=20261014-7';
       document.head.appendChild(homeStyles);
     }
 
@@ -19,6 +19,7 @@
       mainNav.innerHTML = `
         <a href="prodotto.html">Prodotto</a>
         <a href="soluzioni.html">Soluzioni</a>
+        <a href="digital-receptionist.html">Digital Receptionist</a>
         <div class="main-nav-more">
           <button class="main-nav-more-toggle" type="button" aria-expanded="false">
             Approfondimenti <span aria-hidden="true">⌄</span>
@@ -26,10 +27,10 @@
           <div class="main-nav-dropdown">
             <a href="integrazioni.html"><strong>Integrazioni</strong><span>Provider, canali e servizi esterni</span></a>
             <a href="sicurezza.html"><strong>Sicurezza</strong><span>Ruoli, isolamento e audit</span></a>
-            <a href="contatti.html"><strong>Contatti</strong><span>Commerciale, supporto e privacy</span></a>
+            <a href="azienda.html"><strong>Azienda</strong><span>Visione e sviluppo di Welora</span></a>
           </div>
         </div>
-        <a href="azienda.html">Azienda</a>`;
+        <a href="contatti.html">Contatti</a>`;
     }
 
     const headerCta = document.querySelector('.header-cta');
@@ -50,9 +51,7 @@
             <a href="#top" data-landing-link="top">Panoramica</a>
             <a href="#piattaforma" data-landing-link="piattaforma">Cosa include</a>
             <a href="#automazioni" data-landing-link="automazioni">Automazioni</a>
-            <a href="#receptionist" data-landing-link="receptionist">Digital Receptionist</a>
             <a href="#prezzi" data-landing-link="prezzi">Prezzi</a>
-            <a href="#contatti" data-landing-link="contatti">Contatti</a>
           </nav>
         </div>`;
       header.insertAdjacentElement('afterend', landingNav);
@@ -110,22 +109,21 @@
           <strong>In questa pagina</strong>
           <a href="#piattaforma">Cosa include</a>
           <a href="#automazioni">Automazioni</a>
-          <a href="#receptionist">Digital Receptionist</a>
           <a href="#prezzi">Prezzi</a>
-          <a href="#contatti">Contatti</a>
         </div>
         <div>
           <strong>Welora</strong>
           <a href="prodotto.html">Prodotto</a>
           <a href="soluzioni.html">Soluzioni</a>
+          <a href="digital-receptionist.html">Digital Receptionist</a>
           <a href="integrazioni.html">Integrazioni</a>
           <a href="sicurezza.html">Sicurezza</a>
           <a href="azienda.html">Azienda</a>
         </div>
         <div>
           <strong>Contatti e legale</strong>
+          <a href="contatti.html">Contatti</a>
           <a href="mailto:lancio@welora.it">lancio@welora.it</a>
-          <a href="contatti.html">Pagina contatti</a>
           <a href="privacy.html">Privacy</a>
           <a href="cookies.html">Cookie</a>
           <a href="#" data-cookie-settings>Preferenze cookie</a>
@@ -157,7 +155,7 @@
       moreToggle?.setAttribute('aria-expanded', 'false');
     });
 
-    const sectionIds = ['top', 'piattaforma', 'automazioni', 'receptionist', 'prezzi', 'contatti'];
+    const sectionIds = ['top', 'piattaforma', 'automazioni', 'prezzi'];
     const links = [...document.querySelectorAll('[data-landing-link]')];
     const setActive = id => {
       links.forEach(link => link.classList.toggle('active', link.dataset.landingLink === id));
