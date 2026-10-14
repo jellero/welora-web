@@ -46,6 +46,16 @@
   const hotelTab = $('[data-tab="wellness"]');
   if (hotelTab) hotelTab.textContent = 'Hotel e residence';
 
+  // I canali dipendono da integrazioni/provider esterni: il piano Base include un collegamento supportato.
+  const channelModuleTitle = $$('#piattaforma .module-card h3').find(element => element.textContent.trim() === 'Booking engine e canali');
+  if (channelModuleTitle) channelModuleTitle.textContent = 'Booking engine e canali*';
+  const channelPriceItem = $$('#prezzi .price-card.price-featured li').find(element => element.textContent.trim() === 'Canali e prenotazione diretta');
+  if (channelPriceItem) channelPriceItem.textContent = 'Canali* e prenotazione diretta';
+  const pricingLegalNote = $('#prezzi .legal-note');
+  if (pricingLegalNote) {
+    pricingLegalNote.textContent = '* Welora Base include il collegamento a 1 canale supportato. Eventuali canali aggiuntivi e i relativi costi o commissioni del provider restano separati. Possono inoltre applicarsi costi a consumo o commissioni del provider per verifica identità/check-in, pagamenti e Tap to Pay, servizi fiscali e altri servizi terzi. Il check-in digitale non sostituisce gli obblighi di identificazione previsti dalla normativa: la verifica dell’ospite deve essere svolta con la modalità richiesta nel caso concreto. L’uso senza registratore telematico fisico dipende dalla soluzione fiscale adottata e dai requisiti normativi applicabili.';
+  }
+
   const structuredData = $('script[type="application/ld+json"]');
   if (structuredData) {
     try {
