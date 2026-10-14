@@ -7,7 +7,7 @@
   if (!document.querySelector('link[href^="nav-flat.css"]')) {
     const navStyles = document.createElement('link');
     navStyles.rel = 'stylesheet';
-    navStyles.href = 'nav-flat.css?v=20261014-1';
+    navStyles.href = 'nav-flat.css?v=20261014-2';
     document.head.appendChild(navStyles);
   }
 
@@ -41,6 +41,23 @@
     headerCta.href = 'index.html#demo';
     headerCta.textContent = 'Sconto lancio −50%';
   }
+
+  const copyReplacements = new Map([
+    ['Partecipa al pre-lancio', 'Scopri lo sconto lancio'],
+    ['Compila la richiesta Founding', 'Richiedi lo sconto lancio'],
+    ['Pre-lancio e commerciale', 'Commerciale e lancio'],
+    ['Apri il form Founding →', 'Apri il form →'],
+    ['Programma Founding', 'Sconto lancio'],
+    ['Se vuoi partecipare al pre-lancio, usa il form dedicato.', 'Se vuoi accedere allo sconto lancio, usa il form dedicato.'],
+    ['Founding 2027', 'Sconto lancio 2027'],
+    ['Per il pre-lancio: lancio@welora.it', 'Per il lancio: lancio@welora.it'],
+    ['Pre-lancio · disponibilità e condizioni soggette a collaudo e conferma.', 'Lancio previsto 15 febbraio 2027 · disponibilità e condizioni soggette a collaudo e conferma.']
+  ]);
+
+  $$('a, span, h2, h3, h4, p').forEach(element => {
+    const replacement = copyReplacements.get(element.textContent.trim());
+    if (replacement) element.textContent = replacement;
+  });
 
   const header = $('[data-header]');
   const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 18);
