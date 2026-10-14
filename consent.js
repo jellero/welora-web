@@ -6,6 +6,14 @@
   const GA_ID = 'G-PD8W376DFH';
   let analyticsLoaded = false;
 
+  if (!document.querySelector('link[rel~="icon"]')) {
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.type = 'image/svg+xml';
+    favicon.href = 'favicon.svg?v=20261014';
+    document.head.appendChild(favicon);
+  }
+
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
 
