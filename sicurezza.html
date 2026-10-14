@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sicurezza — Welora</title>
+  <meta name="description" content="Principi di sicurezza Welora: isolamento tenant, ruoli e permessi, auditabilità, validazione e trasparenza sui controlli in evoluzione.">
+  <meta name="theme-color" content="#0b1220"><link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="blue-theme.css"><link rel="stylesheet" href="internal.css"><link rel="stylesheet" href="consent.css">
+  <script src="consent.js" defer></script><script src="internal.js" defer></script>
+</head>
+<body class="internal-page">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<header class="site-header" data-header><div class="container header-inner"><a class="logo" href="index.html"><span class="logo-mark">W</span><span>Welora</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Apri menu</span></button><nav id="main-nav" class="main-nav" data-menu><a href="prodotto.html" data-page-link>Prodotto</a><a href="soluzioni.html" data-page-link>Soluzioni</a><a href="integrazioni.html" data-page-link>Integrazioni</a><a href="sicurezza.html" data-page-link>Sicurezza</a><a href="azienda.html" data-page-link>Azienda</a></nav><a class="button button-small header-cta" href="index.html#demo">Pre-lancio</a></div></header>
+<main id="main">
+  <section class="page-hero"><div class="container"><div class="eyebrow light"><span></span>Sicurezza e controllo</div><h1>La sicurezza non è un badge. È un insieme di confini espliciti.</h1><p>Welora è progettato come piattaforma multi-struttura: autenticazione, autorizzazione, contesto tenant, ruoli, permessi e audit devono impedire che comodità operative diventino accessi impliciti.</p><div class="hero-links"><a class="button" href="contatti.html">Contattaci</a><a href="privacy.html">Privacy</a></div></div></section>
+
+  <section class="page-section"><div class="container"><div class="section-intro"><div class="eyebrow"><span></span>Modello</div><h2>Ogni operazione deve sapere chi sei e in quale struttura stai lavorando.</h2><p>Il prodotto adotta un modello tenant-scoped: le operazioni applicative vengono progettate per restare nel perimetro della struttura corretta e per usare autorizzazioni esplicite.</p></div><div class="card-grid">
+    <article class="card"><span class="kicker">Tenant</span><h3>Isolamento per struttura</h3><p>Il contesto della struttura viene trattato come parte del controllo di accesso, non come semplice filtro visuale.</p></article>
+    <article class="card"><span class="kicker">Accesso</span><h3>Ruoli e permessi</h3><p>Utenti, ruoli e permessi separano le responsabilità tra amministrazione, reception, housekeeping e altri reparti.</p></article>
+    <article class="card"><span class="kicker">Tracciabilità</span><h3>Audit</h3><p>Le mutazioni critiche sono progettate per essere auditabili, così le modifiche rilevanti non diventano eventi anonimi.</p></article>
+  </div></div></section>
+
+  <section class="page-section soft"><div class="container"><div class="section-intro"><div class="eyebrow"><span></span>Controlli applicativi</div><h2>La protezione non dipende da un solo livello.</h2><p>Welora documenta e verifica più famiglie di controllo; alcune sono già implementate nel core, altre continuano a essere oggetto di hardening e test.</p></div><table class="feature-table"><thead><tr><th>Area</th><th>Approccio</th><th>Stato comunicabile</th></tr></thead><tbody>
+    <tr><td>Autenticazione e sessione</td><td>Accesso autenticato e sessioni applicative con controlli dedicati.</td><td><span class="status live">Core presente</span></td></tr>
+    <tr><td>Autorizzazione</td><td>Route e azioni protette da ruoli, permessi e contesto struttura.</td><td><span class="status live">Core presente</span></td></tr>
+    <tr><td>Isolamento tenant</td><td>Query e mutazioni progettate per restare scoped alla struttura attiva.</td><td><span class="status live">Audit tecnico documentato</span></td></tr>
+    <tr><td>CSRF e input validation</td><td>Protezione delle mutazioni web e layer di validazione condiviso.</td><td><span class="status live">Presente nel core</span></td></tr>
+    <tr><td>Audit applicativo</td><td>Tracciamento di operazioni e cambiamenti rilevanti in più domini.</td><td><span class="status partial">Copertura in espansione</span></td></tr>
+    <tr><td>Provider esterni</td><td>Configurazione, evidenze e collaudi separati per ambiente e account.</td><td><span class="status partial">Dipende dal provider</span></td></tr>
+  </tbody></table></div></section>
+
+  <section class="page-section dark"><div class="container split"><div class="section-intro"><div class="eyebrow light"><span></span>Principio operativo</div><h2>Fail closed quando il rischio è alto.</h2><p>Nei flussi sensibili il sistema deve preferire un blocco esplicito a una supposizione: identità, pagamenti, fiscalità e integrazioni non vengono dichiarati pronti se mancano configurazioni o prove richieste.</p></div><div class="card-grid two">
+    <article class="card"><h3>Niente segreti nei log commerciali</h3><p>Le evidenze di readiness devono descrivere ambiente, esito e riferimento senza trasformare log e schermate operative in depositi di credenziali.</p></article>
+    <article class="card"><h3>Sandbox e produzione separate</h3><p>Una prova in sandbox non viene considerata equivalente a un collaudo con account e configurazione di produzione.</p></article>
+  </div></div></section>
+
+  <section class="page-section"><div class="container"><div class="section-intro"><div class="eyebrow"><span></span>Trasparenza</div><h2>Non dichiariamo certificazioni che non abbiamo.</h2><p>Questa pagina descrive principi e controlli tecnici del prodotto. Non equivale a dichiarare certificazioni ISO, SOC, PCI o altre attestazioni che richiedono processi e audit formali specifici.</p></div><div class="notice">Prima del go-live commerciale, provider, infrastruttura, backup, logging, monitoraggio e procedure operative devono essere verificati nell'ambiente reale. La sicurezza di un'applicazione non può essere dedotta soltanto dal codice sorgente o da una pagina marketing.</div></div></section>
+
+  <section class="page-section soft"><div class="container split"><div><div class="section-intro"><div class="eyebrow"><span></span>Segnalazioni</div><h2>Hai individuato un problema di sicurezza?</h2><p>Le segnalazioni relative ad autenticazione, autorizzazione, isolamento tra strutture, sessioni, CSRF o altri problemi di sicurezza vanno inviate in modo privato, evitando di pubblicare dati sensibili o dettagli sfruttabili.</p></div><p><strong>Contatto:</strong> <a href="mailto:suppor@welora.it">suppor@welora.it</a></p></div><aside class="callout"><h3>Valuti Welora per la tua organizzazione?</h3><p>Possiamo discutere modello di accesso, multi-sede, provider e requisiti specifici prima dell'attivazione.</p><a class="button" href="contatti.html">Parliamone</a></aside></div></section>
+</main>
+<footer class="internal-footer"><div class="container"><div class="internal-footer-grid"><div><a class="logo" href="index.html"><span class="logo-mark">W</span><span>Welora</span></a><p>Gestionale operativo per hospitality, servizi, pagamenti, fiscalità e automazioni, dalla singola struttura al multi-sede.</p></div><div><h4>Prodotto</h4><a href="prodotto.html">Panoramica</a><a href="soluzioni.html">Soluzioni</a><a href="integrazioni.html">Integrazioni</a><a href="index.html#prezzi">Prezzi</a></div><div><h4>Fiducia</h4><a href="sicurezza.html">Sicurezza</a><a href="azienda.html">Azienda</a><a href="contatti.html">Contatti</a></div><div><h4>Legale</h4><a href="privacy.html">Privacy</a><a href="cookies.html">Cookie</a><a href="#" data-cookie-settings>Preferenze cookie</a></div></div><div class="internal-footer-bottom"><span>© <span data-year></span> Welora</span><span>La sicurezza è un processo continuo, non una promessa assoluta.</span></div></div></footer>
+</body></html>
