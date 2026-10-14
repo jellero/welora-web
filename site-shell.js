@@ -7,7 +7,7 @@
     if (!document.querySelector('link[href^="home-enhancements.css"]')) {
       const homeStyles = document.createElement('link');
       homeStyles.rel = 'stylesheet';
-      homeStyles.href = 'home-enhancements.css?v=20261014-7';
+      homeStyles.href = 'home-enhancements.css?v=20261014-8';
       document.head.appendChild(homeStyles);
     }
 
@@ -20,16 +20,9 @@
         <a href="prodotto.html">Prodotto</a>
         <a href="soluzioni.html">Soluzioni</a>
         <a href="digital-receptionist.html">Digital Receptionist</a>
-        <div class="main-nav-more">
-          <button class="main-nav-more-toggle" type="button" aria-expanded="false">
-            Approfondimenti <span aria-hidden="true">⌄</span>
-          </button>
-          <div class="main-nav-dropdown">
-            <a href="integrazioni.html"><strong>Integrazioni</strong><span>Provider, canali e servizi esterni</span></a>
-            <a href="sicurezza.html"><strong>Sicurezza</strong><span>Ruoli, isolamento e audit</span></a>
-            <a href="azienda.html"><strong>Azienda</strong><span>Visione e sviluppo di Welora</span></a>
-          </div>
-        </div>
+        <a href="integrazioni.html">Integrazioni</a>
+        <a href="sicurezza.html">Sicurezza</a>
+        <a href="azienda.html">Azienda</a>
         <a href="contatti.html">Contatti</a>`;
     }
 
@@ -136,24 +129,6 @@
       menu?.classList.remove('open');
       toggle?.setAttribute('aria-expanded', 'false');
     }));
-
-    const more = document.querySelector('.main-nav-more');
-    const moreToggle = document.querySelector('.main-nav-more-toggle');
-    moreToggle?.addEventListener('click', event => {
-      event.stopPropagation();
-      const open = more?.classList.toggle('open') ?? false;
-      moreToggle.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', event => {
-      if (!more || more.contains(event.target)) return;
-      more.classList.remove('open');
-      moreToggle?.setAttribute('aria-expanded', 'false');
-    });
-    document.addEventListener('keydown', event => {
-      if (event.key !== 'Escape') return;
-      more?.classList.remove('open');
-      moreToggle?.setAttribute('aria-expanded', 'false');
-    });
 
     const sectionIds = ['top', 'piattaforma', 'automazioni', 'prezzi'];
     const links = [...document.querySelectorAll('[data-landing-link]')];
