@@ -2,7 +2,7 @@
   'use strict';
 
   const enhance = () => {
-    // La home resta la landing commerciale: le pagine interne servono per approfondire, non per sostituirla.
+    // La home resta la landing commerciale. Header = sito; barra secondaria = sezioni della landing.
     if (!document.querySelector('#piattaforma')) return;
 
     if (!document.querySelector('link[href="home-enhancements.css"]')) {
@@ -12,15 +12,17 @@
       document.head.appendChild(homeStyles);
     }
 
-    const nav = document.querySelector('[data-menu]');
-    if (nav) {
-      nav.innerHTML = [
+    document.body.classList.add('home-has-landing-nav');
+
+    const mainNav = document.querySelector('[data-menu]');
+    if (mainNav) {
+      mainNav.setAttribute('aria-label', 'Navigazione principale');
+      mainNav.innerHTML = [
         ['prodotto.html', 'Prodotto'],
         ['soluzioni.html', 'Soluzioni'],
-        ['#automazioni', 'Automazioni'],
         ['integrazioni.html', 'Integrazioni'],
         ['sicurezza.html', 'Sicurezza'],
-        ['#contatti', 'Contatti']
+        ['azienda.html', 'Azienda']
       ].map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
     }
 
@@ -30,26 +32,30 @@
       headerCta.textContent = 'Pre-lancio';
     }
 
-    // Fascia compatta di approfondimento: aggiunge autorevolezza senza interrompere la landing.
-    const hero = document.querySelector('#top');
-    if (hero && !document.querySelector('.home-resource-bar')) {
-      const resourceBar = document.createElement('div');
-      resourceBar.className = 'home-resource-bar';
-      resourceBar.innerHTML = `
-        <div class="container home-resource-inner">
-          <div class="home-resource-label">
-            <strong>Welora, oltre la landing</strong>
-            <span>Base da €29/mese + IVA · lancio previsto 15 febbraio 2027</span>
+    // Rimuove la vecchia fascia di approfondimento: ora le pagine interne vivono nel menu principale.
+    document.querySelector('.home-resource-bar')?.remove();
+
+    const header = document.querySelector('.site-header');
+    if (header && !document.querySelector('.landing-subnav')) {
+      const landingNav = document.createElement('div');
+      landingNav.className = 'landing-subnav';
+      landingNav.innerHTML = `
+        <div class="container landing-subnav-inner">
+          <div class="landing-subnav-label">
+            <span>In questa pagina</span>
+            <strong>Welora</strong>
           </div>
-          <nav class="home-resource-links" aria-label="Approfondimenti Welora">
-            <a class="home-resource-link" href="prodotto.html">Prodotto</a>
-            <a class="home-resource-link" href="soluzioni.html">Soluzioni</a>
-            <a class="home-resource-link" href="integrazioni.html">Integrazioni</a>
-            <a class="home-resource-link" href="sicurezza.html">Sicurezza</a>
-            <a class="home-resource-link" href="azienda.html">Azienda</a>
+          <nav class="landing-subnav-links" aria-label="Navigazione della landing">
+            <a href="#top" data-landing-link="top">Panoramica</a>
+            <a href="#piattaforma" data-landing-link="piattaforma">Cosa include</a>
+            <a href="#automazioni" data-landing-link="automazioni">Automazioni</a>
+            <a href="#receptionist" data-landing-link="receptionist">Digital Receptionist</a>
+            <a href="#prezzi" data-landing-link="prezzi">Prezzi</a>
+            <a href="#contatti" data-landing-link="contatti">Contatti</a>
           </nav>
+          <a class="landing-subnav-cta" href="#demo">Founding −50%</a>
         </div>`;
-      hero.insertAdjacentElement('afterend', resourceBar);
+      header.insertAdjacentElement('afterend', landingNav);
     }
 
     // Contatti direttamente in home: il visitatore non deve uscire dalla landing per capire come raggiungerci.
@@ -102,14 +108,15 @@
           <p>Ospitalità, servizi, pagamenti, operatività e automazioni nello stesso sistema, dalla singola struttura al multi-sede.</p>
         </div>
         <div>
-          <strong>Landing</strong>
+          <strong>In questa pagina</strong>
           <a href="#piattaforma">Cosa include</a>
           <a href="#automazioni">Automazioni</a>
+          <a href="#receptionist">Digital Receptionist</a>
           <a href="#prezzi">Prezzi e Founding</a>
           <a href="#contatti">Contatti</a>
         </div>
         <div>
-          <strong>Approfondisci</strong>
+          <strong>Welora</strong>
           <a href="prodotto.html">Prodotto</a>
           <a href="soluzioni.html">Soluzioni</a>
           <a href="integrazioni.html">Integrazioni</a>
@@ -117,7 +124,7 @@
           <a href="azienda.html">Azienda</a>
         </div>
         <div>
-          <strong>Welora</strong>
+          <strong>Contatti e legale</strong>
           <a href="mailto:lancio@welora.it">lancio@welora.it</a>
           <a href="contatti.html">Pagina contatti</a>
           <a href="privacy.html">Privacy</a>
@@ -126,13 +133,31 @@
         </div>`;
     }
 
-    // La nuova nav viene inserita dopo che app.js ha registrato i listener originali.
     document.querySelectorAll('[data-menu] a').forEach(link => link.addEventListener('click', () => {
       const menu = document.querySelector('[data-menu]');
       const toggle = document.querySelector('[data-menu-toggle]');
       menu?.classList.remove('open');
       toggle?.setAttribute('aria-expanded', 'false');
     }));
+
+    // Evidenzia la sezione corrente nel menu della landing.
+    const sectionIds = ['top', 'piattaforma', 'automazioni', 'receptionist', 'prezzi', 'contatti'];
+    const links = [...document.querySelectorAll('[data-landing-link]')];
+    const setActive = id => {
+      links.forEach(link => link.classList.toggle('active', link.dataset.landingLink === id));
+    };
+    setActive('top');
+
+    if ('IntersectionObserver' in window) {
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target?.id) setActive(visible.target.id);
+      }, { rootMargin: '-28% 0px -58% 0px', threshold: [0, .1, .35, .6] });
+      sections.forEach(section => observer.observe(section));
+    }
   };
 
   const schedule = () => setTimeout(enhance, 0);
