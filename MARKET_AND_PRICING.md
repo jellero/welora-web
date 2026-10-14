@@ -1,100 +1,216 @@
-# Analisi mercato e pricing Welora
+# Posizionamento, mercato e pre-lancio Welora
 
-Aggiornamento: 14 luglio 2026.
+Aggiornamento: 14 ottobre 2026.
 
-## Sintesi
+## Decisione di posizionamento
 
-Il mercato è diviso in categorie che raramente convivono nella stessa piattaforma:
+Welora si propone prima di tutto alle **piccole strutture ricettive italiane** che non possono o non vogliono acquistare una suite composta da molti moduli e fornitori diversi:
 
-1. **PMS e channel manager hospitality**: forti su distribuzione, camere e booking diretto, spesso verticali e con add-on separati.
-2. **Scheduling beauty/wellness**: forti su agenda, marketplace e pagamenti, spesso con prezzo per professionista o commissioni di acquisizione.
-3. **Booking generico**: economico e trasversale, ma meno profondo su operazioni, compliance, dispositivi e controllo costi.
-4. **AI receptionist / guest messaging**: normalmente venduto come prodotto distinto, con dati e workflow separati dal gestionale.
-5. **Building automation e access control**: hardware e software separati, non collegati nativamente alla relazione cliente.
+- B&B e affittacamere;
+- piccoli hotel e residence;
+- appartamenti e gestori di affitti brevi;
+- strutture che, oltre al soggiorno, vendono servizi, esperienze o beni;
+- piccoli gruppi che devono gestire più sedi.
 
-Welora deve posizionarsi come **ecosistema operativo modulare**: una sola fonte di verità per prenotazioni, clienti, servizi, operazioni e dispositivi. Il Digital Receptionist è il livello conversazionale del sistema, non un chatbot isolato.
+Il vantaggio competitivo non deve essere comunicato come “più moduli disponibili”, ma come **una base operativa completa a un prezzo accessibile**.
 
-## Benchmark ufficiali osservati
+Formula di posizionamento:
 
-| Prodotto | Segmento | Prezzo pubblico osservato | Elementi utili al confronto |
-| --- | --- | ---: | --- |
-| Smoobu | Vacation rental / hospitality | €29/mese Flex con 0,9% booking fee; €31,50/mese annuale senza commissione; Pro+ €49,50/mese annuale | PMS, booking engine, channel manager, guest guide, comunicazioni e website builder; prezzo cresce con le unità. |
-| Beds24 | Hospitality | da €15,50/mese; collegamenti channel manager €0,55/mese ciascuno | Modello pay-as-you-go molto competitivo, interfaccia e configurazione orientate a utenti tecnici. |
-| Little Hotelier | Piccole strutture | prezzo dinamico per camere; piano Basics con booking engine e channel manager e booking fee dell'1% in alcune formule | Forte pacchetto all-in-one hospitality, add-on per guest engagement, sito e revenue. |
-| SimplyBook.me | Appuntamenti multi-settore | $13,90 Basic, $29,90 Standard, $59,90 Premium mensili | Booking website/widget, provider e funzionalità crescono per piano; crediti e add-on separati. |
-| Fresha | Beauty & wellness | $19,95/mese solo; $14,95 per membro prenotabile; commissione marketplace 20% sui nuovi clienti | Agenda, POS, clienti, inventario e marketplace; costi di pagamento e comunicazione separati. |
-| Booksy | Beauty & wellness | $29,99/mese + $20 per utente aggiuntivo | Tutte le feature incluse, prenotazioni illimitate; commissione opzionale Boost del 30% sul primo servizio acquisito. |
+> Welora riunisce in un solo gestionale ciò che una piccola struttura usa ogni giorno: prenotazioni, check-in, pagamenti, adempimenti, fiscalità, servizi e automazioni.
 
-Fonti ufficiali consultate:
+## Coerenza con il prodotto
 
-- https://www.smoobu.com/en/pricing/
-- https://www.beds24.com/pricing.html
-- https://www.littlehotelier.com/pricing/
-- https://simplybook.me/en/pricing
-- https://www.fresha.com/pricing
-- https://biz.booksy.com/pricing
+Welora e Welora Automation supportano o prevedono nello stesso ecosistema:
 
-## Opportunità competitiva
+- PMS, planning, disponibilità, tariffe e prenotazioni;
+- booking engine e integrazioni canale;
+- portale ospite e flussi di check-in digitale;
+- pagamenti, preautorizzazioni e Tap to Pay tramite provider compatibile;
+- conti generici per passanti, clienti, aziende ed eventi;
+- vendita di servizi e beni anche senza collegamento a una camera;
+- documenti commerciali e fatturazione elettronica tramite integrazioni fiscali;
+- task, housekeeping, messaggistica, accessi e dispositivi attivati da eventi;
+- ruoli, audit e gestione multi-struttura;
+- Digital Receptionist come servizio conversazionale separato.
 
-### 1. Piano di ingresso realmente utile
+La comunicazione esterna deve distinguere chiaramente tra:
 
-Molti prodotti economici limitano i moduli chiave o monetizzano con commissioni. Welora Light deve essere acquistabile senza trattativa e includere:
+1. funzioni della base Welora;
+2. funzioni soggette a provider o attivazioni esterne;
+3. funzioni future;
+4. Digital Receptionist, che resta un servizio separato.
 
-- agenda/PMS;
-- booking engine diretto;
-- un canale di distribuzione;
-- Alloggiati Web e ISTAT per il verticale hospitality;
-- portale cliente essenziale;
-- nessuna commissione Welora sulle prenotazioni dirette.
+## Architettura commerciale
 
-Prezzo proposto: **€29/mese**. È allineato al punto di ingresso di Smoobu e Booksy, superiore ai prodotti puramente calendar ma molto più completo per il mercato italiano.
+### Welora Base
 
-### 2. Digital Receptionist come leva di upgrade
+Prezzo di ingresso proposto: **da €29/mese + IVA**.
 
-Il Digital Receptionist web entra nel piano Grow, mentre WhatsApp, workflow avanzati, controllo costi e dispositivi entrano in Pro. In questo modo il prodotto conversazionale guida l'espansione senza rendere Light inutilizzabile.
+La logica commerciale è “funzioni complete, prezzo che scala con l'uso”. Non si usano piani diversi per sbloccare le funzioni essenziali.
 
-### 3. Prezzo per valore, non per ogni singola funzione
+Welora Base comprende:
 
-Evitare un listino frammentato in decine di add-on. Le variabili di scala più comprensibili sono:
+- PMS, agenda/planning e prenotazioni;
+- booking engine;
+- canali supportati;
+- CRM e portale cliente essenziale;
+- check-in digitale e adempimenti;
+- pagamenti e Tap to Pay tramite provider compatibile;
+- servizi, extra, beni e conti generici;
+- documenti commerciali, corrispettivi e fatturazione elettronica;
+- automazioni operative;
+- multi-sede;
+- ruoli, permessi, audit, backup ed esportazione dati.
 
-- sedi;
+Variabili che possono far crescere il canone:
+
+- numero di sedi;
+- numero di unità/risorse;
 - utenti;
-- unità/risorse prenotabili;
-- canali;
-- volume conversazioni/messaggi esterni;
-- integrazioni hardware o custom.
+- volumi operativi;
+- canali o integrazioni con costi propri;
+- esigenze custom.
 
-### 4. Trasparenza sui costi esterni
+Queste variabili modificano il prezzo, non il diritto ad avere i moduli core.
 
-Separare sempre:
+### Digital Receptionist
 
-- commissioni gateway di pagamento;
-- costi WhatsApp, SMS ed email transazionali eccedenti;
-- commissioni e abbonamenti OTA;
-- hardware, installazione e manutenzione dispositivi;
-- provider fiscali o compliance con licenze proprie.
+Digital Receptionist non è incluso nel canone Base.
 
-## Architettura dei piani proposta
+È un **servizio futuro separato** che sfrutterà i dati autorevoli di Welora per:
 
-| Piano | Prezzo mensile | Target | Differenziante |
-| --- | ---: | --- | --- |
-| Light | €29 | micro-attività, piccoli B&B, professionisti | base completa, vendita diretta, 1 canale e compliance hospitality |
-| Grow | €69 | attività con team e più servizi | Digital Receptionist web, CRM, portale completo, pagamenti, task e costi base |
-| Pro | €129 | strutture organizzate e multi-reparto | WhatsApp, automazioni avanzate, magazzino/marginalità, dispositivi, API |
-| Scale | €249 | gruppi e multi-sede | controllo centrale, white-label, workflow custom, BI e SLA |
+- rispondere tramite widget web e canali autorizzati;
+- raccogliere dati e preferenze;
+- consultare disponibilità e prezzi reali;
+- preparare proposte e richieste prenotabili;
+- gestire follow-up e upselling controllati;
+- trasferire la conversazione a un operatore mantenendo il contesto.
 
-Sconto annuale proposto: **17%** (equivalente a circa due mesi gratuiti), semplice da comunicare e in linea con il mercato scheduling.
+Prezzo e disponibilità saranno definiti prima dell'attivazione commerciale.
 
-## Regole commerciali consigliate
+## Costi esterni da dichiarare sempre
 
-- prova guidata o demo personalizzata, senza carta;
-- nessun costo di setup per Light in self-onboarding;
-- onboarding a prezzo fisso per Grow/Pro quando serve migrazione dati;
-- progetto quotato per dispositivi, serrature, building automation e integrazioni custom;
-- prezzo protetto per 12 mesi dalla sottoscrizione;
-- possibilità di upgrade immediato e downgrade al rinnovo;
-- listino pubblico per i quattro piani, preventivo solo per esigenze fuori perimetro.
+Il messaggio “base completa” non significa “nessun costo esterno”.
+
+Devono essere separati e indicati con asterisco quando pertinenti:
+
+- costi per verifica identità o provider usati nel flusso di check-in;
+- commissioni gateway di pagamento e Tap to Pay;
+- costi o commissioni OTA;
+- messaggistica esterna;
+- provider fiscali;
+- dispositivi, installazione e manutenzione hardware;
+- integrazioni specialistiche o custom.
+
+Il sito non deve presentare questi costi come commissioni Welora.
+
+## Guardrail sul messaggio commerciale
+
+### Check-in digitale
+
+Non usare la formula assoluta “check-in automatico certificato”.
+
+Formula consigliata:
+
+> Check-in digitale assistito*: raccolta dati e documenti, integrazione con la verifica identità, preparazione degli adempimenti e tracciamento del flusso.
+
+Nota:
+
+> *L'identificazione dell'ospite deve rispettare gli obblighi normativi applicabili. Il provider utilizzato per la verifica può applicare un costo per check-in.
+
+### POS da smartphone
+
+Formula consigliata:
+
+> Incassa dal telefono con Tap to Pay su smartphone e provider compatibili, senza lettore aggiuntivo nei casi supportati.*
+
+Nota:
+
+> *Restano applicabili requisiti tecnici e commissioni del provider di pagamento.
+
+### Corrispettivi senza cassa fisica
+
+Non usare la formula assoluta “scontrini senza cassa”.
+
+Formula consigliata:
+
+> Gestisci documenti commerciali, corrispettivi e fatturazione elettronica nello stesso flusso; senza registratore telematico fisico quando la soluzione fiscale scelta e la normativa applicabile lo consentono.*
+
+## Benchmark competitivo utile
+
+Il mercato delle piccole strutture presenta due modelli ricorrenti:
+
+- prodotti economici che applicano commissioni o limitano le funzioni;
+- suite complete che diventano costose quando si aggiungono pagamenti, guest journey, automazioni e servizi.
+
+Nel 2026 Smoobu continua a proporre un ingresso nell'ordine dei €29/mese con formule che variano tra commissione sulle prenotazioni e prepagato; Little Hotelier mantiene un posizionamento all-in-one esplicitamente rivolto alle piccole strutture, con funzioni e costi che dipendono dal piano e dai servizi collegati.
+
+Welora deve quindi evitare di competere soltanto sul prezzo mensile. La promessa deve essere:
+
+1. ridurre il numero di software necessari;
+2. rendere le automazioni accessibili anche a strutture piccole;
+3. non applicare commissioni Welora sulle prenotazioni dirette;
+4. dichiarare in anticipo i costi dei provider esterni;
+5. permettere di crescere fino al multi-sede senza cambiare piattaforma.
+
+## Pre-lancio consigliato
+
+### Data obiettivo
+
+**Lancio commerciale previsto: 15 febbraio 2027.**
+
+La data è abbastanza vicina da essere credibile commercialmente e lascia circa quattro mesi per pilot, collaudi provider, supporto, onboarding e adeguamenti della comunicazione.
+
+### Programma Founding
+
+Proposta:
+
+- adesioni aperte da ottobre 2026;
+- massimo **50 aderenti Founding**;
+- adesione entro **31 gennaio 2027**;
+- **50% di sconto sul canone Welora Base per i primi 12 mesi dal go-live**;
+- prezzo di listino bloccato per i **successivi 12 mesi**;
+- nessun pagamento prima dell'attivazione;
+- condizioni definitive confermate prima della sottoscrizione;
+- priorità nell'onboarding e raccolta feedback.
+
+Non è consigliato offrire il 50% per due anni: ridurrebbe troppo a lungo il valore percepito e il ricavo proprio nella fase in cui aumenteranno supporto e costi operativi.
+
+## Sequenza operativa
+
+### Ottobre - novembre 2026
+
+- pubblicazione landing di pre-lancio;
+- raccolta lead Founding;
+- definizione costi provider;
+- revisione privacy e condizioni commerciali;
+- selezione strutture pilot.
+
+### Dicembre 2026
+
+- pilot chiuso su flussi hospitality prioritari;
+- verifica onboarding;
+- test reali su pagamenti, identità, adempimenti e integrazioni abilitate;
+- raccolta feedback.
+
+### Gennaio 2027
+
+- correzioni pilot;
+- definizione listino definitivo;
+- documentazione onboarding e supporto;
+- verifica readiness e stop condition;
+- chiusura programma Founding il 31 gennaio.
+
+### 15 febbraio 2027
+
+- apertura commerciale, subordinata al superamento dei collaudi critici;
+- onboarding scaglionato dei Founding;
+- monitoraggio dei primi flussi reali.
 
 ## Messaggio centrale
 
-> Welora non aggiunge un altro strumento: collega ciò che vendi, chi lo eroga, chi lo acquista e tutto quello che deve succedere prima, durante e dopo.
+> Welora porta in una piccola struttura gli strumenti che normalmente richiedono più software: gestione, incassi, adempimenti, servizi e automazioni in una sola base, con costi esterni dichiarati e la possibilità di crescere fino al multi-sede.
+
+## CTA principale
+
+> Prenota il vantaggio Founding: -50% per 12 mesi dal go-live, senza pagare prima dell'attivazione.
