@@ -19,41 +19,184 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-  // Posizionamento: completo e scalabile, accessibile anche alle strutture più piccole.
+  // Posizionamento: prodotto completo e scalabile; accessibile ai piccoli senza escludere strutture più articolate.
   document.title = 'Welora — Gestionale completo per strutture ricettive';
   const metaDescription = $('meta[name="description"]');
   if (metaDescription) {
-    metaDescription.content = 'Welora riunisce PMS, prenotazioni, canali, check-in digitale, pagamenti, POS da smartphone, fiscalità, servizi e automazioni: dalla singola struttura al multi-sede.';
+    metaDescription.content = 'Welora unisce ospitalità, servizi ed extra, pagamenti e POS, fiscalità, automazioni e gestione multi-sede in un unico sistema operativo.';
   }
   const ogTitle = $('meta[property="og:title"]');
   if (ogTitle) ogTitle.content = 'Welora — Tutto ciò che serve alla tua struttura';
   const ogDescription = $('meta[property="og:description"]');
   if (ogDescription) {
-    ogDescription.content = 'Dalla singola struttura al multi-sede: una base completa per gestire soggiorni, incassi, adempimenti, servizi e automazioni.';
+    ogDescription.content = 'Dalla singola struttura al multi-sede: prenotazioni, servizi, pagamenti, fiscalità e operatività sugli stessi dati.';
   }
 
   const heroTitle = $('.hero-copy h1');
   if (heroTitle) heroTitle.textContent = 'Tutto ciò che serve alla tua struttura. In un solo gestionale.';
   const heroLead = $('.hero-copy .hero-lead');
   if (heroLead) {
-    heroLead.textContent = 'Dalla singola struttura al multi-sede, Welora unisce PMS, prenotazioni, canali, check-in, pagamenti, fiscalità, servizi e automazioni sugli stessi dati. Una base completa per crescere, accessibile anche alle strutture più piccole.';
+    heroLead.textContent = 'Dalla singola struttura al multi-sede, Welora collega prenotazioni, servizi ed extra, pagamenti e POS, fiscalità e automazioni sugli stessi dati. Una base completa che cresce con la struttura e con i suoi reparti operativi.';
   }
+  const heroProof = $$('.hero-proof span');
+  if (heroProof[0]) heroProof[0].textContent = 'Hospitality, servizi e multi-sede';
+  if (heroProof[1]) heroProof[1].textContent = 'Pagamenti e POS integrati*';
+  if (heroProof[2]) heroProof[2].textContent = 'Automazioni e operatività';
 
   const problemTitle = $('.problem-band h2');
-  if (problemTitle) problemTitle.textContent = 'Il problema non è la dimensione della struttura. È dover comprare troppi software.';
-  const verticalEyebrow = $('#soluzioni .eyebrow');
-  if (verticalEyebrow) verticalEyebrow.innerHTML = '<span></span>Dalla singola struttura al multi-sede';
-  const hotelTab = $('[data-tab="wellness"]');
-  if (hotelTab) hotelTab.textContent = 'Hotel e residence';
+  if (problemTitle) problemTitle.textContent = 'Il problema non è la dimensione della struttura. È dover gestire reparti e flussi con software separati.';
+  const problemItems = $$('.problem-list article');
+  if (problemItems[2]) {
+    const title = $('h3', problemItems[2]);
+    const text = $('p', problemItems[2]);
+    if (title) title.textContent = 'Ogni reparto crea un altro strumento';
+    if (text) text.textContent = 'Reception, servizi, pulizie, pagamenti, fiscalità e attività operative finiscono spesso in sistemi diversi che non condividono contesto.';
+  }
 
-  // Ordine narrativo: prima le automazioni già parte del core, poi il Digital Receptionist futuro.
+  const solutionsHeading = $('#soluzioni .section-heading');
+  if (solutionsHeading) {
+    const eyebrow = $('.eyebrow', solutionsHeading);
+    const heading = $('h2', solutionsHeading);
+    const text = $('p', solutionsHeading);
+    if (eyebrow) eyebrow.innerHTML = '<span></span>Dalla singola struttura al multi-sede';
+    if (heading) heading.textContent = 'Strutture diverse, un unico sistema operativo.';
+    if (text) text.textContent = 'Welora non si ferma alla camera: collega soggiorni, servizi, vendite, incassi e attività operative mantenendo gli stessi clienti, conti e regole.';
+  }
+
+  const tabs = $$('[data-tab]');
+  const tabLabels = {
+    hospitality: 'Hospitality',
+    wellness: 'Servizi & wellness',
+    services: 'Appartamenti',
+    hybrid: 'Multi-sede'
+  };
+  tabs.forEach(button => {
+    if (tabLabels[button.dataset.tab]) button.textContent = tabLabels[button.dataset.tab];
+  });
+
+  const verticalData = {
+    hospitality: {
+      kicker: 'Hospitality',
+      title: 'Prenotazioni, soggiorni, incassi e adempimenti nello stesso flusso.',
+      text: 'Hotel, residence, B&B e altre strutture ricettive condividono planning, disponibilità, clienti, conti, pagamenti e operatività.',
+      list: [
+        'Planning, tariffe, disponibilità e prenotazioni',
+        'Booking diretto, canali supportati e portale ospite',
+        'Check-in digitale e adempimenti con i vincoli applicabili*',
+        'Pagamenti, fiscalità, servizi ed extra collegati allo stesso cliente'
+      ],
+      image: 'assets/mockup-planning.svg',
+      alt: 'Planning Welora per strutture ricettive'
+    },
+    wellness: {
+      kicker: 'Servizi, wellness ed esperienze',
+      title: 'La camera non è l’unica cosa che puoi vendere e gestire.',
+      text: 'Catalogo, conti e incassi permettono di gestire servizi ed extra anche senza soggiorno; il modello è pensato per estendersi a trattamenti, risorse e flussi wellness più articolati.',
+      list: [
+        'Servizi, trattamenti, prodotti, noleggi ed esperienze',
+        'Vendite autonome anche per clienti passanti',
+        'Stessi pagamenti, documenti fiscali e storico cliente',
+        'Evoluzione verso agenda, risorse e professionisti dedicati'
+      ],
+      image: 'assets/mockup-client-portal.svg',
+      alt: 'Servizi ed extra gestiti con Welora'
+    },
+    services: {
+      kicker: 'Appartamenti e affitti brevi',
+      title: 'Più unità, meno passaggi manuali tra ospiti e operatività.',
+      text: 'Prenotazioni, accessi, messaggi, pagamenti e attività operative possono essere collegate a regole e task, con una visione unica delle unità.',
+      list: [
+        'Disponibilità e prenotazioni per unità',
+        'Attività operative, pulizie e riassetto nel flusso di lavoro',
+        'Portale ospite, pagamenti e check-in digitale*',
+        'Gestione da una o più sedi con controllo centralizzato'
+      ],
+      image: 'assets/mockup-automation.svg',
+      alt: 'Operatività Welora per appartamenti e affitti brevi'
+    },
+    hybrid: {
+      kicker: 'Gruppi e multi-sede',
+      title: 'Più strutture e reparti, senza perdere controllo centrale.',
+      text: 'Sedi, utenti, ruoli, servizi e processi restano separati dove serve e coordinati dove conviene, con una base dati e regole coerenti.',
+      list: [
+        'Operatività distinta per sede',
+        'Ruoli, permessi e audit',
+        'Servizi e flussi condivisi o locali',
+        'Visione centrale per controllo e crescita'
+      ],
+      image: 'assets/mockup-operations.svg',
+      alt: 'Gestione multi-sede Welora'
+    }
+  };
+
+  tabs.forEach(button => button.addEventListener('click', () => {
+    const data = verticalData[button.dataset.tab];
+    if (!data) return;
+    tabs.forEach(item => {
+      const active = item === button;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    $('[data-vertical-kicker]').textContent = data.kicker;
+    $('[data-vertical-title]').textContent = data.title;
+    $('[data-vertical-text]').textContent = data.text;
+    $('[data-vertical-list]').innerHTML = data.list.map(item => `<li>${item}</li>`).join('');
+    const image = $('[data-vertical-visual] img');
+    image.src = data.image;
+    image.alt = data.alt;
+  }));
+
+  // Moduli: rendere visibile la profondità del prodotto, non solo il PMS.
+  const platformCards = $$('#piattaforma .module-card');
+  if (platformCards[3]) {
+    $('h3', platformCards[3]).textContent = 'Pagamenti, preautorizzazioni e POS*';
+    $('p', platformCards[3]).textContent = 'Checkout, preautorizzazioni, incassi, rimborsi e Tap to Pay tramite provider compatibile, collegati direttamente ai conti Welora.';
+    $('span', platformCards[3]).textContent = 'Checkout · preauth · rimborsi · Tap to Pay';
+  }
+  if (platformCards[4]) {
+    $('h3', platformCards[4]).textContent = 'Servizi, wellness, extra e vendite';
+    $('p', platformCards[4]).textContent = 'Gestisci servizi, trattamenti, prodotti, transfer, parcheggi, noleggi ed esperienze anche senza collegarli a una camera.';
+    $('span', platformCards[4]).textContent = 'Servizi · trattamenti · extra · vendite autonome';
+  }
+  if (platformCards[6]) {
+    $('h3', platformCards[6]).textContent = 'Operatività, pulizie e automazioni';
+    $('p', platformCards[6]).textContent = 'Eventi e regole collegano task, reparti, pulizie e riassetto, messaggi, accessi, pagamenti e sistemi esterni con tracciamento.';
+    $('span', platformCards[6]).textContent = 'Task · housekeeping · accessi · automazioni';
+  }
+
+  // Sezione di sintesi: mostra le potenzialità senza confondere ciò che è core con ciò che è ancora in evoluzione.
+  const platformSection = $('#piattaforma');
+  if (platformSection && !$('#potenzialita')) {
+    const capabilities = document.createElement('section');
+    capabilities.id = 'potenzialita';
+    capabilities.className = 'section';
+    capabilities.innerHTML = `
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div class="eyebrow"><span></span>Un solo sistema, molti flussi</div>
+          <h2>Non solo camere. Welora può diventare il sistema operativo della struttura.</h2>
+          <p>Dall’ospitalità ai servizi, dagli incassi alle attività operative: la stessa base dati segue il cliente e il lavoro tra reparti diversi.</p>
+        </div>
+        <div class="module-grid">
+          <article class="module-card reveal"><div class="module-icon">H</div><h3>Hospitality</h3><p>PMS, planning, prenotazioni, canali, check-in, conti e fiscalità per la gestione del soggiorno.</p><span>Core Welora</span></article>
+          <article class="module-card reveal"><div class="module-icon">S</div><h3>Servizi & extra</h3><p>Colazioni, transfer, parcheggi, noleggi, trattamenti, prodotti ed esperienze, anche per clienti senza camera.</p><span>Core Welora</span></article>
+          <article class="module-card reveal"><div class="module-icon">€</div><h3>Pagamenti & POS*</h3><p>Incassi online, preautorizzazioni, rimborsi e Tap to Pay collegati ai conti e alle vendite Welora.</p><span>Integrato · provider esterno*</span></article>
+          <article class="module-card reveal"><div class="module-icon">O</div><h3>Housekeeping & operatività</h3><p>Task, reparti, pulizie, riassetto e automazioni operative per ridurre i passaggi manuali tra reception e staff.</p><span>Area in evoluzione</span></article>
+          <article class="module-card reveal"><div class="module-icon">W</div><h3>Wellness & trattamenti</h3><p>Servizi e trattamenti condividono clienti, conti e pagamenti; agenda avanzata, risorse e professionisti sono parte dell’evoluzione del prodotto.</p><span>Base servizi attiva · estensione in evoluzione</span></article>
+          <article class="module-card reveal"><div class="module-icon">M</div><h3>Multi-sede</h3><p>Più strutture, utenti, ruoli e servizi con operatività locale e una visione centrale quando serve.</p><span>Scalabilità organizzativa</span></article>
+        </div>
+      </div>`;
+    platformSection.insertAdjacentElement('afterend', capabilities);
+  }
+
+  // Ordine narrativo: prima automazioni, poi Digital Receptionist futuro.
   const automationsSection = $('#automazioni');
   const receptionistSection = $('#receptionist');
   if (automationsSection && receptionistSection && receptionistSection.parentNode) {
     receptionistSection.parentNode.insertBefore(automationsSection, receptionistSection);
   }
 
-  // I canali dipendono da integrazioni/provider esterni: il piano Base include un collegamento supportato.
+  // Canali e costi provider.
   const channelModuleTitle = $$('#piattaforma .module-card h3').find(element => element.textContent.trim() === 'Booking engine e canali');
   if (channelModuleTitle) channelModuleTitle.textContent = 'Booking engine e canali*';
   const channelPriceItem = $$('#prezzi .price-card.price-featured li').find(element => element.textContent.trim() === 'Canali e prenotazione diretta');
@@ -63,11 +206,37 @@
     pricingLegalNote.textContent = '* Welora Base include il collegamento a 1 canale supportato. Eventuali canali aggiuntivi e i relativi costi o commissioni del provider restano separati. Possono inoltre applicarsi costi a consumo o commissioni del provider per verifica identità/check-in, pagamenti e Tap to Pay, servizi fiscali e altri servizi terzi. Il check-in digitale non sostituisce gli obblighi di identificazione previsti dalla normativa: la verifica dell’ospite deve essere svolta con la modalità richiesta nel caso concreto. L’uso senza registratore telematico fisico dipende dalla soluzione fiscale adottata e dai requisiti normativi applicabili.';
   }
 
+  const featuredPriceCopy = $('#prezzi .price-card.price-featured > div:first-of-type p');
+  if (featuredPriceCopy) {
+    featuredPriceCopy.textContent = 'Per strutture che vogliono sostituire più strumenti con un unico sistema operativo, dalla singola sede ai gruppi più articolati.';
+  }
+
+  // Form: categorie ampie, senza etichettare il prodotto come "solo per piccoli".
+  const businessOptions = $$('select[name="business_type"] option');
+  businessOptions.forEach(option => {
+    if (option.textContent === 'Piccolo hotel / Residence') option.textContent = 'Hotel / Residence / Resort';
+    if (option.textContent === 'Struttura con servizi aggiuntivi') option.textContent = 'Struttura con wellness / servizi';
+  });
+
+  // Footer: sintesi dell'ampiezza reale/potenziale.
+  const footerBrandCopy = $('.footer-grid > div:first-child p');
+  if (footerBrandCopy) {
+    footerBrandCopy.textContent = 'Welora connette ospitalità, servizi, pagamenti, operatività e automazioni in un unico sistema, dalla singola struttura al multi-sede.';
+  }
+  const footerScope = $$('.footer-grid > div').find(column => column.querySelector('strong')?.textContent.trim() === 'Per chi');
+  if (footerScope) {
+    footerScope.innerHTML = '<strong>Ambiti</strong>'
+      + '<a href="#soluzioni">Hospitality e multi-sede</a>'
+      + '<a href="#potenzialita">Servizi, wellness ed extra</a>'
+      + '<a href="#automazioni">Housekeeping e operatività</a>'
+      + '<a href="#potenzialita">Pagamenti e POS integrati</a>';
+  }
+
   const structuredData = $('script[type="application/ld+json"]');
   if (structuredData) {
     try {
       const data = JSON.parse(structuredData.textContent);
-      data.description = 'Gestionale cloud per strutture ricettive, dalla singola sede al multi-sede: PMS, prenotazioni, check-in digitale, pagamenti, fiscalità, servizi e automazioni.';
+      data.description = 'Gestionale cloud per strutture ricettive e servizi: PMS, prenotazioni, pagamenti, fiscalità, extra, operatività e automazioni, dalla singola sede al multi-sede.';
       structuredData.textContent = JSON.stringify(data);
     } catch (_) {
       // Mantiene il markup esistente se il JSON-LD non è modificabile.
@@ -88,78 +257,6 @@
   $$('[data-menu] a').forEach(link => link.addEventListener('click', () => {
     menu?.classList.remove('open');
     menuToggle?.setAttribute('aria-expanded', 'false');
-  }));
-
-  const verticalData = {
-    hospitality: {
-      kicker: 'B&B e affittacamere',
-      title: 'Gestisci soggiorno, incasso e adempimenti senza cambiare software.',
-      text: 'PMS, booking engine, canali, portale ospite, check-in digitale e automazioni condividono la stessa prenotazione.',
-      list: [
-        'Planning, tariffe, disponibilità e prenotazioni',
-        'Check-in digitale e adempimenti con costi provider a consumo*',
-        'Pagamenti online e Tap to Pay da smartphone compatibile*',
-        'Servizi, extra e vendite anche non collegate a una camera'
-      ],
-      image: 'assets/mockup-planning.svg',
-      alt: 'Planning Welora per B&B e affittacamere'
-    },
-    wellness: {
-      kicker: 'Hotel e residence',
-      title: 'Funzioni da struttura organizzata, senza una pila di software separati.',
-      text: 'Camere, reparti, housekeeping, pagamenti, servizi e automazioni restano nello stesso flusso, con utenti e permessi dedicati.',
-      list: [
-        'Arrivi, partenze, housekeeping e attività operative',
-        'Tariffe, restrizioni, booking diretto e canali supportati',
-        'Incassi, preautorizzazioni e documenti commerciali*',
-        'Ruoli, audit e automazioni per ridurre i passaggi manuali'
-      ],
-      image: 'assets/mockup-operations.svg',
-      alt: 'Gestione operativa Welora per hotel e residence'
-    },
-    services: {
-      kicker: 'Appartamenti e affitti brevi',
-      title: 'Più unità, meno lavoro ripetitivo tra un ospite e l’altro.',
-      text: 'Prenotazioni, accessi, messaggi, pulizie, pagamenti e adempimenti possono essere collegati a regole automatiche e task tracciati.',
-      list: [
-        'Disponibilità e prenotazioni per unità',
-        'Task automatici per pulizia, manutenzione e accessi',
-        'Portale ospite e check-in digitale*',
-        'Gestione da una o più sedi con visione centralizzata'
-      ],
-      image: 'assets/mockup-automation.svg',
-      alt: 'Automazioni Welora per appartamenti e affitti brevi'
-    },
-    hybrid: {
-      kicker: 'Struttura ricettiva + servizi',
-      title: 'La camera è solo una delle cose che puoi vendere.',
-      text: 'Colazioni, transfer, parcheggi, prodotti, noleggi, trattamenti, esperienze o eventi possono avere conti e incassi propri senza forzare tutto dentro la prenotazione.',
-      list: [
-        'Conti generici per clienti, passanti, aziende ed eventi',
-        'Servizi e beni venduti anche senza pernottamento',
-        'Stesso flusso per incassi, documenti e storico cliente',
-        'Più sedi e reparti con dati e permessi coerenti'
-      ],
-      image: 'assets/mockup-client-portal.svg',
-      alt: 'Gestione Welora per strutture con servizi aggiuntivi'
-    }
-  };
-
-  $$('[data-tab]').forEach(button => button.addEventListener('click', () => {
-    const data = verticalData[button.dataset.tab];
-    if (!data) return;
-    $$('[data-tab]').forEach(item => {
-      const active = item === button;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-selected', String(active));
-    });
-    $('[data-vertical-kicker]').textContent = data.kicker;
-    $('[data-vertical-title]').textContent = data.title;
-    $('[data-vertical-text]').textContent = data.text;
-    $('[data-vertical-list]').innerHTML = data.list.map(item => `<li>${item}</li>`).join('');
-    const image = $('[data-vertical-visual] img');
-    image.src = data.image;
-    image.alt = data.alt;
   }));
 
   const formatCurrency = value => new Intl.NumberFormat('it-IT', {
@@ -233,6 +330,7 @@
     settings.textContent = 'Rivedi scelte cookie';
     footerContact.append(cookiePolicy, settings);
   }
+
   leadForm?.addEventListener('submit', async event => {
     event.preventDefault();
     const status = $('[data-form-message]', leadForm);
