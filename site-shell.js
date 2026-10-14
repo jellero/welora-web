@@ -7,7 +7,7 @@
     if (!document.querySelector('link[href^="home-enhancements.css"]')) {
       const homeStyles = document.createElement('link');
       homeStyles.rel = 'stylesheet';
-      homeStyles.href = 'home-enhancements.css?v=20261014-5';
+      homeStyles.href = 'home-enhancements.css?v=20261014-6';
       document.head.appendChild(homeStyles);
     }
 
@@ -35,7 +35,7 @@
     const headerCta = document.querySelector('.header-cta');
     if (headerCta) {
       headerCta.href = '#demo';
-      headerCta.textContent = 'Pre-lancio';
+      headerCta.textContent = 'Sconto lancio −50%';
     }
 
     document.querySelector('.home-resource-bar')?.remove();
@@ -46,11 +46,7 @@
       landingNav.className = 'landing-subnav';
       landingNav.innerHTML = `
         <div class="container landing-subnav-inner">
-          <div class="landing-subnav-label">
-            <span>Landing</span>
-            <strong>Scopri Welora</strong>
-          </div>
-          <nav class="landing-subnav-links" aria-label="Navigazione della landing">
+          <nav class="landing-subnav-links" aria-label="Navigazione della pagina">
             <a href="#top" data-landing-link="top">Panoramica</a>
             <a href="#piattaforma" data-landing-link="piattaforma">Cosa include</a>
             <a href="#automazioni" data-landing-link="automazioni">Automazioni</a>
@@ -58,7 +54,6 @@
             <a href="#prezzi" data-landing-link="prezzi">Prezzi</a>
             <a href="#contatti" data-landing-link="contatti">Contatti</a>
           </nav>
-          <a class="landing-subnav-cta" href="#demo">Founding −50%</a>
         </div>`;
       header.insertAdjacentElement('afterend', landingNav);
     }
@@ -72,18 +67,18 @@
           <div class="home-contact-intro reveal">
             <div class="eyebrow"><span></span>Parliamo della tua struttura</div>
             <h2>Una domanda concreta merita una risposta concreta.</h2>
-            <p>Vuoi capire se Welora si adatta alla tua struttura, ai servizi che vendi o ai flussi che vuoi automatizzare? Scrivici: il contatto commerciale è diretto e il programma Founding è ancora in fase di pre-lancio.</p>
+            <p>Vuoi capire se Welora si adatta alla tua struttura, ai servizi che vendi o ai flussi che vuoi automatizzare? Scrivici: il contatto commerciale è diretto e lo sconto lancio è disponibile per le adesioni idonee.</p>
             <div class="home-contact-actions">
               <a class="button" href="mailto:lancio@welora.it">Scrivi a lancio@welora.it</a>
               <a class="button button-ghost" href="contatti.html" style="color:var(--text);border-color:var(--line)">Tutti i contatti</a>
             </div>
-            <div class="home-contact-note">Nessun pagamento prima dell’attivazione del programma Founding.</div>
+            <div class="home-contact-note">Nessun pagamento prima dell’attivazione.</div>
           </div>
           <div class="home-contact-cards reveal reveal-delay">
             <article class="home-contact-card">
-              <small>Commerciale e pre-lancio</small>
+              <small>Commerciale e lancio</small>
               <strong><a href="mailto:lancio@welora.it">lancio@welora.it</a></strong>
-              <p>Per demo, programma Founding, pricing e valutazione dei flussi della struttura.</p>
+              <p>Per demo, sconto lancio, pricing e valutazione dei flussi della struttura.</p>
             </article>
             <article class="home-contact-card">
               <small>Supporto e privacy</small>
@@ -93,7 +88,7 @@
             <article class="home-contact-card wide">
               <small>Welora</small>
               <strong>33028 Tolmezzo (UD), Italia</strong>
-              <p>Welora è in pre-lancio. Le condizioni definitive, disponibilità dei provider e funzionalità soggette a collaudo vengono confermate prima della sottoscrizione.</p>
+              <p>Welora è in fase di lancio. Le condizioni definitive, disponibilità dei provider e funzionalità soggette a collaudo vengono confermate prima della sottoscrizione.</p>
             </article>
           </div>
         </div>`;
@@ -112,15 +107,15 @@
           <p>Ospitalità, servizi, pagamenti, operatività e automazioni nello stesso sistema, dalla singola struttura al multi-sede.</p>
         </div>
         <div>
-          <strong>Landing</strong>
+          <strong>In questa pagina</strong>
           <a href="#piattaforma">Cosa include</a>
           <a href="#automazioni">Automazioni</a>
           <a href="#receptionist">Digital Receptionist</a>
-          <a href="#prezzi">Prezzi e Founding</a>
+          <a href="#prezzi">Prezzi</a>
           <a href="#contatti">Contatti</a>
         </div>
         <div>
-          <strong>Sito</strong>
+          <strong>Welora</strong>
           <a href="prodotto.html">Prodotto</a>
           <a href="soluzioni.html">Soluzioni</a>
           <a href="integrazioni.html">Integrazioni</a>
