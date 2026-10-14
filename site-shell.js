@@ -2,13 +2,12 @@
   'use strict';
 
   const enhance = () => {
-    // La home resta la landing commerciale. Header = sito; barra secondaria = sezioni della landing.
     if (!document.querySelector('#piattaforma')) return;
 
-    if (!document.querySelector('link[href="home-enhancements.css"]')) {
+    if (!document.querySelector('link[href^="home-enhancements.css"]')) {
       const homeStyles = document.createElement('link');
       homeStyles.rel = 'stylesheet';
-      homeStyles.href = 'home-enhancements.css';
+      homeStyles.href = 'home-enhancements.css?v=20261014-5';
       document.head.appendChild(homeStyles);
     }
 
@@ -17,13 +16,20 @@
     const mainNav = document.querySelector('[data-menu]');
     if (mainNav) {
       mainNav.setAttribute('aria-label', 'Navigazione principale');
-      mainNav.innerHTML = [
-        ['prodotto.html', 'Prodotto'],
-        ['soluzioni.html', 'Soluzioni'],
-        ['integrazioni.html', 'Integrazioni'],
-        ['sicurezza.html', 'Sicurezza'],
-        ['azienda.html', 'Azienda']
-      ].map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
+      mainNav.innerHTML = `
+        <a href="prodotto.html">Prodotto</a>
+        <a href="soluzioni.html">Soluzioni</a>
+        <div class="main-nav-more">
+          <button class="main-nav-more-toggle" type="button" aria-expanded="false">
+            Approfondimenti <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="main-nav-dropdown">
+            <a href="integrazioni.html"><strong>Integrazioni</strong><span>Provider, canali e servizi esterni</span></a>
+            <a href="sicurezza.html"><strong>Sicurezza</strong><span>Ruoli, isolamento e audit</span></a>
+            <a href="contatti.html"><strong>Contatti</strong><span>Commerciale, supporto e privacy</span></a>
+          </div>
+        </div>
+        <a href="azienda.html">Azienda</a>`;
     }
 
     const headerCta = document.querySelector('.header-cta');
@@ -32,7 +38,6 @@
       headerCta.textContent = 'Pre-lancio';
     }
 
-    // Rimuove la vecchia fascia di approfondimento: ora le pagine interne vivono nel menu principale.
     document.querySelector('.home-resource-bar')?.remove();
 
     const header = document.querySelector('.site-header');
@@ -42,8 +47,8 @@
       landingNav.innerHTML = `
         <div class="container landing-subnav-inner">
           <div class="landing-subnav-label">
-            <span>In questa pagina</span>
-            <strong>Welora</strong>
+            <span>Landing</span>
+            <strong>Scopri Welora</strong>
           </div>
           <nav class="landing-subnav-links" aria-label="Navigazione della landing">
             <a href="#top" data-landing-link="top">Panoramica</a>
@@ -58,7 +63,6 @@
       header.insertAdjacentElement('afterend', landingNav);
     }
 
-    // Contatti direttamente in home: il visitatore non deve uscire dalla landing per capire come raggiungerci.
     if (!document.querySelector('#contatti')) {
       const contact = document.createElement('section');
       contact.id = 'contatti';
@@ -108,7 +112,7 @@
           <p>Ospitalità, servizi, pagamenti, operatività e automazioni nello stesso sistema, dalla singola struttura al multi-sede.</p>
         </div>
         <div>
-          <strong>In questa pagina</strong>
+          <strong>Landing</strong>
           <a href="#piattaforma">Cosa include</a>
           <a href="#automazioni">Automazioni</a>
           <a href="#receptionist">Digital Receptionist</a>
@@ -116,7 +120,7 @@
           <a href="#contatti">Contatti</a>
         </div>
         <div>
-          <strong>Welora</strong>
+          <strong>Sito</strong>
           <a href="prodotto.html">Prodotto</a>
           <a href="soluzioni.html">Soluzioni</a>
           <a href="integrazioni.html">Integrazioni</a>
@@ -140,7 +144,24 @@
       toggle?.setAttribute('aria-expanded', 'false');
     }));
 
-    // Evidenzia la sezione corrente nel menu della landing.
+    const more = document.querySelector('.main-nav-more');
+    const moreToggle = document.querySelector('.main-nav-more-toggle');
+    moreToggle?.addEventListener('click', event => {
+      event.stopPropagation();
+      const open = more?.classList.toggle('open') ?? false;
+      moreToggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', event => {
+      if (!more || more.contains(event.target)) return;
+      more.classList.remove('open');
+      moreToggle?.setAttribute('aria-expanded', 'false');
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      more?.classList.remove('open');
+      moreToggle?.setAttribute('aria-expanded', 'false');
+    });
+
     const sectionIds = ['top', 'piattaforma', 'automazioni', 'receptionist', 'prezzi', 'contatti'];
     const links = [...document.querySelectorAll('[data-landing-link]')];
     const setActive = id => {
