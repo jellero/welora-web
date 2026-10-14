@@ -4,6 +4,18 @@
   theme.href = 'blue-theme.css';
   document.head.appendChild(theme);
 
+  const consentStyles = document.createElement('link');
+  consentStyles.rel = 'stylesheet';
+  consentStyles.href = 'consent.css';
+  document.head.appendChild(consentStyles);
+
+  if (!document.querySelector('script[src="consent.js"]')) {
+    const consentScript = document.createElement('script');
+    consentScript.src = 'consent.js';
+    consentScript.async = false;
+    document.head.appendChild(consentScript);
+  }
+
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
@@ -119,35 +131,94 @@
   calculateRoi();
 
   const leadForm = $('[data-lead-form]');
-  leadForm?.addEventListener('submit', event => {
+  if (leadForm) {
+    leadForm.action = 'contact.php';
+    leadForm.method = 'post';
+
+    $$('input[name="needs"]', leadForm).forEach(input => { input.name = 'needs[]'; });
+
+    if (!$('input[name="website"]', leadForm)) {
+      const honeypot = document.createElement('input');
+      honeypot.type = 'text';
+      honeypot.name = 'website';
+      honeypot.tabIndex = -1;
+      honeypot.autocomplete = 'off';
+      honeypot.setAttribute('aria-hidden', 'true');
+      honeypot.className = 'sr-only';
+      leadForm.prepend(honeypot);
+    }
+
+    const privacyInput = $('input[name="privacy"]', leadForm);
+    const privacyLabel = privacyInput?.closest('label');
+    if (privacyInput && privacyLabel) {
+      privacyLabel.innerHTML = '';
+      privacyLabel.append(privacyInput, document.createTextNode(' Ho letto l’'));
+      const privacyLink = document.createElement('a');
+      privacyLink.href = 'privacy.html';
+      privacyLink.target = '_blank';
+      privacyLink.rel = 'noopener';
+      privacyLink.textContent = 'informativa privacy';
+      privacyLabel.append(privacyLink, document.createTextNode(' e autorizzo il contatto relativo alla richiesta inviata.'));
+    }
+  }
+
+  const footerContact = document.querySelector('.footer-grid > div:last-child');
+  const oldEmail = document.querySelector('a[href="mailto:commerciale@welora.it"]');
+  if (oldEmail) {
+    oldEmail.href = 'mailto:suppor@welora.it';
+    oldEmail.textContent = 'suppor@welora.it';
+  }
+  if (footerContact && !footerContact.querySelector('a[href="cookies.html"]')) {
+    const cookiePolicy = document.createElement('a');
+    cookiePolicy.href = 'cookies.html';
+    cookiePolicy.textContent = 'Cookie';
+    const settings = document.createElement('a');
+    settings.href = '#';
+    settings.dataset.cookieSettings = '';
+    settings.textContent = 'Rivedi scelte cookie';
+    footerContact.append(cookiePolicy, settings);
+  }
+  leadForm?.addEventListener('submit', async event => {
     event.preventDefault();
-    const message = $('[data-form-message]', leadForm);
+    const status = $('[data-form-message]', leadForm);
+    const submit = $('button[type="submit"]', leadForm);
+
     if (!leadForm.checkValidity()) {
       leadForm.reportValidity();
-      message.textContent = 'Controlla i campi obbligatori.';
+      status.textContent = 'Controlla i campi obbligatori.';
       return;
     }
 
-    const data = new FormData(leadForm);
-    const needs = data.getAll('needs').join(', ') || 'Non specificato';
-    const body = [
-      'Richiesta adesione Welora Founding',
-      '',
-      `Nome: ${data.get('name') || ''}`,
-      `Email: ${data.get('email') || ''}`,
-      `Telefono: ${data.get('phone') || ''}`,
-      `Tipo struttura: ${data.get('business_type') || ''}`,
-      `Sedi: ${data.get('locations') || ''}`,
-      `Camere/unità: ${data.get('resources') || ''}`,
-      `Esigenze: ${needs}`,
-      '',
-      'Flusso prioritario:',
-      data.get('message') || ''
-    ].join('\n');
+    submit.disabled = true;
+    status.textContent = 'Invio in corso…';
 
-    message.textContent = 'Sto aprendo il tuo programma email con la richiesta già compilata.';
-    window.location.href = `mailto:commerciale@welora.it?subject=${encodeURIComponent('Adesione pre-lancio Welora Founding')}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch(leadForm.action, {
+        method: 'POST',
+        body: new FormData(leadForm),
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || !payload?.ok) {
+        throw new Error(payload?.message || 'Invio non riuscito.');
+      }
+
+      status.textContent = payload.message;
+      leadForm.reset();
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { form_name: 'founding_prelaunch' });
+      }
+    } catch (error) {
+      status.innerHTML = `${error.message || 'Invio non riuscito.'} Scrivi a <a href="mailto:suppor@welora.it">suppor@welora.it</a>.`;
+    } finally {
+      submit.disabled = false;
+    }
   });
+
+  const formResult = new URLSearchParams(location.search).get('form');
+  const formStatus = $('[data-form-message]');
+  if (formResult === 'success' && formStatus) formStatus.textContent = 'Richiesta inviata. Ti ricontatteremo all’indirizzo indicato.';
+  if (formResult === 'error' && formStatus) formStatus.innerHTML = 'Invio non riuscito. Scrivi a <a href="mailto:suppor@welora.it">suppor@welora.it</a>.';
 
   $('[data-year]').textContent = String(new Date().getFullYear());
 
