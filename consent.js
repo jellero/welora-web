@@ -16,7 +16,7 @@
 
   if (!document.querySelector('script[src^="site-shell.js"]')) {
     const siteShell = document.createElement('script');
-    siteShell.src = 'site-shell.js?v=20261014-8';
+    siteShell.src = 'site-shell.js?v=20261014-9';
     document.head.appendChild(siteShell);
   }
 
