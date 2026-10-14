@@ -25,36 +25,56 @@
 
   const verticalData = {
     hospitality: {
-      kicker: 'Hotel, B&B, residence e appartamenti',
-      title: 'Più controllo sulla struttura, meno attività ripetitive.',
-      text: 'Planning, PMS, booking engine, channel manager, Alloggiati Web, ISTAT, portale ospite e automazioni di camera lavorano sulla stessa prenotazione.',
-      list: ['Disponibilità, tariffe e restrizioni sincronizzate', 'Check-in digitale, accessi e servizi dal portale cliente', 'Housekeeping, manutenzione e task assegnati automaticamente', 'Digital Receptionist per richieste, preventivi e upselling'],
+      kicker: 'B&B e affittacamere',
+      title: 'Gestisci soggiorno, incasso e adempimenti senza cambiare software.',
+      text: 'PMS, booking engine, canali, portale ospite, check-in digitale e automazioni condividono la stessa prenotazione.',
+      list: [
+        'Planning, tariffe, disponibilità e prenotazioni',
+        'Check-in digitale e adempimenti con costi provider a consumo*',
+        'Pagamenti online e Tap to Pay da smartphone compatibile*',
+        'Servizi, extra e vendite anche non collegate a una camera'
+      ],
       image: 'assets/mockup-planning.svg',
-      alt: 'Esempio di planning Welora per strutture ricettive'
+      alt: 'Planning Welora per B&B e affittacamere'
     },
     wellness: {
-      kicker: 'Spa, centri wellness, estetica e saloni',
-      title: 'Agenda piena, tempi sotto controllo, clienti che ritornano.',
-      text: 'Trattamenti, professionisti, cabine, attrezzature, pacchetti e prodotti sono collegati alla stessa anagrafica cliente e allo stesso conto.',
-      list: ['Agenda per professionisti, risorse, buffer e capacità', 'Prenotazione online, caparra, lista attesa e no-show protection', 'Schede cliente, consensi, pacchetti, membership e loyalty', 'Magazzino prodotti, consumi per trattamento e marginalità'],
-      image: 'assets/mockup-agenda.svg',
-      alt: 'Esempio di agenda Welora per beauty e wellness'
+      kicker: 'Piccoli hotel e residence',
+      title: 'Funzioni da struttura organizzata, senza una pila di software separati.',
+      text: 'Camere, reparti, housekeeping, pagamenti, servizi e automazioni restano nello stesso flusso, con utenti e permessi dedicati.',
+      list: [
+        'Arrivi, partenze, housekeeping e attività operative',
+        'Tariffe, restrizioni, booking diretto e canali supportati',
+        'Incassi, preautorizzazioni e documenti commerciali*',
+        'Ruoli, audit e automazioni per ridurre i passaggi manuali'
+      ],
+      image: 'assets/mockup-operations.svg',
+      alt: 'Gestione operativa Welora per piccoli hotel'
     },
     services: {
-      kicker: 'Studi, consulenti, esperienze e noleggi',
-      title: 'Ogni appuntamento porta con sé dati, documenti e prossime azioni.',
-      text: 'Welora gestisce disponibilità, intake, preventivi, documenti, pagamenti, follow-up e risorse necessarie al servizio.',
-      list: ['Prenotazione per sede, professionista, servizio o attrezzatura', 'Moduli, documenti, consensi e firma nel percorso cliente', 'Preventivi, pagamenti, ricorrenze e pacchetti', 'Reminder, richiami e follow-up gestiti dal Digital Receptionist'],
-      image: 'assets/mockup-operations.svg',
-      alt: 'Esempio di gestione operativa Welora per servizi professionali'
+      kicker: 'Appartamenti e affitti brevi',
+      title: 'Più unità, meno lavoro ripetitivo tra un ospite e l’altro.',
+      text: 'Prenotazioni, accessi, messaggi, pulizie, pagamenti e adempimenti possono essere collegati a regole automatiche e task tracciati.',
+      list: [
+        'Disponibilità e prenotazioni per unità',
+        'Task automatici per pulizia, manutenzione e accessi',
+        'Portale ospite e check-in digitale*',
+        'Gestione da una o più sedi con visione centralizzata'
+      ],
+      image: 'assets/mockup-automation.svg',
+      alt: 'Automazioni Welora per appartamenti e affitti brevi'
     },
     hybrid: {
-      kicker: 'Resort, club, poliambulatori e attività multi-servizio',
-      title: 'Un cliente, più servizi, un unico percorso.',
-      text: 'Pernottamento, trattamento, ristorante, evento, ricarica e noleggio possono convivere nello stesso account, con regole e reparti distinti.',
-      list: ['Conto unico o separato per reparto, servizio e centro di ricavo', 'Portale cliente trasversale a tutte le esperienze', 'Automazioni coordinate tra accessi, staff, spazi ed energia', 'Report consolidati per sede, canale, reparto e cliente'],
+      kicker: 'Struttura ricettiva + servizi',
+      title: 'La camera è solo una delle cose che puoi vendere.',
+      text: 'Colazioni, transfer, parcheggi, prodotti, noleggi, trattamenti, esperienze o eventi possono avere conti e incassi propri senza forzare tutto dentro la prenotazione.',
+      list: [
+        'Conti generici per clienti, passanti, aziende ed eventi',
+        'Servizi e beni venduti anche senza pernottamento',
+        'Stesso flusso per incassi, documenti e storico cliente',
+        'Più sedi e reparti con dati e permessi coerenti'
+      ],
       image: 'assets/mockup-client-portal.svg',
-      alt: 'Esempio di portale cliente Welora per attività multi-servizio'
+      alt: 'Gestione Welora per strutture con servizi aggiuntivi'
     }
   };
 
@@ -73,14 +93,6 @@
     const image = $('[data-vertical-visual] img');
     image.src = data.image;
     image.alt = data.alt;
-  }));
-
-  $$('[data-billing]').forEach(button => button.addEventListener('click', () => {
-    const mode = button.dataset.billing;
-    $$('[data-billing]').forEach(item => item.classList.toggle('active', item === button));
-    $$('[data-monthly]').forEach(price => {
-      price.textContent = price.dataset[mode] || price.dataset.monthly;
-    });
   }));
 
   const formatCurrency = value => new Intl.NumberFormat('it-IT', {
@@ -115,7 +127,26 @@
       message.textContent = 'Controlla i campi obbligatori.';
       return;
     }
-    message.textContent = 'Richiesta pronta. Collegare il form all’endpoint CRM prima della pubblicazione.';
+
+    const data = new FormData(leadForm);
+    const needs = data.getAll('needs').join(', ') || 'Non specificato';
+    const body = [
+      'Richiesta adesione Welora Founding',
+      '',
+      `Nome: ${data.get('name') || ''}`,
+      `Email: ${data.get('email') || ''}`,
+      `Telefono: ${data.get('phone') || ''}`,
+      `Tipo struttura: ${data.get('business_type') || ''}`,
+      `Sedi: ${data.get('locations') || ''}`,
+      `Camere/unità: ${data.get('resources') || ''}`,
+      `Esigenze: ${needs}`,
+      '',
+      'Flusso prioritario:',
+      data.get('message') || ''
+    ].join('\n');
+
+    message.textContent = 'Sto aprendo il tuo programma email con la richiesta già compilata.';
+    window.location.href = `mailto:commerciale@welora.it?subject=${encodeURIComponent('Adesione pre-lancio Welora Founding')}&body=${encodeURIComponent(body)}`;
   });
 
   $('[data-year]').textContent = String(new Date().getFullYear());
