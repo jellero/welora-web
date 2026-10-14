@@ -46,6 +46,13 @@
   const hotelTab = $('[data-tab="wellness"]');
   if (hotelTab) hotelTab.textContent = 'Hotel e residence';
 
+  // Ordine narrativo: prima le automazioni già parte del core, poi il Digital Receptionist futuro.
+  const automationsSection = $('#automazioni');
+  const receptionistSection = $('#receptionist');
+  if (automationsSection && receptionistSection && receptionistSection.parentNode) {
+    receptionistSection.parentNode.insertBefore(automationsSection, receptionistSection);
+  }
+
   // I canali dipendono da integrazioni/provider esterni: il piano Base include un collegamento supportato.
   const channelModuleTitle = $$('#piattaforma .module-card h3').find(element => element.textContent.trim() === 'Booking engine e canali');
   if (channelModuleTitle) channelModuleTitle.textContent = 'Booking engine e canali*';
