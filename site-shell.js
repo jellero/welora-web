@@ -7,13 +7,13 @@
     if (!document.querySelector('link[href^="home-enhancements.css"]')) {
       const homeStyles = document.createElement('link');
       homeStyles.rel = 'stylesheet';
-      homeStyles.href = 'home-enhancements.css?v=20261014-8';
+      homeStyles.href = 'home-enhancements.css?v=20261014-9';
       document.head.appendChild(homeStyles);
     }
     if (!document.querySelector('link[href^="nav-flat.css"]')) {
       const navStyles = document.createElement('link');
       navStyles.rel = 'stylesheet';
-      navStyles.href = 'nav-flat.css?v=20261014-1';
+      navStyles.href = 'nav-flat.css?v=20261014-2';
       document.head.appendChild(navStyles);
     }
 
@@ -60,19 +60,20 @@
       const contact = document.createElement('section');
       contact.id = 'contatti';
       contact.className = 'section home-contact';
+      contact.setAttribute('aria-labelledby', 'home-contact-title');
       contact.innerHTML = `
         <div class="container home-contact-grid">
-          <div class="home-contact-intro reveal">
+          <div class="home-contact-intro">
             <div class="eyebrow"><span></span>Parliamo della tua struttura</div>
-            <h2>Una domanda concreta merita una risposta concreta.</h2>
+            <h2 id="home-contact-title">Una domanda concreta merita una risposta concreta.</h2>
             <p>Vuoi capire se Welora si adatta alla tua struttura, ai servizi che vendi o ai flussi che vuoi automatizzare? Scrivici: il contatto commerciale è diretto e lo sconto lancio è disponibile per le adesioni idonee.</p>
             <div class="home-contact-actions">
               <a class="button" href="mailto:lancio@welora.it">Scrivi a lancio@welora.it</a>
-              <a class="button button-ghost" href="contatti.html" style="color:var(--text);border-color:var(--line)">Tutti i contatti</a>
+              <a class="button button-ghost home-contact-secondary" href="contatti.html">Vai alla pagina Contatti</a>
             </div>
             <div class="home-contact-note">Nessun pagamento prima dell’attivazione.</div>
           </div>
-          <div class="home-contact-cards reveal reveal-delay">
+          <div class="home-contact-cards">
             <article class="home-contact-card">
               <small>Commerciale e lancio</small>
               <strong><a href="mailto:lancio@welora.it">lancio@welora.it</a></strong>
@@ -86,7 +87,7 @@
             <article class="home-contact-card wide">
               <small>Welora</small>
               <strong>33028 Tolmezzo (UD), Italia</strong>
-              <p>Welora è in fase di lancio. Le condizioni definitive, disponibilità dei provider e funzionalità soggette a collaudo vengono confermate prima della sottoscrizione.</p>
+              <p>Welora è in fase di lancio. Le condizioni definitive, la disponibilità dei provider e le funzionalità soggette a collaudo vengono confermate prima della sottoscrizione.</p>
             </article>
           </div>
         </div>`;
@@ -138,9 +139,7 @@
 
     const sectionIds = ['top', 'piattaforma', 'automazioni', 'prezzi'];
     const links = [...document.querySelectorAll('[data-landing-link]')];
-    const setActive = id => {
-      links.forEach(link => link.classList.toggle('active', link.dataset.landingLink === id));
-    };
+    const setActive = id => links.forEach(link => link.classList.toggle('active', link.dataset.landingLink === id));
     setActive('top');
 
     if ('IntersectionObserver' in window) {
@@ -156,9 +155,6 @@
   };
 
   const schedule = () => setTimeout(enhance, 0);
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', schedule, { once: true });
-  } else {
-    schedule();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', schedule, { once: true });
+  else schedule();
 })();
