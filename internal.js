@@ -4,6 +4,13 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
+  if (!document.querySelector('link[href^="nav-flat.css"]')) {
+    const navStyles = document.createElement('link');
+    navStyles.rel = 'stylesheet';
+    navStyles.href = 'nav-flat.css?v=20261014-1';
+    document.head.appendChild(navStyles);
+  }
+
   const current = location.pathname.split('/').pop() || 'index.html';
   const menu = $('[data-menu]');
   const menuToggle = $('[data-menu-toggle]');
