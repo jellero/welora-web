@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Prodotto — Welora</title>
-  <meta name="description" content="Scopri come Welora collega hospitality, servizi, pagamenti, fiscalità, operatività e multi-sede in un unico sistema.">
+  <meta name="description" content="Scopri come Welora collega hospitality, servizi, pagamenti, fiscalità, operatività, multi-sede, Booking Engine, API e integrazioni in un unico sistema.">
   <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="consent.css">
   <link rel="stylesheet" href="nav-flat.css?v=20261014-2">
   <script src="consent.js" defer></script>
-  <script src="internal.js?v=20261014-3" defer></script>
+  <script src="internal.js?v=20261014-4" defer></script>
 </head>
 <body class="internal-page">
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -35,8 +35,8 @@
     <div class="container">
       <div class="eyebrow light"><span></span>Prodotto</div>
       <h1>Un solo sistema operativo per ospitalità, servizi e operatività.</h1>
-      <p>Welora mette sullo stesso modello dati prenotazioni, clienti, servizi, conti, pagamenti, documenti e attività operative. L'obiettivo non è aggiungere moduli scollegati, ma far lavorare reparti diversi sullo stesso contesto.</p>
-      <div class="hero-links"><a class="button" href="index.html#demo">Scopri lo sconto lancio</a><a href="soluzioni.html">Vedi i casi d'uso</a></div>
+      <p>Welora mette sullo stesso modello dati prenotazioni, clienti, servizi, conti, pagamenti, documenti e attività operative. Booking Engine, API e integrazioni permettono poi di collegare siti, provider e software esterni senza creare una seconda fonte di verità.</p>
+      <div class="hero-links"><a class="button" href="index.html#demo">Scopri lo sconto lancio</a><a href="integrazioni.html">API e integrazioni</a></div>
     </div>
   </section>
 
@@ -56,11 +56,12 @@
 
   <section class="page-section soft">
     <div class="container">
-      <div class="section-intro"><div class="eyebrow"><span></span>Profondità operativa</div><h2>Non si ferma alla prenotazione.</h2><p>Welora è progettato per seguire ciò che succede prima, durante e dopo il soggiorno e per gestire vendite che non dipendono affatto da una camera.</p></div>
+      <div class="section-intro"><div class="eyebrow"><span></span>Profondità operativa</div><h2>Non si ferma alla prenotazione.</h2><p>Welora è progettato per seguire ciò che succede prima, durante e dopo il soggiorno, gestire vendite indipendenti dalla camera e inserirsi nello stack digitale della struttura.</p></div>
       <table class="feature-table">
         <thead><tr><th>Area</th><th>Cosa copre</th><th>Stato comunicabile</th></tr></thead>
         <tbody>
           <tr><td>Booking diretto e canali</td><td>Ricerca disponibilità, prenotazione diretta, promozioni e collegamenti ai canali supportati.</td><td><span class="status partial">Implementato / collaudo esterno</span></td></tr>
+          <tr><td>API e integrazioni</td><td>Booking Engine per siti e CMS, WordPress, API dedicate su progetto, collegamenti con gestionali, import/export dati e futuri webhook/API pubblici.</td><td><span class="status partial">Servizi su progetto / API pubbliche in rilascio</span></td></tr>
           <tr><td>Check-in digitale</td><td>Raccolta dati, portale ospite, verifica identità opzionale e preparazione adempimenti.</td><td><span class="status partial">Implementato / vincoli normativi e provider</span></td></tr>
           <tr><td>POS e Tap to Pay</td><td>Backend pagamenti, preautorizzazioni, rimborsi e integrazione Terminal/Tap to Pay.</td><td><span class="status partial">Provider e app mobile da collaudare</span></td></tr>
           <tr><td>Housekeeping e task</td><td>Attività operative, assegnazioni e automazioni collegate agli eventi del soggiorno.</td><td><span class="status partial">Base presente / reparto avanzato in evoluzione</span></td></tr>
@@ -73,18 +74,18 @@
 
   <section class="page-section dark">
     <div class="container split">
-      <div class="section-intro"><div class="eyebrow light"><span></span>Architettura del prodotto</div><h2>I dati restano nel core. Le automazioni reagiscono agli eventi.</h2><p>Welora mantiene lo stato commerciale e operativo nel prodotto principale; il motore di automazione coordina comunicazioni, provider e attività senza diventare una seconda fonte di verità.</p></div>
+      <div class="section-intro"><div class="eyebrow light"><span></span>Architettura del prodotto</div><h2>I dati restano nel core. Automazioni e integrazioni reagiscono agli eventi.</h2><p>Welora mantiene lo stato commerciale e operativo nel prodotto principale; automazioni, provider e collegamenti esterni usano quel contesto senza diventare una seconda fonte di verità.</p></div>
       <div class="card-grid two">
         <article class="card"><span class="kicker">Core</span><h3>Fonte autorevole</h3><p>Prenotazioni, clienti, conti, pagamenti, documenti, utenti e configurazioni rimangono nel dominio Welora.</p></article>
-        <article class="card"><span class="kicker">Automation</span><h3>Eventi e orchestrazione</h3><p>Gli eventi possono attivare task, messaggi, accessi, provider esterni e processi operativi con tracciamento e retry.</p></article>
+        <article class="card"><span class="kicker">Integration layer</span><h3>Eventi, API e orchestrazione</h3><p>Gli eventi possono attivare task, messaggi, accessi e provider; API e connettori permettono di collegare sistemi esterni mantenendo mapping, permessi e responsabilità espliciti.</p></article>
       </div>
     </div>
   </section>
 
   <section class="page-section">
     <div class="container split">
-      <div><div class="section-intro"><div class="eyebrow"><span></span>Trasparenza</div><h2>Non chiamiamo “live” ciò che non è stato collaudato.</h2><p>Un'integrazione può essere tecnicamente implementata ma dipendere ancora da credenziali, onboarding, certificazioni, dispositivi o test reali. Nel sito distinguiamo queste situazioni invece di venderle come equivalenti.</p></div></div>
-      <aside class="callout"><h3>Vuoi capire cosa è adatto alla tua struttura?</h3><p>Durante la fase di lancio raccogliamo i flussi reali e verifichiamo quali parti sono già coperte, quali dipendono da provider e quali fanno parte della roadmap.</p><a class="button" href="contatti.html">Parliamone</a></aside>
+      <div><div class="section-intro"><div class="eyebrow"><span></span>Trasparenza</div><h2>Non chiamiamo “live” ciò che non è stato collaudato.</h2><p>Un'integrazione può essere tecnicamente implementata ma dipendere ancora da credenziali, onboarding, certificazioni, dispositivi o test reali. API pubbliche, plugin e connettori standard vengono dichiarati disponibili solo quando hanno un contratto stabile e collaudato.</p></div><a href="integrazioni.html" style="color:var(--brand-dark);font-weight:800">Scopri API e integrazioni →</a></div>
+      <aside class="callout"><h3>Hai già WordPress, un gestionale o altre API?</h3><p>Possiamo valutare il collegamento, il mapping dei dati, la migrazione e l’eventuale sviluppo di un’integrazione dedicata.</p><a class="button" href="contatti.html#contact-form">Parliamone</a></aside>
     </div>
   </section>
 </main>
