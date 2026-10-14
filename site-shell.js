@@ -10,6 +10,12 @@
       homeStyles.href = 'home-enhancements.css?v=20261014-8';
       document.head.appendChild(homeStyles);
     }
+    if (!document.querySelector('link[href^="nav-flat.css"]')) {
+      const navStyles = document.createElement('link');
+      navStyles.rel = 'stylesheet';
+      navStyles.href = 'nav-flat.css?v=20261014-1';
+      document.head.appendChild(navStyles);
+    }
 
     document.body.classList.add('home-has-landing-nav');
 
