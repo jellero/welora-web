@@ -19,6 +19,44 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
+  // Posizionamento: completo e scalabile, accessibile anche alle strutture più piccole.
+  document.title = 'Welora — Gestionale completo per strutture ricettive';
+  const metaDescription = $('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.content = 'Welora riunisce PMS, prenotazioni, canali, check-in digitale, pagamenti, POS da smartphone, fiscalità, servizi e automazioni: dalla singola struttura al multi-sede.';
+  }
+  const ogTitle = $('meta[property="og:title"]');
+  if (ogTitle) ogTitle.content = 'Welora — Tutto ciò che serve alla tua struttura';
+  const ogDescription = $('meta[property="og:description"]');
+  if (ogDescription) {
+    ogDescription.content = 'Dalla singola struttura al multi-sede: una base completa per gestire soggiorni, incassi, adempimenti, servizi e automazioni.';
+  }
+
+  const heroTitle = $('.hero-copy h1');
+  if (heroTitle) heroTitle.textContent = 'Tutto ciò che serve alla tua struttura. In un solo gestionale.';
+  const heroLead = $('.hero-copy .hero-lead');
+  if (heroLead) {
+    heroLead.textContent = 'Dalla singola struttura al multi-sede, Welora unisce PMS, prenotazioni, canali, check-in, pagamenti, fiscalità, servizi e automazioni sugli stessi dati. Una base completa per crescere, accessibile anche alle strutture più piccole.';
+  }
+
+  const problemTitle = $('.problem-band h2');
+  if (problemTitle) problemTitle.textContent = 'Il problema non è la dimensione della struttura. È dover comprare troppi software.';
+  const verticalEyebrow = $('#soluzioni .eyebrow');
+  if (verticalEyebrow) verticalEyebrow.innerHTML = '<span></span>Dalla singola struttura al multi-sede';
+  const hotelTab = $('[data-tab="wellness"]');
+  if (hotelTab) hotelTab.textContent = 'Hotel e residence';
+
+  const structuredData = $('script[type="application/ld+json"]');
+  if (structuredData) {
+    try {
+      const data = JSON.parse(structuredData.textContent);
+      data.description = 'Gestionale cloud per strutture ricettive, dalla singola sede al multi-sede: PMS, prenotazioni, check-in digitale, pagamenti, fiscalità, servizi e automazioni.';
+      structuredData.textContent = JSON.stringify(data);
+    } catch (_) {
+      // Mantiene il markup esistente se il JSON-LD non è modificabile.
+    }
+  }
+
   const header = $('[data-header]');
   const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 24);
   updateHeader();
@@ -50,7 +88,7 @@
       alt: 'Planning Welora per B&B e affittacamere'
     },
     wellness: {
-      kicker: 'Piccoli hotel e residence',
+      kicker: 'Hotel e residence',
       title: 'Funzioni da struttura organizzata, senza una pila di software separati.',
       text: 'Camere, reparti, housekeeping, pagamenti, servizi e automazioni restano nello stesso flusso, con utenti e permessi dedicati.',
       list: [
@@ -60,7 +98,7 @@
         'Ruoli, audit e automazioni per ridurre i passaggi manuali'
       ],
       image: 'assets/mockup-operations.svg',
-      alt: 'Gestione operativa Welora per piccoli hotel'
+      alt: 'Gestione operativa Welora per hotel e residence'
     },
     services: {
       kicker: 'Appartamenti e affitti brevi',
