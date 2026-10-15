@@ -53,7 +53,8 @@ function weloraSmtpConfig(): ?array
     } else {
         $siteRoot = dirname(__DIR__);
         foreach ([dirname($siteRoot) . '/welora-mail-config.php', $siteRoot . '/private/mail-config.php'] as $file) {
-            if (is_file($file) && is_readable($file)) {
+            // @: con open_basedir la cartella sopra il sito può non essere accessibile.
+            if (@is_file($file) && @is_readable($file)) {
                 $data = require $file;
                 if (is_array($data)) {
                     $raw = $data;

@@ -1,3 +1,5 @@
 # Configurazione SMTP con password: solo sul server
 private/mail-config.php
 welora-mail-config.php
+private/mail-diagnostica.log
+mail-diagnostica.php
