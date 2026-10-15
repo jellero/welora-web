@@ -10,6 +10,15 @@ declare(strict_types=1);
  */
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
+    /*
+     * Il form home aggiunge via JS un honeypot chiamato "website".
+     * Alcune estensioni/autofill possono valorizzare campi nascosti e
+     * contact-general.php, correttamente, tratterebbe la richiesta come bot
+     * restituendo successo senza inviare email. Per il form di lancio
+     * ignoriamo quindi questo honeypot: restano validazione e rate limiting.
+     */
+    unset($_POST['website']);
+
     $_POST['reason'] = 'launch_discount';
     $_POST['source'] = 'launch-home';
 
