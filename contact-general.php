@@ -5,7 +5,7 @@ header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
 const DEFAULT_COMMERCIAL_TO = 'lancio@welora.it';
-const DEFAULT_SUPPORT_TO = 'suppor@welora.it';
+const DEFAULT_SUPPORT_TO = 'supprot@welora.it';
 const DEFAULT_FROM = 'lancio@welora.it';
 
 function wantsJson(): bool
