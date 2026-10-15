@@ -65,7 +65,7 @@ Configurazione, in ordine di priorità:
 2. file `welora-mail-config.php` nella cartella **sopra** quella pubblicata del sito (consigliato);
 3. file `private/mail-config.php` (escluso da git e bloccato da `private/.htaccess`).
 
-Il modello è `private/mail-config.example.php`; per Aruba: `smtps.aruba.it`, porta 465, `ssl`, utente `lancio@welora.it`. La password non va mai committata.
+Il modello è `private/mail-config.example.php`; per la posta Aruba Business di welora.it: `out.postassl.it`, porta 465, `ssl`, utente `lancio@welora.it` (con `smtps.aruba.it` il login fallisce con 535). La password non va mai committata.
 
 Se SMTP non è configurato si usa `mail()` come prima. Se SMTP è configurato ma fallisce, l'errore finisce nel log PHP (`[Welora mail]`) e, salvo `fallback_mail => false`, si riprova con `mail()` per non perdere il lead.
 

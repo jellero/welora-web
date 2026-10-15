@@ -12,8 +12,9 @@
  */
 
 return [
-    // Aruba: smtps.aruba.it, porta 465, SSL.
-    'host' => 'smtps.aruba.it',
+    // Aruba Business (welora.it): out.postassl.it, porta 465, SSL.
+    // Non smtps.aruba.it: lì le caselle Aruba Business danno 535.
+    'host' => 'out.postassl.it',
     'port' => 465,
     'secure' => 'ssl',            // 'ssl' (465), 'tls' (587) oppure 'none'
 
