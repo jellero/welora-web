@@ -28,6 +28,16 @@ require_once __DIR__ . '/PHPMailer/Exception.php';
 require_once __DIR__ . '/PHPMailer/PHPMailer.php';
 require_once __DIR__ . '/PHPMailer/SMTP.php';
 
+/*
+ * Valori predefiniti per la posta Aruba Business di welora.it, verificati
+ * dal server di produzione il 15/10/2026 (smtps.aruba.it rifiuta il login
+ * delle caselle Aruba Business con 535). Sul server basta la password.
+ */
+const WELORA_SMTP_DEFAULT_HOST = 'out.postassl.it';
+const WELORA_SMTP_DEFAULT_PORT = 465;
+const WELORA_SMTP_DEFAULT_SECURE = 'ssl';
+const WELORA_SMTP_DEFAULT_USER = 'lancio@welora.it';
+
 /**
  * @return array{host:string,port:int,secure:string,user:string,pass:string,fallback_mail:bool}|null
  */
@@ -41,14 +51,14 @@ function weloraSmtpConfig(): ?array
     $loaded = true;
 
     $raw = null;
-    if ((string) getenv('SMTP_HOST') !== '') {
+    if ((string) getenv('SMTP_PASS') !== '' || (string) getenv('SMTP_HOST') !== '') {
         $raw = [
-            'host' => getenv('SMTP_HOST'),
+            'host' => getenv('SMTP_HOST') ?: null,
             'port' => getenv('SMTP_PORT') ?: null,
             'secure' => getenv('SMTP_SECURE') ?: null,
             'user' => getenv('SMTP_USER') ?: '',
             'pass' => getenv('SMTP_PASS') ?: '',
-            'fallback_mail' => getenv('SMTP_FALLBACK_MAIL'),
+            'fallback_mail' => getenv('SMTP_FALLBACK_MAIL') === false ? null : getenv('SMTP_FALLBACK_MAIL'),
         ];
     } else {
         $siteRoot = dirname(__DIR__);
@@ -64,17 +74,21 @@ function weloraSmtpConfig(): ?array
         }
     }
 
-    if ($raw === null || trim((string) ($raw['host'] ?? '')) === '') {
+    // Senza password non si può fare il login: si resta su mail().
+    if ($raw === null || (string) ($raw['pass'] ?? '') === '') {
         return null;
     }
 
-    $secure = strtolower(trim((string) ($raw['secure'] ?? 'ssl')));
+    $host = trim((string) ($raw['host'] ?? '')) ?: WELORA_SMTP_DEFAULT_HOST;
+    $secure = strtolower(trim((string) ($raw['secure'] ?? WELORA_SMTP_DEFAULT_SECURE)));
     if (!in_array($secure, ['ssl', 'tls', 'none'], true)) {
         $secure = 'ssl';
     }
     $port = (int) ($raw['port'] ?? 0);
     if ($port <= 0) {
-        $port = $secure === 'ssl' ? 465 : ($secure === 'tls' ? 587 : 25);
+        $port = $host === WELORA_SMTP_DEFAULT_HOST && $secure === WELORA_SMTP_DEFAULT_SECURE
+            ? WELORA_SMTP_DEFAULT_PORT
+            : ($secure === 'ssl' ? 465 : ($secure === 'tls' ? 587 : 25));
     }
     $fallback = $raw['fallback_mail'] ?? true;
     if (is_string($fallback)) {
@@ -82,10 +96,10 @@ function weloraSmtpConfig(): ?array
     }
 
     $config = [
-        'host' => trim((string) $raw['host']),
+        'host' => $host,
         'port' => $port,
         'secure' => $secure,
-        'user' => trim((string) ($raw['user'] ?? '')),
+        'user' => trim((string) ($raw['user'] ?? '')) ?: (getenv('CONTACT_FROM') ?: WELORA_SMTP_DEFAULT_USER),
         'pass' => (string) ($raw['pass'] ?? ''),
         'fallback_mail' => (bool) $fallback,
     ];

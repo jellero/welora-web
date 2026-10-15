@@ -59,13 +59,17 @@ Le email del sito (notifica interna e conferma al cliente) partono via **SMTP au
 
 Con `mail()` di PHP, su Aruba il mittente di busta risultava un indirizzo Gmail invece di welora.it: SPF softfail e punteggio mail-tester 5.9/10 (ottobre 2026).
 
-Configurazione, in ordine di priorità:
+Sul server **basta la password** della casella `lancio@welora.it`: server, porta, cifratura e utente sono già nel codice (`out.postassl.it`, 465, SSL, `lancio@welora.it`), verificati dal server di produzione. Per la posta Aruba Business `smtps.aruba.it` non va: rifiuta il login con 535.
 
-1. variabili d'ambiente `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` (`ssl`, `tls`, `none`), `SMTP_USER`, `SMTP_PASS`, `SMTP_FALLBACK_MAIL`;
-2. file `welora-mail-config.php` nella cartella **sopra** quella pubblicata del sito (consigliato);
-3. file `private/mail-config.php` (escluso da git e bloccato da `private/.htaccess`).
+La password si legge, in ordine di priorità, da:
 
-Il modello è `private/mail-config.example.php`; per la posta Aruba Business di welora.it: `out.postassl.it`, porta 465, `ssl`, utente `lancio@welora.it` (con `smtps.aruba.it` il login fallisce con 535). La password non va mai committata.
+1. variabile d'ambiente `SMTP_PASS` (con `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_FALLBACK_MAIL` facoltative);
+2. file `/var/www/vhosts/welora.it/welora-mail-config.php`, nella cartella che contiene `httpdocs` (consigliato, fuori dal web);
+3. file `httpdocs/private/mail-config.php` (escluso da git e bloccato da `private/.htaccess`).
+
+Il modello è `private/mail-config.example.php`. La password non va mai committata.
+
+Nota: sul server Plesk è impostato `mail.force_extra_parameters = -fj.ellero@gmail.com`, che forza quella Gmail come mittente di busta su ogni `mail()`. Non è modificabile dal sito: per questo l'invio passa da SMTP.
 
 Se SMTP non è configurato si usa `mail()` come prima. Se SMTP è configurato ma fallisce, l'errore finisce nel log PHP (`[Welora mail]`) e, salvo `fallback_mail => false`, si riprova con `mail()` per non perdere il lead.
 

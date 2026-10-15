@@ -2,28 +2,26 @@
 /*
  * Configurazione SMTP del sito Welora.
  *
- * Copia questo file come private/mail-config.php sul server (oppure, meglio,
- * come welora-mail-config.php nella cartella SOPRA quella del sito) e
- * inserisci la password della casella. private/mail-config.php è escluso da
- * git: la password non deve mai finire nel repository.
+ * DOVE: /var/www/vhosts/welora.it/welora-mail-config.php
+ *       (la cartella che CONTIENE httpdocs, fuori dal web).
+ *       In alternativa: httpdocs/private/mail-config.php
  *
- * In alternativa puoi usare le variabili d'ambiente SMTP_HOST, SMTP_PORT,
- * SMTP_SECURE, SMTP_USER, SMTP_PASS e SMTP_FALLBACK_MAIL.
+ * Basta la password della casella lancio@welora.it: server, porta,
+ * cifratura e utente hanno già i valori giusti nel codice
+ * (out.postassl.it, 465, SSL, lancio@welora.it).
+ * Le altre chiavi servono solo se vuoi cambiarli.
+ *
+ * Questo file con la password NON va mai su GitHub.
+ * In alternativa: variabile d'ambiente SMTP_PASS.
  */
 
 return [
-    // Aruba Business (welora.it): out.postassl.it, porta 465, SSL.
-    // Non smtps.aruba.it: lì le caselle Aruba Business danno 535.
-    'host' => 'out.postassl.it',
-    'port' => 465,
-    'secure' => 'ssl',            // 'ssl' (465), 'tls' (587) oppure 'none'
+    'pass' => 'LA-PASSWORD-DELLA-CASELLA',
 
-    // Casella che invia: deve coincidere con il mittente del sito
-    // (CONTACT_FROM, predefinito lancio@welora.it).
-    'user' => 'lancio@welora.it',
-    'pass' => 'INSERISCI-LA-PASSWORD-DELLA-CASELLA',
-
-    // Se SMTP non risponde, prova comunque con mail() di PHP per non
-    // perdere la richiesta (con il punteggio antispam più basso di prima).
-    'fallback_mail' => true,
+    // Facoltativi (valori predefiniti):
+    // 'host' => 'out.postassl.it',
+    // 'port' => 465,
+    // 'secure' => 'ssl',
+    // 'user' => 'lancio@welora.it',
+    // 'fallback_mail' => true,   // se SMTP fallisce, riprova con mail()
 ];
