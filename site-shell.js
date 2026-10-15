@@ -81,7 +81,7 @@
             </article>
             <article class="home-contact-card">
               <small>Supporto e privacy</small>
-              <strong><a href="mailto:suppor@welora.it">suppor@welora.it</a></strong>
+              <strong><a href="mailto:supprot@welora.it">supprot@welora.it</a></strong>
               <p>Per richieste di supporto sul sito e comunicazioni relative alla privacy.</p>
             </article>
             <article class="home-contact-card wide">
