@@ -124,6 +124,7 @@
           <strong>Contatti e legale</strong>
           <a href="contatti.html">Contatti</a>
           <a href="mailto:lancio@welora.it">lancio@welora.it</a>
+          <a href="https://www.facebook.com/welorahospitality" target="_blank" rel="noopener">Facebook</a>
           <a href="privacy.html">Privacy</a>
           <a href="cookies.html">Cookie</a>
           <a href="#" data-cookie-settings>Preferenze cookie</a>
