@@ -317,8 +317,8 @@
   const footerContact = document.querySelector('.footer-grid > div:last-child');
   const oldEmail = document.querySelector('a[href="mailto:commerciale@welora.it"]');
   if (oldEmail) {
-    oldEmail.href = 'mailto:suppor@welora.it';
-    oldEmail.textContent = 'suppor@welora.it';
+    oldEmail.href = 'mailto:supprot@welora.it';
+    oldEmail.textContent = 'supprot@welora.it';
   }
   if (footerContact && !footerContact.querySelector('a[href="cookies.html"]')) {
     const cookiePolicy = document.createElement('a');
