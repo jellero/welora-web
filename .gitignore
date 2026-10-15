@@ -1,0 +1,3 @@
+# Configurazione SMTP con password: solo sul server
+private/mail-config.php
+welora-mail-config.php

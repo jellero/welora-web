@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/lib/welora-mailer.php';
+
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
@@ -31,11 +33,6 @@ function finish(bool $ok, string $message, int $status = 200): never
     exit;
 }
 
-function encodeSubject(string $subject): string
-{
-    return '=?UTF-8?B?' . base64_encode($subject) . '?=';
-}
-
 function html(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -45,51 +42,6 @@ function validMailbox(string $email): bool
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL) !== false
         && !preg_match('/[\r\n]/', $email);
-}
-
-function sendWeloraMail(
-    string $kind,
-    string $to,
-    string $subject,
-    string $body,
-    array $headers,
-    string $envelopeFrom
-): bool {
-    if (!validMailbox($to) || !validMailbox($envelopeFrom)) {
-        error_log('[Welora contact] invalid mailbox configuration for ' . $kind);
-        return false;
-    }
-
-    $warning = null;
-    set_error_handler(static function (int $severity, string $message) use (&$warning): bool {
-        $warning = $message;
-        return true;
-    });
-
-    try {
-        $sent = mail(
-            $to,
-            encodeSubject($subject),
-            $body,
-            implode("\r\n", $headers),
-            '-f' . $envelopeFrom
-        );
-    } finally {
-        restore_error_handler();
-    }
-
-    if (!$sent || $warning !== null) {
-        error_log(sprintf(
-            '[Welora contact] %s failed; mail_result=%s; warning=%s; sendmail_path=%s; php=%s',
-            $kind,
-            $sent ? 'true' : 'false',
-            $warning ?? 'none',
-            (string) ini_get('sendmail_path'),
-            PHP_VERSION
-        ));
-    }
-
-    return $sent;
 }
 
 function sendConfirmation(
@@ -149,27 +101,7 @@ function sendConfirmation(
         . '<tr><td style="padding:23px 36px 28px;background:#0b1220;color:#aeb8c7;font-size:12px;line-height:1.6;"><strong style="color:#fff;font-size:14px;">Welora</strong><br>Ospitalità, servizi, pagamenti e automazioni nello stesso sistema.<br><a href="https://welora.it" style="color:#40dba2;text-decoration:none;">welora.it</a></td></tr>'
         . '</table></td></tr></table></body></html>';
 
-    $boundary = 'welora-contact-' . bin2hex(random_bytes(12));
-    $headers = [
-        'MIME-Version: 1.0',
-        'Content-Type: multipart/alternative; boundary="' . $boundary . '"',
-        'From: Welora <' . $from . '>',
-        'Sender: ' . $from,
-        'Reply-To: ' . $replyTo,
-        'X-Mailer: PHP/' . PHP_VERSION,
-    ];
-
-    $multipart = '--' . $boundary . "\r\n"
-        . "Content-Type: text/plain; charset=UTF-8\r\n"
-        . "Content-Transfer-Encoding: 8bit\r\n\r\n"
-        . $plain . "\r\n\r\n"
-        . '--' . $boundary . "\r\n"
-        . "Content-Type: text/html; charset=UTF-8\r\n"
-        . "Content-Transfer-Encoding: 8bit\r\n\r\n"
-        . $htmlBody . "\r\n\r\n"
-        . '--' . $boundary . '--';
-
-    return sendWeloraMail('contact-confirmation', $email, $subject, $multipart, $headers, $from);
+    return weloraSendMail('contact-confirmation', $email, $subject, $plain, $htmlBody, $from, 'Welora', $replyTo);
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -258,16 +190,7 @@ $body = implode("\n", [
     'Privacy: informativa dichiarata letta; ricontatto richiesto/autorizzato dal mittente.',
 ]);
 
-$headers = [
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'From: Welora sito <' . $from . '>',
-    'Sender: ' . $from,
-    'Reply-To: ' . $email,
-    'X-Mailer: PHP/' . PHP_VERSION,
-];
-
-$leadSent = sendWeloraMail('contact-notification-' . $reason, $to, $subject, $body, $headers, $from);
+$leadSent = weloraSendMail('contact-notification-' . $reason, $to, $subject, $body, null, $from, 'Welora sito', $email);
 if (!$leadSent) {
     finish(false, 'Il server non è riuscito a spedire la richiesta. Puoi scriverci direttamente via email.', 500);
 }

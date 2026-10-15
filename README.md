@@ -45,27 +45,47 @@ Per provare anche il form PHP:
 php -S 127.0.0.1:8080
 ```
 
-Aprire `http://127.0.0.1:8080`. Il server locale deve avere `mail()` configurato per verificare l'invio reale.
+Aprire `http://127.0.0.1:8080`. Per verificare l'invio reale serve un SMTP configurato (vedi sotto) oppure `mail()` attivo sul server locale.
 
 Per una sola anteprima grafica resta possibile usare un server statico, ma `contact.php` non funzionerà.
 
 ## Hosting
 
-La landing può essere servita come HTML statico, ma il form Founding richiede un hosting con **PHP 8.1+** e funzione `mail()` configurata, oppure una successiva integrazione SMTP. GitHub Pages non esegue PHP e quindi non è adatto come hosting finale se si vuole usare `contact.php`.
+La landing può essere servita come HTML statico, ma i form richiedono un hosting con **PHP 8.1+**. GitHub Pages non esegue PHP e quindi non è adatto come hosting finale.
 
-Variabili ambiente opzionali:
+### Invio email (SMTP)
 
-- `CONTACT_TO`: destinatario del form; fallback `lancio@welora.it`;
-- `CONTACT_FROM`: mittente delle email del sito; fallback `lancio@welora.it`.
+Le email del sito (notifica interna e conferma al cliente) partono via **SMTP autenticato** con PHPMailer (`lib/PHPMailer`, v6.12.0, senza Composer) tramite `lib/welora-mailer.php`. Così il mittente di busta è la casella autenticata e SPF, DKIM e DMARC risultano allineati su `welora.it`.
 
-Il form invia una notifica interna a `lancio@welora.it` e, dopo l'acquisizione valida del lead, prova a inviare al cliente una conferma commerciale HTML responsive con fallback `text/plain`. L'autorisposta usa `lancio@welora.it` come `Reply-To`, così il cliente può rispondere direttamente al team Welora. Il fallimento della sola autorisposta non invalida la ricezione del lead interno.
+Con `mail()` di PHP, su Aruba il mittente di busta risultava un indirizzo Gmail invece di welora.it: SPF softfail e punteggio mail-tester 5.9/10 (ottobre 2026).
+
+Configurazione, in ordine di priorità:
+
+1. variabili d'ambiente `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` (`ssl`, `tls`, `none`), `SMTP_USER`, `SMTP_PASS`, `SMTP_FALLBACK_MAIL`;
+2. file `welora-mail-config.php` nella cartella **sopra** quella pubblicata del sito (consigliato);
+3. file `private/mail-config.php` (escluso da git e bloccato da `private/.htaccess`).
+
+Il modello è `private/mail-config.example.php`; per Aruba: `smtps.aruba.it`, porta 465, `ssl`, utente `lancio@welora.it`. La password non va mai committata.
+
+Se SMTP non è configurato si usa `mail()` come prima. Se SMTP è configurato ma fallisce, l'errore finisce nel log PHP (`[Welora mail]`) e, salvo `fallback_mail => false`, si riprova con `mail()` per non perdere il lead.
+
+Variabili ambiente opzionali per i destinatari:
+
+- `CONTACT_TO`: destinatario delle richieste commerciali; fallback `lancio@welora.it`;
+- `CONTACT_SUPPORT_TO`: destinatario di supporto, privacy e sicurezza; fallback `support@welora.it`;
+- `CONTACT_FROM`: mittente delle email del sito; fallback `lancio@welora.it`. Deve coincidere con `SMTP_USER`.
+
+Il form invia una notifica interna e, dopo l'acquisizione valida del lead, una conferma HTML responsive con fallback `text/plain`. La conferma usa la casella del team come `Reply-To`. Il fallimento della sola conferma non invalida la ricezione del lead interno.
 
 ## Struttura
 
 - `index.html`: landing di pre-lancio, funzionalità, pricing Founding, ROI, FAQ e form;
 - `styles.css` e `blue-theme.css`: design system responsive;
 - `app.js`: navigazione mobile, selettore per tipo di struttura, calcolatore ROI e invio AJAX del form;
-- `contact.php`: endpoint server-side con validazione, honeypot, rate limit minimo, notifica lead e autorisposta Founding;
+- `contact.php`: adattatore del form Founding della home, delega a `contact-general.php`;
+- `contact-general.php`: endpoint server-side con validazione, honeypot, rate limit minimo, notifica lead e autorisposta;
+- `lib/welora-mailer.php` e `lib/PHPMailer/`: invio email via SMTP autenticato con ripiego su `mail()`;
+- `private/mail-config.example.php`: modello di configurazione SMTP;
 - `consent.js` e `consent.css`: cookie banner, preferenze e Google Consent Mode v2;
 - `favicon.svg`: favicon Welora;
 - `assets/`: mockup SVG;
@@ -102,7 +122,7 @@ Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei d
 
 ## Prima della pubblicazione
 
-1. Verificare sul server reale che `contact.php` invii correttamente sia la notifica a `lancio@welora.it` sia l'autorisposta al cliente e configurare SPF/DKIM/DMARC del dominio; per affidabilità maggiore valutare SMTP transazionale.
+1. Configurare SMTP sul server (vedi "Invio email"), poi verificare con mail-tester che il mittente di busta sia `lancio@welora.it` e che SPF, DKIM e DMARC passino; dopo qualche settimana di invii puliti valutare DMARC `p=quarantine`.
 2. Verificare che `support@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale Founding.
 3. Verificare con il consulente privacy la versione pubblicata di Privacy Policy e Cookie Policy, in particolare i periodi di conservazione e i fornitori effettivamente usati.
 4. Configurare la proprietà GA4 in coerenza con l'informativa e verificare Consent Mode con Tag Assistant.
