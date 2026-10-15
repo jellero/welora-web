@@ -103,7 +103,7 @@ Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei d
 ## Prima della pubblicazione
 
 1. Verificare sul server reale che `contact.php` invii correttamente sia la notifica a `lancio@welora.it` sia l'autorisposta al cliente e configurare SPF/DKIM/DMARC del dominio; per affidabilità maggiore valutare SMTP transazionale.
-2. Verificare che `suppor@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale Founding.
+2. Verificare che `support@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale Founding.
 3. Verificare con il consulente privacy la versione pubblicata di Privacy Policy e Cookie Policy, in particolare i periodi di conservazione e i fornitori effettivamente usati.
 4. Configurare la proprietà GA4 in coerenza con l'informativa e verificare Consent Mode con Tag Assistant.
 5. Verificare prezzi, limiti, costi provider e condizioni Founding definitive.
