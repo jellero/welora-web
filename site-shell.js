@@ -110,7 +110,7 @@
           <strong>Per tipo di struttura</strong>
           <a href="gestionale-bb.html">Gestionale per B&amp;B</a>
           <a href="software-affitti-brevi.html">Software per affitti brevi</a>
-          <a href="gestionale-hotel.html">Gestionale per piccoli hotel</a>
+          <a href="gestionale-hotel.html">Gestionale per hotel</a>
           <a href="#prezzi">Prezzi</a>
         </div>
         <div>
