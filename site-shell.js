@@ -48,6 +48,7 @@
         <div class="container landing-subnav-inner">
           <nav class="landing-subnav-links" aria-label="Navigazione della pagina">
             <a href="#top" data-landing-link="top">Panoramica</a>
+            <a href="#confronto" data-landing-link="confronto">Quanto risparmi</a>
             <a href="#piattaforma" data-landing-link="piattaforma">Cosa include</a>
             <a href="#automazioni" data-landing-link="automazioni">Automazioni</a>
             <a href="#prezzi" data-landing-link="prezzi">Prezzi</a>
@@ -87,7 +88,7 @@
             <article class="home-contact-card wide">
               <small>Welora</small>
               <strong>33028 Tolmezzo (UD), Italia</strong>
-              <p>Welora è in fase di lancio. Le condizioni definitive, la disponibilità dei provider e le funzionalità soggette a collaudo vengono confermate prima della sottoscrizione.</p>
+              <p>Lancio il 15 febbraio 2027. Condizioni definitive confermate prima della sottoscrizione.</p>
             </article>
           </div>
         </div>`;
@@ -106,9 +107,10 @@
           <p>Ospitalità, servizi, pagamenti, operatività e automazioni nello stesso sistema, dalla singola struttura al multi-sede.</p>
         </div>
         <div>
-          <strong>In questa pagina</strong>
-          <a href="#piattaforma">Cosa include</a>
-          <a href="#automazioni">Automazioni</a>
+          <strong>Per tipo di struttura</strong>
+          <a href="gestionale-bb.html">Gestionale per B&amp;B</a>
+          <a href="software-affitti-brevi.html">Software per affitti brevi</a>
+          <a href="gestionale-hotel.html">Gestionale per piccoli hotel</a>
           <a href="#prezzi">Prezzi</a>
         </div>
         <div>
@@ -138,7 +140,7 @@
       toggle?.setAttribute('aria-expanded', 'false');
     }));
 
-    const sectionIds = ['top', 'piattaforma', 'automazioni', 'prezzi'];
+    const sectionIds = ['top', 'confronto', 'piattaforma', 'automazioni', 'prezzi'];
     const links = [...document.querySelectorAll('[data-landing-link]')];
     const setActive = id => links.forEach(link => link.classList.toggle('active', link.dataset.landingLink === id));
     setActive('top');
