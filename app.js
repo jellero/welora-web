@@ -277,19 +277,6 @@
       honeypot.className = 'sr-only';
       leadForm.prepend(honeypot);
     }
-
-    const privacyInput = $('input[name="privacy"]', leadForm);
-    const privacyLabel = privacyInput?.closest('label');
-    if (privacyInput && privacyLabel) {
-      privacyLabel.innerHTML = '';
-      privacyLabel.append(privacyInput, document.createTextNode(' Ho letto l’'));
-      const privacyLink = document.createElement('a');
-      privacyLink.href = 'privacy.html';
-      privacyLink.target = '_blank';
-      privacyLink.rel = 'noopener';
-      privacyLink.textContent = 'informativa privacy';
-      privacyLabel.append(privacyLink, document.createTextNode(' e autorizzo il contatto relativo alla richiesta inviata.'));
-    }
   }
 
   const footerContact = document.querySelector('.footer-grid > div:last-child');
