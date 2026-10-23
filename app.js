@@ -20,28 +20,28 @@
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
   // Posizionamento: prodotto completo e scalabile; accessibile ai piccoli senza escludere strutture più articolate.
-  document.title = 'Welora — Gestionale completo per strutture ricettive';
+  document.title = 'Welora — Il gestionale completo per strutture ricettive a €29/mese';
   const metaDescription = $('meta[name="description"]');
   if (metaDescription) {
-    metaDescription.content = 'Welora unisce ospitalità, servizi ed extra, pagamenti e POS, fiscalità, automazioni e gestione multi-sede in un unico sistema operativo.';
+    metaDescription.content = 'Welora: PMS, channel manager, check-in, pagamenti e POS, fatture, pulizie, cassa e automazioni in un solo gestionale a €29/mese, tutto incluso. Lancio 15 febbraio 2027.';
   }
   const ogTitle = $('meta[property="og:title"]');
-  if (ogTitle) ogTitle.content = 'Welora — Tutto ciò che serve alla tua struttura';
+  if (ogTitle) ogTitle.content = 'Welora — Tutto il gestionale della tua struttura a €29/mese';
   const ogDescription = $('meta[property="og:description"]');
   if (ogDescription) {
-    ogDescription.content = 'Dalla singola struttura al multi-sede: prenotazioni, servizi, pagamenti, fiscalità e operatività sugli stessi dati.';
+    ogDescription.content = 'PMS, canali OTA, check-in, pagamenti, fatture, pulizie, cassa e automazioni in un solo canone. Paghi in più solo ciò che ha un costo reale.';
   }
 
   const heroTitle = $('.hero-copy h1');
-  if (heroTitle) heroTitle.textContent = 'Tutto ciò che serve alla tua struttura. In un solo gestionale.';
+  if (heroTitle) heroTitle.textContent = 'Tutto il gestionale della tua struttura. €29 al mese, tutto incluso.';
   const heroLead = $('.hero-copy .hero-lead');
   if (heroLead) {
-    heroLead.textContent = 'Dalla singola struttura al multi-sede, Welora collega prenotazioni, servizi ed extra, pagamenti e POS, fiscalità e automazioni sugli stessi dati. Una base completa che cresce con la struttura e con i suoi reparti operativi.';
+    heroLead.textContent = 'PMS, canali OTA, check-in, pagamenti e POS, fatture, pulizie, cassa e automazioni sugli stessi dati. Non paghi moduli né piani superiori: paghi in più solo ciò che ha un costo reale, come i canali OTA aggiuntivi.';
   }
   const heroProof = $$('.hero-proof span');
-  if (heroProof[0]) heroProof[0].textContent = 'Hospitality, servizi e multi-sede';
-  if (heroProof[1]) heroProof[1].textContent = 'Pagamenti e POS integrati*';
-  if (heroProof[2]) heroProof[2].textContent = 'Automazioni e operatività';
+  if (heroProof[0]) heroProof[0].textContent = 'Tutte le funzioni incluse';
+  if (heroProof[1]) heroProof[1].textContent = 'Passi da altri gestionali senza perdere dati';
+  if (heroProof[2]) heroProof[2].textContent = 'Nessuna commissione sulle prenotazioni dirette';
 
   const problemTitle = $('.problem-band h2');
   if (problemTitle) problemTitle.textContent = 'Il problema non è la dimensione della struttura. È dover gestire reparti e flussi con software separati.';
@@ -80,10 +80,10 @@
       title: 'Prenotazioni, soggiorni, incassi e adempimenti nello stesso flusso.',
       text: 'Hotel, residence, B&B e altre strutture ricettive condividono planning, disponibilità, clienti, conti, pagamenti e operatività.',
       list: [
-        'Planning, tariffe, disponibilità e prenotazioni',
-        'Booking diretto, canali supportati e portale ospite',
-        'Check-in digitale e adempimenti con i vincoli applicabili*',
-        'Pagamenti, fiscalità, servizi ed extra collegati allo stesso cliente'
+        'Planning, tariffe, disponibilità e oltre 100 canali OTA',
+        'Giornata operativa, reception, chiavi e checkout guidato',
+        'Pulizie con app per gli addetti e stato camere',
+        'Check-in, pagamenti, fatture e cassa sullo stesso conto*'
       ],
       image: 'assets/mockup-planning.svg',
       alt: 'Planning Welora per strutture ricettive'
@@ -91,25 +91,25 @@
     wellness: {
       kicker: 'Servizi, wellness ed esperienze',
       title: 'La camera non è l’unica cosa che puoi vendere e gestire.',
-      text: 'Catalogo, conti e incassi permettono di gestire servizi ed extra anche senza soggiorno; il modello è pensato per estendersi a trattamenti, risorse e flussi wellness più articolati.',
+      text: 'Catalogo, agenda, conti e incassi gestiscono servizi, trattamenti ed esperienze anche senza soggiorno, con professionisti, turni e risorse.',
       list: [
         'Servizi, trattamenti, prodotti, noleggi ed esperienze',
         'Vendite autonome anche per clienti passanti',
         'Stessi pagamenti, documenti fiscali e storico cliente',
-        'Evoluzione verso agenda, risorse e professionisti dedicati'
+        'Agenda con professionisti, competenze, turni, cabine e buffer'
       ],
       image: 'assets/mockup-client-portal.svg',
       alt: 'Servizi ed extra gestiti con Welora'
     },
     services: {
       kicker: 'Appartamenti e affitti brevi',
-      title: 'Più unità, meno passaggi manuali tra ospiti e operatività.',
-      text: 'Prenotazioni, accessi, messaggi, pagamenti e attività operative possono essere collegate a regole e task, con una visione unica delle unità.',
+      title: 'Affitti brevi senza nessuno in struttura.',
+      text: 'Dalla prenotazione al checkout ogni passaggio parte dalla prenotazione stessa: canali, check-in, adempimenti, accessi, clima e pulizie.',
       list: [
-        'Disponibilità e prenotazioni per unità',
-        'Attività operative, pulizie e riassetto nel flusso di lavoro',
-        'Portale ospite, pagamenti e check-in digitale*',
-        'Gestione da una o più sedi con controllo centralizzato'
+        'Prenotazioni da OTA e sito diretto sullo stesso calendario',
+        'Check-in online, Alloggiati e tassa di soggiorno*',
+        'Codice serratura e clima pronti all’arrivo*',
+        'Pulizie assegnate al checkout, accessi revocati alla partenza'
       ],
       image: 'assets/mockup-automation.svg',
       alt: 'Operatività Welora per appartamenti e affitti brevi'
@@ -164,31 +164,6 @@
     $('span', platformCards[6]).textContent = 'Task · housekeeping · accessi · automazioni';
   }
 
-  // Sezione di sintesi: mostra le potenzialità senza confondere ciò che è core con ciò che è ancora in evoluzione.
-  const platformSection = $('#piattaforma');
-  if (platformSection && !$('#potenzialita')) {
-    const capabilities = document.createElement('section');
-    capabilities.id = 'potenzialita';
-    capabilities.className = 'section';
-    capabilities.innerHTML = `
-      <div class="container">
-        <div class="section-heading centered reveal">
-          <div class="eyebrow"><span></span>Un solo sistema, molti flussi</div>
-          <h2>Non solo camere. Welora può diventare il sistema operativo della struttura.</h2>
-          <p>Dall’ospitalità ai servizi, dagli incassi alle attività operative: la stessa base dati segue il cliente e il lavoro tra reparti diversi.</p>
-        </div>
-        <div class="module-grid">
-          <article class="module-card reveal"><div class="module-icon">H</div><h3>Hospitality</h3><p>PMS, planning, prenotazioni, canali, check-in, conti e fiscalità per la gestione del soggiorno.</p><span>Core Welora</span></article>
-          <article class="module-card reveal"><div class="module-icon">S</div><h3>Servizi & extra</h3><p>Colazioni, transfer, parcheggi, noleggi, trattamenti, prodotti ed esperienze, anche per clienti senza camera.</p><span>Core Welora</span></article>
-          <article class="module-card reveal"><div class="module-icon">€</div><h3>Pagamenti & POS*</h3><p>Incassi online, preautorizzazioni, rimborsi e Tap to Pay collegati ai conti e alle vendite Welora.</p><span>Integrato · provider esterno*</span></article>
-          <article class="module-card reveal"><div class="module-icon">O</div><h3>Housekeeping & operatività</h3><p>Task, reparti, pulizie, riassetto e automazioni operative per ridurre i passaggi manuali tra reception e staff.</p><span>Area in evoluzione</span></article>
-          <article class="module-card reveal"><div class="module-icon">W</div><h3>Wellness & trattamenti</h3><p>Servizi e trattamenti condividono clienti, conti e pagamenti; agenda avanzata, risorse e professionisti sono parte dell’evoluzione del prodotto.</p><span>Base servizi attiva · estensione in evoluzione</span></article>
-          <article class="module-card reveal"><div class="module-icon">M</div><h3>Multi-sede</h3><p>Più strutture, utenti, ruoli e servizi con operatività locale e una visione centrale quando serve.</p><span>Scalabilità organizzativa</span></article>
-        </div>
-      </div>`;
-    platformSection.insertAdjacentElement('afterend', capabilities);
-  }
-
   // Ordine narrativo: prima automazioni, poi Digital Receptionist futuro.
   const automationsSection = $('#automazioni');
   const receptionistSection = $('#receptionist');
@@ -236,7 +211,7 @@
   if (structuredData) {
     try {
       const data = JSON.parse(structuredData.textContent);
-      data.description = 'Gestionale cloud per strutture ricettive e servizi: PMS, prenotazioni, pagamenti, fiscalità, extra, operatività e automazioni, dalla singola sede al multi-sede.';
+      data.description = 'Gestionale cloud per strutture ricettive a €29/mese tutto incluso: PMS, channel manager, check-in, pagamenti e POS, fatture, pulizie, cassa, contabilità e automazioni.';
       structuredData.textContent = JSON.stringify(data);
     } catch (_) {
       // Mantiene il markup esistente se il JSON-LD non è modificabile.
@@ -260,27 +235,30 @@
   }));
 
   const formatCurrency = value => new Intl.NumberFormat('it-IT', {
-    style: 'currency', currency: 'EUR', maximumFractionDigits: 0
+    style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always'
   }).format(value);
 
-  const calculateRoi = () => {
-    const value = key => Math.max(0, Number($(`[data-roi="${key}"]`)?.value || 0));
-    const requests = value('requests');
-    const ticket = value('ticket');
-    const lostRate = Math.min(100, value('lost')) / 100;
-    const weeklyHours = value('hours');
-    const recoveredBookings = Math.round(requests * lostRate * 0.5);
-    const recoveredRevenue = recoveredBookings * ticket;
-    const savedHours = Math.round(weeklyHours * 4.33 * 0.6);
-    const laborValue = savedHours * 20;
-    const total = recoveredRevenue + laborValue;
-    $('[data-roi-result]').textContent = formatCurrency(total);
-    $('[data-roi-bookings]').textContent = recoveredBookings;
-    $('[data-roi-time]').textContent = `${savedHours} h`;
-    $('[data-roi-labor]').textContent = formatCurrency(laborValue);
+  const savings = $('[data-savings]');
+  const calculateSavings = () => {
+    let current = 0;
+    $$('.cost-row', savings).forEach(row => {
+      const toggle = $('[data-cost-toggle]', row);
+      const cost = $('[data-cost]', row);
+      if (!toggle || !cost) return;
+      row.classList.toggle('off', !toggle.checked);
+      cost.disabled = !toggle.checked;
+      if (toggle.checked) current += Math.max(0, Number(cost.value || 0));
+    });
+    const channels = Math.min(20, Math.max(1, Math.round(Number($('[data-channels]', savings)?.value || 1))));
+    const welora = 29 + (channels - 1) * 10;
+    $('[data-savings-now]').textContent = formatCurrency(current);
+    $('[data-savings-welora]').textContent = formatCurrency(welora);
+    $('[data-savings-year]').textContent = formatCurrency(Math.max(0, current - welora) * 12);
   };
-  $$('[data-roi]').forEach(input => input.addEventListener('input', calculateRoi));
-  calculateRoi();
+  if (savings) {
+    $$('input', savings).forEach(input => input.addEventListener('input', calculateSavings));
+    calculateSavings();
+  }
 
   const leadForm = $('[data-lead-form]');
   if (leadForm) {
