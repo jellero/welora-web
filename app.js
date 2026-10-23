@@ -199,11 +199,11 @@
   // Canali e costi provider.
   const channelModuleTitle = $$('#piattaforma .module-card h3').find(element => element.textContent.trim() === 'Booking engine e canali');
   if (channelModuleTitle) channelModuleTitle.textContent = 'Booking engine e canali*';
-  const channelPriceItem = $$('#prezzi .price-card.price-featured li').find(element => element.textContent.trim() === 'Canali e prenotazione diretta');
-  if (channelPriceItem) channelPriceItem.textContent = 'Canali e prenotazione diretta*';
+  const channelPriceItem = $$('#prezzi .price-card.price-featured li').find(element => element.textContent.trim() === 'Prenotazione diretta e 1 canale OTA incluso');
+  if (channelPriceItem) channelPriceItem.textContent = 'Prenotazione diretta e 1 canale OTA incluso*';
   const pricingLegalNote = $('#prezzi .legal-note');
   if (pricingLegalNote) {
-    pricingLegalNote.textContent = '* Welora Base include il collegamento a 1 canale supportato. Eventuali canali aggiuntivi e i relativi costi o commissioni del provider restano separati. Possono inoltre applicarsi costi a consumo o commissioni del provider per verifica identità/check-in, pagamenti e Tap to Pay, servizi fiscali e altri servizi terzi. Il check-in digitale non sostituisce gli obblighi di identificazione previsti dalla normativa: la verifica dell’ospite deve essere svolta con la modalità richiesta nel caso concreto. L’uso senza registratore telematico fisico dipende dalla soluzione fiscale adottata e dai requisiti normativi applicabili.';
+    pricingLegalNote.textContent = '* Welora Base include il collegamento a 1 canale OTA; ogni canale aggiuntivo costa €10/mese + IVA. Lo sconto Founding si applica al canone Base, non ai canali aggiuntivi. Le commissioni delle OTA restano a carico della struttura. Possono inoltre applicarsi costi a consumo o commissioni del provider per verifica identità/check-in, pagamenti e Tap to Pay, servizi fiscali e altri servizi terzi. Il check-in digitale non sostituisce gli obblighi di identificazione previsti dalla normativa: la verifica dell’ospite deve essere svolta con la modalità richiesta nel caso concreto. L’uso senza registratore telematico fisico dipende dalla soluzione fiscale adottata e dai requisiti normativi applicabili.';
   }
 
   const featuredPriceCopy = $('#prezzi .price-card.price-featured > div:first-of-type p');
