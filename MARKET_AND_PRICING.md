@@ -1,6 +1,6 @@
 # Posizionamento, mercato e pre-lancio Welora
 
-Aggiornamento: 14 ottobre 2026.
+Aggiornamento: 23 ottobre 2026.
 
 ## Decisione di posizionamento
 
@@ -52,7 +52,7 @@ Welora Base comprende:
 
 - PMS, agenda/planning e prenotazioni;
 - booking engine;
-- canali supportati;
+- 1 canale OTA incluso;
 - CRM e portale cliente essenziale;
 - check-in digitale e adempimenti;
 - pagamenti e Tap to Pay tramite provider compatibile;
@@ -62,13 +62,25 @@ Welora Base comprende:
 - multi-sede;
 - ruoli, permessi, audit, backup ed esportazione dati.
 
+### Canali OTA
+
+La connettività OTA passa da un channel manager partner, che rende collegabili oltre 100 portali (Booking.com, Expedia, Airbnb, VRBO, Agoda, Trip.com e molti portali italiani e locali).
+
+- Welora Base include **1 canale OTA**;
+- ogni canale aggiuntivo costa **€10/mese + IVA**, attivabile e disattivabile mese per mese;
+- lo sconto Founding si applica al canone Base, non ai canali aggiuntivi;
+- le commissioni delle OTA restano a carico della struttura e non sono commissioni Welora.
+
+Sul sito i canali sono presentati come **in attivazione per il lancio** finché onboarding partner e collaudo su una property reale non sono completati.
+
 Variabili che possono far crescere il canone:
 
 - numero di sedi;
 - numero di unità/risorse;
 - utenti;
 - volumi operativi;
-- canali o integrazioni con costi propri;
+- canali OTA oltre il primo incluso;
+- integrazioni con costi propri;
 - esigenze custom.
 
 Queste variabili modificano il prezzo, non il diritto ad avere i moduli core.
@@ -168,7 +180,7 @@ Proposta:
 - adesioni aperte da ottobre 2026;
 - massimo **50 aderenti Founding**;
 - adesione entro **31 gennaio 2027**;
-- **50% di sconto sul canone Welora Base per i primi 12 mesi dal go-live**;
+- **50% di sconto sul canone Welora Base per i primi 12 mesi dal go-live** (canali OTA aggiuntivi esclusi);
 - prezzo di listino bloccato per i **successivi 12 mesi**;
 - nessun pagamento prima dell'attivazione;
 - condizioni definitive confermate prima della sottoscrizione;

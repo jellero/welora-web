@@ -18,7 +18,7 @@ Messaggio principale:
 
 > Tutto ciò che serve alla tua struttura. In un solo gestionale.
 
-Welora Base parte da €29/mese + IVA e include le funzioni core; il prezzo può scalare con capacità e volumi senza usare piani superiori per sbloccare moduli essenziali.
+Welora Base parte da €29/mese + IVA e include le funzioni core e 1 canale OTA; ogni canale aggiuntivo costa €10/mese + IVA; il prezzo può scalare con capacità e volumi senza usare piani superiori per sbloccare moduli essenziali.
 
 Digital Receptionist è presentato come **servizio futuro separato**.
 
