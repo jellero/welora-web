@@ -36,29 +36,6 @@
     });
   }
 
-  const headerCta = $('.header-cta');
-  if (headerCta) {
-    headerCta.href = 'index.html#demo';
-    headerCta.textContent = 'Sconto lancio −50%';
-  }
-
-  const copyReplacements = new Map([
-    ['Partecipa al pre-lancio', 'Scopri lo sconto lancio'],
-    ['Compila la richiesta Founding', 'Richiedi lo sconto lancio'],
-    ['Pre-lancio e commerciale', 'Commerciale e lancio'],
-    ['Apri il form Founding →', 'Apri il form →'],
-    ['Programma Founding', 'Sconto lancio'],
-    ['Se vuoi partecipare al pre-lancio, usa il form dedicato.', 'Se vuoi accedere allo sconto lancio, usa il form dedicato.'],
-    ['Founding 2027', 'Sconto lancio 2027'],
-    ['Per il pre-lancio: lancio@welora.it', 'Per il lancio: lancio@welora.it'],
-    ['Pre-lancio · disponibilità e condizioni soggette a collaudo e conferma.', 'Lancio 15 febbraio 2027.']
-  ]);
-
-  $$('a, span, h2, h3, h4, p').forEach(element => {
-    const replacement = copyReplacements.get(element.textContent.trim());
-    if (replacement) element.textContent = replacement;
-  });
-
   const header = $('[data-header]');
   const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 18);
   updateHeader();

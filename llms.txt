@@ -1,0 +1,40 @@
+# Welora
+
+> Welora è un gestionale alberghiero (PMS) in cloud, italiano, per hotel, B&B, affittacamere, case vacanza e affitti brevi, dalla singola struttura al multi-sede. Riunisce in un solo canone da €29/mese + IVA PMS, channel manager, booking engine, check-in online con Alloggiati Web, pagamenti e POS Tap to Pay dal telefono, fatturazione elettronica e corrispettivi, pulizie, cassa, contabilità e automazioni. Lancio commerciale: 15 febbraio 2027. Sviluppato a Tolmezzo (UD), Friuli Venezia Giulia.
+
+## Prezzo
+
+- Welora Base: €29/mese + IVA, tutte le funzioni incluse, 1 canale OTA incluso.
+- Ogni canale OTA aggiuntivo: €10/mese + IVA, attivabile mese per mese.
+- Nessuna commissione Welora sulle prenotazioni dirette e sugli incassi.
+- Costi dei provider esterni separati e dichiarati prima: commissioni di pagamento, verifica d'identità a consumo, invio fiscale, commissioni OTA.
+
+## Funzioni principali
+
+- PMS e planning: camere, unità, tariffe, restrizioni, prenotazioni singole e di gruppo, prezzi per occupazione e bambini, promozioni.
+- Channel manager: Booking.com, Airbnb, Expedia, VRBO, Agoda, Trip.com e oltre 100 portali sullo stesso inventario; prenotazioni, modifiche e cancellazioni automatiche, prezzi e disponibilità sincronizzati.
+- Booking engine per il sito della struttura (anche WordPress), senza commissioni.
+- Check-in online: dati di tutti gli occupanti e verifica d'identità prima dell'arrivo; schedine Alloggiati Web, statistiche turistiche (ISTAT e regionali, incluso WebTur FVG) e tassa di soggiorno.
+- Pagamenti: caparre e saldi online, preautorizzazioni, carta a garanzia con penale di mancata presentazione, rimborsi, POS Tap to Pay su smartphone Android con NFC. Gli incassi arrivano sul conto della struttura.
+- Fiscalità: fatture elettroniche FatturaPA, note di credito, documenti commerciali e corrispettivi.
+- Operatività: giornata operativa e reception, checkout guidato, registro chiavi, pulizie dal telefono per gli addetti, manutenzione, oggetti smarriti.
+- Cassa e contabilità: casse con chiusura turno, prima nota in partita doppia, scadenziario, export per il commercialista.
+- Hotel: mezza pensione e preparazioni della ristorazione, agenzie e convenzioni, gruppi ed eventi, ruoli per reparto.
+- Servizi ed extra: catalogo extra e supplementi, agenda per spa e trattamenti con professionisti e risorse, vendite anche senza camera.
+- Messaggi email e WhatsApp dal numero della struttura; domotica (termostati e serrature) collegata al soggiorno.
+- Multi-struttura: dati separati per sede, ruoli, permessi, audit e visione centrale.
+- Import dei dati da altri gestionali (CSV/Excel), API e webhook.
+
+## Pagine
+
+- [Home e prezzi](https://welora.it/): panoramica, calcolo del risparmio, FAQ, richiesta demo.
+- [Gestionale hotel](https://welora.it/gestionale-hotel.html)
+- [Gestionale B&B e affittacamere](https://welora.it/gestionale-bb.html)
+- [Software per affitti brevi](https://welora.it/software-affitti-brevi.html)
+- [Channel manager](https://welora.it/channel-manager.html)
+- [Check-in online e Alloggiati](https://welora.it/check-in-online.html)
+- [POS Tap to Pay](https://welora.it/pos-tap-to-pay.html)
+- [Prodotto](https://welora.it/prodotto.html): tutte le funzioni.
+- [Integrazioni e API](https://welora.it/integrazioni.html): elenco dei canali OTA collegabili.
+- [Sicurezza](https://welora.it/sicurezza.html)
+- [Contatti](https://welora.it/contatti.html): lancio@welora.it (commerciale), support@welora.it (supporto e privacy).

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /*
- * Compatibilità per il form "Sconto lancio" della home.
+ * Compatibilità per il form "Richiedi una demo" della home.
  *
  * L'invio viene delegato all'unico endpoint mail del sito
  * (contact-general.php), evitando due implementazioni diverse
@@ -11,16 +11,16 @@ declare(strict_types=1);
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     /*
-     * Il form home aggiunge via JS un honeypot chiamato "website".
+     * Il form home contiene un honeypot chiamato "website".
      * Alcune estensioni/autofill possono valorizzare campi nascosti e
      * contact-general.php, correttamente, tratterebbe la richiesta come bot
-     * restituendo successo senza inviare email. Per il form di lancio
+     * restituendo successo senza inviare email. Per il form demo
      * ignoriamo quindi questo honeypot: restano validazione e rate limiting.
      */
     unset($_POST['website']);
 
-    $_POST['reason'] = 'launch_discount';
-    $_POST['source'] = 'launch-home';
+    $_POST['reason'] = 'demo';
+    $_POST['source'] = 'demo-home';
 
     $details = [];
 
@@ -65,8 +65,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
 
     $message = trim((string) ($_POST['message'] ?? ''));
     $context = $details !== []
-        ? "Dati dalla landing Sconto lancio:\n- " . implode("\n- ", $details)
-        : 'Richiesta Sconto lancio dalla home.';
+        ? "Dati dalla richiesta demo della home:\n- " . implode("\n- ", $details)
+        : 'Richiesta demo dalla home.';
 
     $_POST['message'] = $message !== ''
         ? $context . "\n\nMessaggio:\n" . $message
