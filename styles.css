@@ -150,7 +150,7 @@ h3 { font-size: 22px; }
 .module-card h3 { font-size: 20px; }
 .module-card p { margin: 13px 0 20px; color: var(--muted); font-size: 15px; }
 .module-featured p { color: rgba(255,255,255,.67); }
-.module-card > span { margin-top: auto; color: #8a96a8; font-size: 12px; font-weight: 600; }
+.module-card > span { margin-top: auto; color: #5f6b7d; font-size: 12px; font-weight: 600; }
 .module-featured > span { color: var(--brand); }
 
 .receptionist-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
