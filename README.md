@@ -26,15 +26,6 @@ Digital Receptionist è presentato come **servizio futuro separato**.
 
 Data obiettivo comunicata: **15 febbraio 2027**.
 
-Programma Founding proposto:
-
-- primi 50 aderenti;
-- adesione entro il 31 gennaio 2027;
-- 50% di sconto sul canone Base per i primi 12 mesi dal go-live;
-- prezzo di listino bloccato per i successivi 12 mesi;
-- nessun pagamento prima dell'attivazione;
-- condizioni definitive confermate prima della sottoscrizione.
-
 La data resta subordinata al superamento dei collaudi critici del prodotto e dei provider necessari.
 
 ## Anteprima locale
@@ -83,10 +74,12 @@ Il form invia una notifica interna e, dopo l'acquisizione valida del lead, una c
 
 ## Struttura
 
-- `index.html`: landing di pre-lancio, funzionalità, pricing Founding, ROI, FAQ e form;
+- `index.html`: home con funzionalità, prezzi, calcolo del risparmio, FAQ e form di richiesta demo;
+- `channel-manager.html`, `check-in-online.html`, `pos-tap-to-pay.html`: pagine per le ricerche principali (channel manager, check-in online e Alloggiati, POS dal telefono);
+- `llms.txt`: riepilogo del prodotto per gli assistenti AI;
 - `styles.css` e `blue-theme.css`: design system responsive;
-- `app.js`: navigazione mobile, selettore per tipo di struttura, calcolatore ROI e invio AJAX del form;
-- `contact.php`: adattatore del form Founding della home, delega a `contact-general.php`;
+- `app.js`: navigazione mobile, selettore per tipo di struttura, calcolatore ROI e invio AJAX del form. I testi stanno nell’HTML, mai riscritti via JavaScript, così motori di ricerca e assistenti AI leggono il contenuto reale;
+- `contact.php`: adattatore del form demo della home, delega a `contact-general.php`;
 - `contact-general.php`: endpoint server-side con validazione, honeypot, rate limit minimo, notifica lead e autorisposta;
 - `lib/welora-mailer.php` e `lib/PHPMailer/`: invio email via SMTP autenticato con ripiego su `mail()`;
 - `private/mail-config.example.php`: modello di configurazione SMTP;
@@ -127,13 +120,13 @@ Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei d
 ## Prima della pubblicazione
 
 1. Configurare SMTP sul server (vedi "Invio email"), poi verificare con mail-tester che il mittente di busta sia `lancio@welora.it` e che SPF, DKIM e DMARC passino; dopo qualche settimana di invii puliti valutare DMARC `p=quarantine`.
-2. Verificare che `support@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale Founding.
+2. Verificare che `support@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale.
 3. Verificare con il consulente privacy la versione pubblicata di Privacy Policy e Cookie Policy, in particolare i periodi di conservazione e i fornitori effettivamente usati.
 4. Configurare la proprietà GA4 in coerenza con l'informativa e verificare Consent Mode con Tag Assistant.
-5. Verificare prezzi, limiti, costi provider e condizioni Founding definitive.
+5. Verificare prezzi, limiti, costi provider e condizioni commerciali definitive.
 6. Verificare con test reali i provider di pagamento, identità, fiscalità e compliance che saranno dichiarati disponibili al lancio.
 7. Confermare il 15 febbraio 2027 solo dopo il superamento delle stop condition del pilot.
-8. Inserire dominio canonico, immagini Open Graph e Search Console.
+8. Aggiungere un’immagine Open Graph (1200×630) e registrare il sito e la sitemap in Google Search Console e Bing Webmaster Tools (link canonici già presenti).
 9. Verificare autorizzazioni all'uso dei marchi di integrazione prima di citarli come brand.
 
 ## Stato dei mockup

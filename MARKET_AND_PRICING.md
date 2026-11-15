@@ -68,7 +68,6 @@ La connettività OTA passa da un channel manager partner, che rende collegabili 
 
 - Welora Base include **1 canale OTA**;
 - ogni canale aggiuntivo costa **€10/mese + IVA**, attivabile e disattivabile mese per mese;
-- lo sconto Founding si applica al canone Base, non ai canali aggiuntivi;
 - le commissioni delle OTA restano a carico della struttura e non sono commissioni Welora.
 
 Sul sito i canali sono presentati come **in attivazione per il lancio** finché onboarding partner e collaudo su una property reale non sono completati.
@@ -173,27 +172,16 @@ Welora deve quindi evitare di competere soltanto sul prezzo mensile. La promessa
 
 La data è abbastanza vicina da essere credibile commercialmente e lascia circa quattro mesi per pilot, collaudi provider, supporto, onboarding e adeguamenti della comunicazione.
 
-### Programma Founding
+### Nessuno sconto di lancio
 
-Proposta:
-
-- adesioni aperte da ottobre 2026;
-- massimo **50 aderenti Founding**;
-- adesione entro **31 gennaio 2027**;
-- **50% di sconto sul canone Welora Base per i primi 12 mesi dal go-live** (canali OTA aggiuntivi esclusi);
-- prezzo di listino bloccato per i **successivi 12 mesi**;
-- nessun pagamento prima dell'attivazione;
-- condizioni definitive confermate prima della sottoscrizione;
-- priorità nell'onboarding e raccolta feedback.
-
-Non è consigliato offrire il 50% per due anni: ridurrebbe troppo a lungo il valore percepito e il ricavo proprio nella fase in cui aumenteranno supporto e costi operativi.
+Dal 15 novembre 2026 non ci sono sconti di lancio: il prezzo resta €29/mese + IVA dal lancio e la CTA è la richiesta di demo.
 
 ## Sequenza operativa
 
 ### Ottobre - novembre 2026
 
 - pubblicazione landing di pre-lancio;
-- raccolta lead Founding;
+- raccolta richieste di demo;
 - definizione costi provider;
 - revisione privacy e condizioni commerciali;
 - selezione strutture pilot.
@@ -211,18 +199,18 @@ Non è consigliato offrire il 50% per due anni: ridurrebbe troppo a lungo il val
 - definizione listino definitivo;
 - documentazione onboarding e supporto;
 - verifica readiness e stop condition;
-- chiusura programma Founding il 31 gennaio.
+- conferma delle prime strutture da attivare al lancio.
 
 ### 15 febbraio 2027
 
 - apertura commerciale, subordinata al superamento dei collaudi critici;
-- onboarding scaglionato dei Founding;
+- onboarding scaglionato delle prime strutture;
 - monitoraggio dei primi flussi reali.
 
 ## Messaggio centrale
 
-> Welora porta in una piccola struttura gli strumenti che normalmente richiedono più software: gestione, incassi, adempimenti, servizi e automazioni in una sola base, con costi esterni dichiarati e la possibilità di crescere fino al multi-sede.
+> Welora porta in ogni struttura, dal B&B all’albergo, gli strumenti che normalmente richiedono più software: gestione, incassi, adempimenti, servizi e automazioni in una sola base, con costi esterni dichiarati e la possibilità di crescere fino al multi-sede.
 
 ## CTA principale
 
-> Prenota il vantaggio Founding: -50% per 12 mesi dal go-live, senza pagare prima dell'attivazione.
+> Richiedi una demo: ti mostriamo Welora con i flussi della tua struttura e prepariamo insieme il passaggio.

@@ -66,7 +66,7 @@ function sendConfirmation(
     ];
     if ($launchOffer) {
         $plainLines[] = '';
-        $plainLines[] = 'Per lo sconto lancio: -50% sul canone Welora Base per i primi 12 mesi dal go-live, nei limiti e alle condizioni indicate sul sito.';
+        $plainLines[] = 'Per la demo: ti contatteremo per fissare un appuntamento e vedere Welora con i flussi della tua struttura. Il lancio commerciale è il 15 febbraio 2027.';
     }
     $plainLines[] = '';
     $plainLines[] = 'Puoi rispondere direttamente a questa email.';
@@ -77,9 +77,9 @@ function sendConfirmation(
 
     $offerBlock = $launchOffer
         ? '<div style="margin:26px 0;padding:22px;border:1px solid #cfeee2;border-radius:18px;background:#f2fbf7;">'
-            . '<div style="font-size:12px;font-weight:800;color:#0c6c4d;text-transform:uppercase;letter-spacing:1px;">Sconto lancio</div>'
-            . '<div style="margin-top:8px;font-size:21px;font-weight:800;color:#172033;">-50% su Welora Base per i primi 12 mesi dal go-live</div>'
-            . '<p style="margin:8px 0 0;color:#526071;font-size:13px;line-height:1.6;">Disponibilità, limiti e condizioni definitive vengono confermati prima della sottoscrizione.</p>'
+            . '<div style="font-size:12px;font-weight:800;color:#0c6c4d;text-transform:uppercase;letter-spacing:1px;">Demo</div>'
+            . '<div style="margin-top:8px;font-size:21px;font-weight:800;color:#172033;">Ti contattiamo per fissare la demo</div>'
+            . '<p style="margin:8px 0 0;color:#526071;font-size:13px;line-height:1.6;">Ti mostriamo Welora con i flussi della tua struttura e prepariamo insieme dati e canali. Lancio commerciale: 15 febbraio 2027.</p>'
             . '</div>'
         : '';
 
@@ -122,7 +122,8 @@ $privacy = isset($_POST['privacy']);
 
 $reasons = [
     'demo' => ['label' => 'Demo e valutazione prodotto', 'route' => 'commercial', 'offer' => true],
-    'launch_discount' => ['label' => 'Sconto lancio −50%', 'route' => 'commercial', 'offer' => true],
+    // Vecchio valore del form home: oggi è una richiesta di demo.
+    'launch_discount' => ['label' => 'Demo e valutazione prodotto', 'route' => 'commercial', 'offer' => true],
     'product_pricing' => ['label' => 'Prodotto e prezzi', 'route' => 'commercial', 'offer' => false],
     'integrations' => ['label' => 'Integrazioni e canali', 'route' => 'commercial', 'offer' => false],
     'digital_receptionist' => ['label' => 'Digital Receptionist', 'route' => 'commercial', 'offer' => false],

@@ -74,7 +74,7 @@ body.internal-page{background:#fff;color:var(--text)}
 .contact-page-form button[disabled]{opacity:.62;cursor:wait;transform:none}
 .contact-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .internal-footer{padding:58px 0 28px;background:#0b1220;color:#fff}
-.internal-footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
+.internal-footer-grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px}
 .internal-footer p{max-width:390px;color:rgba(255,255,255,.62)}
 .internal-footer h4{margin:0 0 14px;font-family:Manrope,sans-serif;font-size:14px}
 .internal-footer a{display:block;margin:8px 0;color:rgba(255,255,255,.68);font-size:14px}
