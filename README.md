@@ -75,7 +75,8 @@ Il form invia una notifica interna e, dopo l'acquisizione valida del lead, una c
 ## Struttura
 
 - `index.html`: home con funzionalità, prezzi, calcolo del risparmio, FAQ, ricavi/CRM, servizio siti web e form di richiesta demo;
-- `servizi-siti-web.html`: servizio separato di realizzazione siti per strutture, con prezzo a partire da 500 € una tantum;
+- `servizi-siti-web.html`: servizio separato di realizzazione siti da 500 € una tantum; riferimento Albergo Diffuso Socchieve (sito, La Farie, Benessere) e flussi integrabili con Welora;
+- `prodotto.html`: le nove funzionalità complementari sono integrate nella tabella «Non si ferma alla prenotazione»;
 - `prodotto.html`: panoramica delle funzionalità, inclusi RMS, pricing dinamico, analytics, preventivi, metasearch, recensioni, CRM, magazzino e KNX;
 - `channel-manager.html`, `check-in-online.html`, `pos-tap-to-pay.html`: pagine per le ricerche principali (channel manager, check-in online e Alloggiati, POS dal telefono);
 - `llms.txt`: riepilogo del prodotto per gli assistenti AI;
