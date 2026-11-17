@@ -30,21 +30,21 @@
 
 ## Pagine
 
-- [Home e prezzi](https://welora.it/): panoramica, calcolo del risparmio, FAQ, richiesta demo.
-- [Gestionale hotel](https://welora.it/gestionale-hotel)
-- [Gestionale B&B e affittacamere](https://welora.it/gestionale-bb)
-- [Software per affitti brevi](https://welora.it/software-affitti-brevi)
-- [Channel manager](https://welora.it/channel-manager)
-- [Check-in online e Alloggiati](https://welora.it/check-in-online)
-- [POS Tap to Pay](https://welora.it/pos-tap-to-pay)
-- [Prodotto](https://welora.it/prodotto): tutte le funzioni.
-- [Integrazioni e API](https://welora.it/integrazioni): elenco dei canali OTA collegabili.
-- [Sicurezza](https://welora.it/sicurezza)
-- [Contatti](https://welora.it/contatti): commerciale@welora.it (commerciale), support@welora.it (supporto e privacy).
+- [Home e prezzi](https://www.welora.it/): panoramica, calcolo del risparmio, FAQ, richiesta demo.
+- [Gestionale hotel](https://www.welora.it/gestionale-hotel)
+- [Gestionale B&B e affittacamere](https://www.welora.it/gestionale-bb)
+- [Software per affitti brevi](https://www.welora.it/software-affitti-brevi)
+- [Channel manager](https://www.welora.it/channel-manager)
+- [Check-in online e Alloggiati](https://www.welora.it/check-in-online)
+- [POS Tap to Pay](https://www.welora.it/pos-tap-to-pay)
+- [Prodotto](https://www.welora.it/prodotto): tutte le funzioni.
+- [Integrazioni e API](https://www.welora.it/integrazioni): elenco dei canali OTA collegabili.
+- [Sicurezza](https://www.welora.it/sicurezza)
+- [Contatti](https://www.welora.it/contatti): commerciale@welora.it (commerciale), support@welora.it (supporto e privacy).
 
 
 ## Funzionalità aggiuntive Welora
 Revenue Management automatico (RMS), prezzi dinamici basati su domanda e mercato, KPI ADR/RevPAR e occupazione, preventivi commerciali con scadenza e conversione in prenotazione, Google Hotel Ads e metasearch tramite integrazioni abilitate, richieste e gestione recensioni, CRM con campagne e fidelizzazione, magazzino/scorte/giacenze, domotica KNX tramite impianti e interfacce compatibili.
 
 ## Servizio siti web
-Realizzazione di siti web per hotel, B&B e strutture ricettive a partire da 500 € una tantum, su preventivo. Servizio separato dal canone Welora. Dettagli: https://welora.it/servizi-siti-web
+Realizzazione di siti web per hotel, B&B e strutture ricettive a partire da 500 € una tantum, su preventivo. Servizio separato dal canone Welora. Dettagli: https://www.welora.it/servizi-siti-web

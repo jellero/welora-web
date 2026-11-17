@@ -72,7 +72,7 @@ function sendConfirmation(
     $plainLines[] = 'Puoi rispondere direttamente a questa email.';
     $plainLines[] = '';
     $plainLines[] = 'Welora';
-    $plainLines[] = 'https://welora.it';
+    $plainLines[] = 'https://www.welora.it';
     $plain = implode("\n", $plainLines);
 
     $offerBlock = $launchOffer
@@ -98,7 +98,7 @@ function sendConfirmation(
         . $offerBlock
         . '<p style="margin:28px 0 0;padding-top:18px;border-top:1px solid #e5e9ef;font-size:14px;line-height:1.7;color:#637083;">Vuoi aggiungere un dettaglio? <a href="mailto:' . html($replyTo) . '" style="color:#0c6c4d;font-weight:700;text-decoration:none;">Rispondi direttamente a questa email</a>.</p>'
         . '</td></tr>'
-        . '<tr><td style="padding:23px 36px 28px;background:#0b1220;color:#aeb8c7;font-size:12px;line-height:1.6;"><strong style="color:#fff;font-size:14px;">Welora</strong><br>Ospitalità, servizi, pagamenti e automazioni nello stesso sistema.<br><a href="https://welora.it" style="color:#40dba2;text-decoration:none;">welora.it</a></td></tr>'
+        . '<tr><td style="padding:23px 36px 28px;background:#0b1220;color:#aeb8c7;font-size:12px;line-height:1.6;"><strong style="color:#fff;font-size:14px;">Welora</strong><br>Ospitalità, servizi, pagamenti e automazioni nello stesso sistema.<br><a href="https://www.welora.it" style="color:#40dba2;text-decoration:none;">welora.it</a></td></tr>'
         . '</table></td></tr></table></body></html>';
 
     return weloraSendMail('contact-confirmation', $email, $subject, $plain, $htmlBody, $from, 'Welora', $replyTo);
