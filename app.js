@@ -15,7 +15,7 @@
         'Pulizie dal telefono per gli addetti e stato camere',
         'Check-in, pagamenti, fatture e cassa sullo stesso conto*'
       ],
-      image: 'assets/mockup-planning.svg',
+      image: 'assets/screens/gestionale-planning.webp',
       alt: 'Planning Welora per strutture ricettive'
     },
     wellness: {
@@ -28,7 +28,7 @@
         'Stessi pagamenti, documenti fiscali e storico cliente',
         'Agenda con professionisti, competenze, turni, cabine e buffer'
       ],
-      image: 'assets/mockup-client-portal.svg',
+      image: 'assets/screens/gestionale-incassa.webp',
       alt: 'Servizi ed extra gestiti con Welora'
     },
     services: {
@@ -41,7 +41,7 @@
         'Codice serratura e clima pronti all’arrivo*',
         'Pulizie assegnate al checkout, accessi revocati alla partenza'
       ],
-      image: 'assets/mockup-automation.svg',
+      image: 'assets/screens/gestionale-clima.webp',
       alt: 'Operatività Welora per appartamenti e affitti brevi'
     },
     hybrid: {
@@ -54,7 +54,7 @@
         'Servizi e flussi condivisi o locali',
         'Visione centrale per controllo e crescita'
       ],
-      image: 'assets/mockup-operations.svg',
+      image: 'assets/screens/gestionale-planning.webp',
       alt: 'Gestione multi-sede Welora'
     }
   };
