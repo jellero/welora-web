@@ -1,11 +1,14 @@
 # Welora
 
-> Welora è un gestionale alberghiero (PMS) in cloud, italiano, per hotel, B&B, affittacamere, case vacanza e affitti brevi, dalla singola struttura al multi-sede. Riunisce in un solo canone da €29/mese + IVA PMS, channel manager, booking engine, check-in online con Alloggiati Web, pagamenti e POS Tap to Pay dal telefono, fatturazione elettronica e corrispettivi, pulizie, cassa, contabilità e automazioni. Lancio commerciale: 15 febbraio 2027. Sviluppato a Tolmezzo (UD), Friuli Venezia Giulia.
+> Welora è un gestionale alberghiero (PMS) in cloud, italiano, per hotel, B&B, affittacamere, case vacanza e affitti brevi, dalla singola struttura al multi-sede. Riunisce, con piani da €29/mese + IVA, PMS, channel manager, booking engine, check-in online con Alloggiati Web, pagamenti e POS Tap to Pay dal telefono, fatturazione elettronica e corrispettivi, pulizie, cassa, contabilità e automazioni. Lancio commerciale: 15 febbraio 2027. Sviluppato a Tolmezzo (UD), Friuli Venezia Giulia.
 
 ## Prezzo
 
-- Welora Base: €29/mese + IVA, tutte le funzioni incluse, 1 canale OTA incluso.
-- Ogni canale OTA aggiuntivo: €10/mese + IVA, attivabile mese per mese.
+- Welora Light: 29 €/mese + IVA, da 1 a 3 camere o unità, 1 canale OTA incluso.
+- Welora Completo: 39 €/mese + IVA, fino a 8 camere o unità, 3 canali OTA inclusi (da confermare in sottoscrizione).
+- Da 9 a 15 camere: 59 €/mese; da 16 a 30 camere: 99 €/mese; oltre 30: su preventivo (funzioni del Completo).
+- Accesso anticipato: -20% per i primi 6 mesi per le strutture selezionate (Light 23,20 €, Completo 31,20 €).
+- Migrazione dei dati inclusa nell'attivazione per dati esportabili in CSV/Excel.
 - Nessuna commissione Welora sulle prenotazioni dirette e sugli incassi.
 - Costi dei provider esterni separati e dichiarati prima: commissioni di pagamento, verifica d'identità a consumo, invio fiscale, commissioni OTA.
 
@@ -44,4 +47,4 @@
 Revenue Management automatico (RMS), prezzi dinamici basati su domanda e mercato, KPI ADR/RevPAR e occupazione, preventivi commerciali con scadenza e conversione in prenotazione, Google Hotel Ads e metasearch tramite integrazioni abilitate, richieste e gestione recensioni, CRM con campagne e fidelizzazione, magazzino/scorte/giacenze, domotica KNX tramite impianti e interfacce compatibili.
 
 ## Servizio siti web
-Realizzazione di siti web per hotel, B&B e strutture ricettive a partire da 500 € una tantum, su preventivo. Servizio separato dal canone Welora Base. Dettagli: https://welora.it/servizi-siti-web.html
+Realizzazione di siti web per hotel, B&B e strutture ricettive a partire da 500 € una tantum, su preventivo. Servizio separato dal canone Welora. Dettagli: https://welora.it/servizi-siti-web.html

@@ -108,7 +108,7 @@
       if (toggle.checked) current += Math.max(0, Number(cost.value || 0));
     });
     const channels = Math.min(20, Math.max(1, Math.round(Number($('[data-channels]', savings)?.value || 1))));
-    const welora = 29 + (channels - 1) * 10;
+    const welora = 39;
     $('[data-savings-now]').textContent = formatCurrency(current);
     $('[data-savings-welora]').textContent = formatCurrency(welora);
     $('[data-savings-year]').textContent = formatCurrency(Math.max(0, current - welora) * 12);
