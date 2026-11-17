@@ -40,7 +40,7 @@
 - [Prodotto](https://welora.it/prodotto.html): tutte le funzioni.
 - [Integrazioni e API](https://welora.it/integrazioni.html): elenco dei canali OTA collegabili.
 - [Sicurezza](https://welora.it/sicurezza.html)
-- [Contatti](https://welora.it/contatti.html): lancio@welora.it (commerciale), support@welora.it (supporto e privacy).
+- [Contatti](https://welora.it/contatti.html): commerciale@welora.it (commerciale), support@welora.it (supporto e privacy).
 
 
 ## Funzionalità aggiuntive Welora

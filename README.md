@@ -50,7 +50,7 @@ Le email del sito (notifica interna e conferma al cliente) partono via **SMTP au
 
 Con `mail()` di PHP, su Aruba il mittente di busta risultava un indirizzo Gmail invece di welora.it: SPF softfail e punteggio mail-tester 5.9/10 (ottobre 2026).
 
-Sul server **basta la password** della casella `lancio@welora.it`: server, porta, cifratura e utente sono già nel codice (`out.postassl.it`, 465, SSL, `lancio@welora.it`), verificati dal server di produzione. Per la posta Aruba Business `smtps.aruba.it` non va: rifiuta il login con 535.
+Sul server **basta la password** della casella `commerciale@welora.it`: server, porta, cifratura e utente sono già nel codice (`out.postassl.it`, 465, SSL, `commerciale@welora.it`), verificati dal server di produzione. Per la posta Aruba Business `smtps.aruba.it` non va: rifiuta il login con 535.
 
 La password si legge, in ordine di priorità, da:
 
@@ -66,9 +66,9 @@ Se SMTP non è configurato si usa `mail()` come prima. Se SMTP è configurato ma
 
 Variabili ambiente opzionali per i destinatari:
 
-- `CONTACT_TO`: destinatario delle richieste commerciali; fallback `lancio@welora.it`;
+- `CONTACT_TO`: destinatario delle richieste commerciali; fallback `commerciale@welora.it`;
 - `CONTACT_SUPPORT_TO`: destinatario di supporto, privacy e sicurezza; fallback `support@welora.it`;
-- `CONTACT_FROM`: mittente delle email del sito; fallback `lancio@welora.it`. Deve coincidere con `SMTP_USER`.
+- `CONTACT_FROM`: mittente delle email del sito; fallback `commerciale@welora.it`. Deve coincidere con `SMTP_USER`.
 
 Il form invia una notifica interna e, dopo l'acquisizione valida del lead, una conferma HTML responsive con fallback `text/plain`. La conferma usa la casella del team come `Reply-To`. Il fallimento della sola conferma non invalida la ricezione del lead interno.
 
@@ -123,8 +123,8 @@ Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei d
 
 ## Prima della pubblicazione
 
-1. Configurare SMTP sul server (vedi "Invio email"), poi verificare con mail-tester che il mittente di busta sia `lancio@welora.it` e che SPF, DKIM e DMARC passino; dopo qualche settimana di invii puliti valutare DMARC `p=quarantine`.
-2. Verificare che `support@welora.it` resti l'indirizzo definitivo per supporto/privacy e `lancio@welora.it` quello per il flusso commerciale.
+1. Configurare SMTP sul server (vedi "Invio email"), poi verificare con mail-tester che il mittente di busta sia `commerciale@welora.it` e che SPF, DKIM e DMARC passino; dopo qualche settimana di invii puliti valutare DMARC `p=quarantine`.
+2. Verificare che `support@welora.it` resti l'indirizzo definitivo per supporto/privacy e `commerciale@welora.it` quello per il flusso commerciale.
 3. Verificare con il consulente privacy la versione pubblicata di Privacy Policy e Cookie Policy, in particolare i periodi di conservazione e i fornitori effettivamente usati.
 4. Configurare la proprietà GA4 in coerenza con l'informativa e verificare Consent Mode con Tag Assistant.
 5. Verificare prezzi, limiti, costi provider e condizioni commerciali definitive.

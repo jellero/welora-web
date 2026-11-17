@@ -36,7 +36,7 @@ require_once __DIR__ . '/PHPMailer/SMTP.php';
 const WELORA_SMTP_DEFAULT_HOST = 'out.postassl.it';
 const WELORA_SMTP_DEFAULT_PORT = 465;
 const WELORA_SMTP_DEFAULT_SECURE = 'ssl';
-const WELORA_SMTP_DEFAULT_USER = 'lancio@welora.it';
+const WELORA_SMTP_DEFAULT_USER = 'commerciale@welora.it';
 
 /**
  * @return array{host:string,port:int,secure:string,user:string,pass:string,fallback_mail:bool}|null

@@ -151,7 +151,7 @@
         window.gtag('event', 'generate_lead', { form_name: 'demo_request' });
       }
     } catch (error) {
-      status.innerHTML = `${error.message || 'Invio non riuscito.'} Scrivi a <a href="mailto:lancio@welora.it">lancio@welora.it</a>.`;
+      status.innerHTML = `${error.message || 'Invio non riuscito.'} Scrivi a <a href="mailto:commerciale@welora.it">commerciale@welora.it</a>.`;
     } finally {
       submit.disabled = false;
     }
@@ -160,7 +160,7 @@
   const formResult = new URLSearchParams(location.search).get('form');
   const formStatus = $('[data-form-message]');
   if (formResult === 'success' && formStatus) formStatus.textContent = 'Richiesta inviata. Controlla la tua email: ti abbiamo inviato una conferma Welora.';
-  if (formResult === 'error' && formStatus) formStatus.innerHTML = 'Invio non riuscito. Scrivi a <a href="mailto:lancio@welora.it">lancio@welora.it</a>.';
+  if (formResult === 'error' && formStatus) formStatus.innerHTML = 'Invio non riuscito. Scrivi a <a href="mailto:commerciale@welora.it">commerciale@welora.it</a>.';
 
   $('[data-year]').textContent = String(new Date().getFullYear());
 

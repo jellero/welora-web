@@ -6,9 +6,9 @@ require_once __DIR__ . '/lib/welora-mailer.php';
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
-const DEFAULT_COMMERCIAL_TO = 'lancio@welora.it';
+const DEFAULT_COMMERCIAL_TO = 'commerciale@welora.it';
 const DEFAULT_SUPPORT_TO = 'support@welora.it';
-const DEFAULT_FROM = 'lancio@welora.it';
+const DEFAULT_FROM = 'commerciale@welora.it';
 
 function wantsJson(): bool
 {
