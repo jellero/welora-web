@@ -11,21 +11,21 @@
     document.head.appendChild(navStyles);
   }
 
-  const current = location.pathname.split('/').pop() || 'index.html';
+  const current = (location.pathname.split('/').pop() || './').replace(/\.html$/, '').replace(/^index$/, './');
   const menu = $('[data-menu]');
   const menuToggle = $('[data-menu-toggle]');
 
   if (menu) {
     menu.setAttribute('aria-label', 'Navigazione principale');
     menu.innerHTML = `
-      <a href="prodotto.html">Prodotto</a>
-      <a href="soluzioni.html">Soluzioni</a>
-      <a href="digital-receptionist.html">Digital Receptionist</a>
-      <a href="integrazioni.html">Integrazioni</a>
-      <a href="servizi-siti-web.html">Siti web</a>
-      <a href="sicurezza.html">Sicurezza</a>
-      <a href="azienda.html">Azienda</a>
-      <a href="contatti.html">Contatti</a>`;
+      <a href="prodotto">Prodotto</a>
+      <a href="soluzioni">Soluzioni</a>
+      <a href="digital-receptionist">Digital Receptionist</a>
+      <a href="integrazioni">Integrazioni</a>
+      <a href="servizi-siti-web">Siti web</a>
+      <a href="sicurezza">Sicurezza</a>
+      <a href="azienda">Azienda</a>
+      <a href="contatti">Contatti</a>`;
 
     $$('a', menu).forEach(link => {
       const href = link.getAttribute('href') || '';

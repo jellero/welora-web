@@ -172,3 +172,14 @@ h1, h2, h3, .logo { font-family: Inter, "Plus Jakarta Sans", sans-serif; }
 h1, h2 { letter-spacing: -.045em; }
 /* Etichetta dell'hero leggibile sopra lo sfondo chiaro */
 .hero.section-dark .eyebrow, .hero.section-dark .eyebrow.light { background: #eef2ff; color: #4338ca; }
+
+/* Titoli leggibili su fondi scuri (card scure, callout, sezioni blu) */
+.page-section.dark h2, .page-section.dark h3, .page-section.dark h4,
+.dark .card h3, .dark .card h4,
+.callout h2, .callout h3, .callout h4 { color: #fff; }
+
+/* Barra chiara anche nelle pagine interne (internal.css la rendeva scura) */
+.internal-page .site-header, .internal-page .site-header.scrolled { background: rgba(255, 255, 255, .9); border-bottom: 1px solid rgba(228, 233, 242, .9); color: var(--text); }
+.internal-page .main-nav a[aria-current="page"] { color: #4338ca; }
+@media (max-width: 860px) { .internal-page .site-header { background: rgba(255, 255, 255, .97); } }
+.site-footer .logo, .site-footer .footer-logo { color: #fff; }

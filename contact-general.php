@@ -27,7 +27,7 @@ function finish(bool $ok, string $message, int $status = 200): never
             JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
         );
     } else {
-        header('Location: contatti.html?form=' . ($ok ? 'success' : 'error') . '#contact-form', true, 303);
+        header('Location: contatti?form=' . ($ok ? 'success' : 'error') . '#contact-form', true, 303);
     }
 
     exit;

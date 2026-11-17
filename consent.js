@@ -105,7 +105,7 @@
       <div class="cookie-copy">
         <strong id="cookie-title">Privacy e cookie</strong>
         <p>Usiamo strumenti tecnici necessari al sito e, solo con il tuo consenso, Google Analytics per misurare l'utilizzo del sito. Puoi accettare, rifiutare o personalizzare la scelta.</p>
-        <p class="cookie-links"><a href="cookies.html">Cookie Policy</a> · <a href="privacy.html">Privacy Policy</a></p>
+        <p class="cookie-links"><a href="cookies">Cookie Policy</a> · <a href="privacy">Privacy Policy</a></p>
       </div>
       <div class="cookie-actions">
         <button class="cookie-button" type="button" data-cookie-reject>Rifiuta</button>
