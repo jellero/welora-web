@@ -74,12 +74,15 @@ Il form invia una notifica interna e, dopo l'acquisizione valida del lead, una c
 
 ## Struttura
 
-- `index.html`: home con funzionalità, prezzi, calcolo del risparmio, FAQ e form di richiesta demo;
+- `index.html`: home con funzionalità, prezzi, calcolo del risparmio, FAQ, ricavi/CRM, servizio siti web e form di richiesta demo;
+- `servizi-siti-web.html`: servizio separato di realizzazione siti per strutture, con prezzo a partire da 500 € una tantum;
+- `prodotto.html`: panoramica delle funzionalità, inclusi RMS, pricing dinamico, analytics, preventivi, metasearch, recensioni, CRM, magazzino e KNX;
 - `channel-manager.html`, `check-in-online.html`, `pos-tap-to-pay.html`: pagine per le ricerche principali (channel manager, check-in online e Alloggiati, POS dal telefono);
 - `llms.txt`: riepilogo del prodotto per gli assistenti AI;
 - `styles.css` e `blue-theme.css`: design system responsive;
 - `app.js`: navigazione mobile, selettore per tipo di struttura, calcolatore ROI e invio AJAX del form. I testi stanno nell’HTML, mai riscritti via JavaScript, così motori di ricerca e assistenti AI leggono il contenuto reale;
 - `contact.php`: adattatore del form demo della home, delega a `contact-general.php`;
+- `contact-general.php`: gestisce anche le richieste di realizzazione siti web (`reason=website`);
 - `contact-general.php`: endpoint server-side con validazione, honeypot, rate limit minimo, notifica lead e autorisposta;
 - `lib/welora-mailer.php` e `lib/PHPMailer/`: invio email via SMTP autenticato con ripiego su `mail()`;
 - `private/mail-config.example.php`: modello di configurazione SMTP;

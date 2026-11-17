@@ -22,6 +22,7 @@
       <a href="soluzioni.html">Soluzioni</a>
       <a href="digital-receptionist.html">Digital Receptionist</a>
       <a href="integrazioni.html">Integrazioni</a>
+      <a href="servizi-siti-web.html">Siti web</a>
       <a href="sicurezza.html">Sicurezza</a>
       <a href="azienda.html">Azienda</a>
       <a href="contatti.html">Contatti</a>`;
@@ -34,6 +35,19 @@
         menuToggle?.setAttribute('aria-expanded', 'false');
       });
     });
+  }
+
+  const headerCta = $('.header-cta');
+  if (headerCta && !$('.header-actions')) {
+    const actions = document.createElement('div');
+    actions.className = 'header-actions';
+    const login = document.createElement('a');
+    login.className = 'header-login';
+    login.href = 'https://portal.welora.it/';
+    login.textContent = 'Accedi';
+    login.setAttribute('aria-label', 'Accedi al portale Welora');
+    headerCta.before(actions);
+    actions.append(login, headerCta);
   }
 
   const header = $('[data-header]');
@@ -53,6 +67,11 @@
     const status = $('[data-contact-status]', contactForm);
     const submitButton = $('button[type="submit"]', contactForm);
     const query = new URLSearchParams(location.search);
+    const requestedReason = query.get('reason');
+    const reasonSelect = $('select[name="reason"]', contactForm);
+    if (requestedReason && reasonSelect && [...reasonSelect.options].some(option => option.value === requestedReason)) {
+      reasonSelect.value = requestedReason;
+    }
     const formResult = query.get('form');
 
     if (formResult === 'success' && status) {

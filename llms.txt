@@ -38,3 +38,10 @@
 - [Integrazioni e API](https://welora.it/integrazioni.html): elenco dei canali OTA collegabili.
 - [Sicurezza](https://welora.it/sicurezza.html)
 - [Contatti](https://welora.it/contatti.html): lancio@welora.it (commerciale), support@welora.it (supporto e privacy).
+
+
+## Funzionalità aggiuntive Welora
+Revenue Management automatico (RMS), prezzi dinamici basati su domanda e mercato, KPI ADR/RevPAR e occupazione, preventivi commerciali con scadenza e conversione in prenotazione, Google Hotel Ads e metasearch tramite integrazioni abilitate, richieste e gestione recensioni, CRM con campagne e fidelizzazione, magazzino/scorte/giacenze, domotica KNX tramite impianti e interfacce compatibili.
+
+## Servizio siti web
+Realizzazione di siti web per hotel, B&B e strutture ricettive a partire da 500 € una tantum, su preventivo. Servizio separato dal canone Welora Base. Dettagli: https://welora.it/servizi-siti-web.html

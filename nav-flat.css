@@ -1,1 +1,30 @@
 .main-nav{gap:16px;font-size:13px}.main-nav a[aria-current="page"]{color:#fff}.main-nav a{white-space:nowrap}@media(max-width:1120px){.header-inner{gap:24px}.main-nav{gap:13px;font-size:12.5px}.header-cta{display:none}}@media(max-width:860px){.main-nav{font-size:14px}.main-nav a{white-space:normal}}
+
+/* Accesso portale e richiesta demo, accessibili su tutte le larghezze. */
+.header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.header-actions .header-cta{display:inline-flex;white-space:nowrap}
+.header-login{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid rgba(255,255,255,.38);border-radius:12px;color:#fff;font-size:14px;font-weight:750;white-space:nowrap;text-decoration:none;transition:background .2s,border-color .2s}
+.header-login:hover,.header-login:focus-visible{background:rgba(255,255,255,.13);border-color:#fff}
+@media(max-width:1240px){
+  .header-inner{gap:12px}
+  .menu-toggle{display:block;order:3;margin-left:0}
+  .header-actions{margin-left:auto;order:2}
+  .main-nav{position:absolute;top:70px;left:20px;right:20px;display:none;flex-direction:column;gap:0;padding:14px;border:1px solid rgba(255,255,255,.13);border-radius:16px;background:#111a2b;box-shadow:var(--shadow)}
+  .main-nav.open{display:flex}
+  .main-nav a{padding:11px;font-size:14px}
+}
+@media(max-width:860px){
+  .site-header{padding:9px 0;background:rgba(11,18,32,.97)}
+  .header-inner{display:grid;grid-template-columns:1fr auto;gap:9px 12px}
+  .header-inner>.logo{grid-column:1;grid-row:1}
+  .menu-toggle{grid-column:2;grid-row:1;margin-left:0;order:initial}
+  .header-actions{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:1fr 1fr;width:100%;gap:8px;margin:0}
+  .header-actions .header-cta,.header-actions .header-login{min-height:40px;padding:0 10px;font-size:12.5px;width:100%;border-radius:10px}
+  .main-nav{top:115px;left:13px;right:13px}
+  .internal-page main{padding-top:123px}
+  .hero{padding-top:175px}
+  .landing-subnav{top:121px}
+}
+@media(max-width:380px){
+  .header-actions .header-cta,.header-actions .header-login{font-size:12px;padding:0 7px}
+}

@@ -126,6 +126,7 @@ $reasons = [
     'launch_discount' => ['label' => 'Demo e valutazione prodotto', 'route' => 'commercial', 'offer' => true],
     'product_pricing' => ['label' => 'Prodotto e prezzi', 'route' => 'commercial', 'offer' => false],
     'integrations' => ['label' => 'Integrazioni e canali', 'route' => 'commercial', 'offer' => false],
+    'website' => ['label' => 'Realizzazione sito web', 'route' => 'commercial', 'offer' => false],
     'digital_receptionist' => ['label' => 'Digital Receptionist', 'route' => 'commercial', 'offer' => false],
     'partnership' => ['label' => 'Partnership o collaborazione', 'route' => 'commercial', 'offer' => false],
     'support' => ['label' => 'Supporto', 'route' => 'support', 'offer' => false],
