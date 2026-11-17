@@ -28,7 +28,7 @@
         'Stessi pagamenti, documenti fiscali e storico cliente',
         'Agenda con professionisti, competenze, turni, cabine e buffer'
       ],
-      image: 'assets/screens/gestionale-incassa.webp?v=fhd1',
+      image: 'assets/screens/gestionale-incassa.webp?v=fhd2',
       alt: 'Servizi ed extra gestiti con Welora'
     },
     services: {
