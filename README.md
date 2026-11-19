@@ -121,6 +121,14 @@ Il sito comunica la gestione di documenti commerciali, corrispettivi e fatturazi
 
 Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei dati siano coerenti con l'informativa pubblicata.
 
+## Compatibilità GWHost (Gewiss)
+
+La pagina `integrazioni.html#gwhost` presenta GWHost come integrazione **da valutare e collaudare caso per caso**, non come connettore nativo già certificato o attivo. GWHost è un sistema Gewiss per controllo accessi e supervisione camere KNX; l'interfacciamento con software gestionali dipende dalla licenza e configurazione EGest.
+
+Prima di confermare una connessione, verificare con Gewiss o l'installatore: versione di GWHost, abilitazione/licenza EGest, protocollo e documentazione d'interfaccia disponibili, topologia LAN e mapping delle camere; eseguire test di check-in, check-out, autorizzazioni e gestione errori sull'impianto reale. Nessuna connessione applicativa è implementata in questo repository: `welora-web` è il sito marketing.
+
+Riferimenti del produttore: [scheda Gewiss GWHost](https://www.gewiss.com/it/it/prodotti/product.1000000.1008316.GWA9788) e [manuale utente GWHost](https://www.gewiss.com/content/dam/gwdam/FILE/ZMN/70192505_Manuale_Utente_GWHost_IT.pdf).
+
 ## Prima della pubblicazione
 
 1. Configurare SMTP sul server (vedi "Invio email"), poi verificare con mail-tester che il mittente di busta sia `commerciale@welora.it` e che SPF, DKIM e DMARC passino; dopo qualche settimana di invii puliti valutare DMARC `p=quarantine`.
