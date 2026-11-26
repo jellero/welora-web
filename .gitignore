@@ -3,3 +3,10 @@ private/mail-config.php
 welora-mail-config.php
 private/mail-diagnostica.log
 mail-diagnostica.php
+
+# Editoriale: credenziali e dati restano fuori da httpdocs
+welora-editorial-config.php
+private/editorial-config.php
+editorial-data/
+*.sqlite
+*.sqlite-journal
