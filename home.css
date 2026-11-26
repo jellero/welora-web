@@ -167,3 +167,12 @@
 
 #prezzi .section-heading p, .section-dark .section-heading p { color: rgba(255, 255, 255, .85); }
 #prezzi .plan.featured .button { background: var(--grad); color: #fff; box-shadow: 0 12px 28px -14px rgba(79, 70, 229, .85); }
+
+/* Canone annuale: totale anticipato esplicito, equivalenza mensile secondaria. */
+.plan-annual { padding: 14px 16px; border: 1px solid #c7d2fe; border-radius: 14px; background: #eef2ff; color: var(--text); line-height: 1.5; }
+.plan-annual-label { display: block; font-size: 12px; font-weight: 800; color: #3730a3; }
+.plan-annual-total { display: block; font-size: 23px; font-weight: 800; letter-spacing: -.025em; color: #1e1b4b; }
+.plan-annual-meta { display: block; font-size: 12px; color: #475569; }
+.tiers .tier-price { border-radius: 15px; text-align: center; }
+.tiers .tier-price small { display: block; margin-top: 4px; font-size: 12px; color: #fff; }
+#prezzi .annual-terms { max-width: 980px; margin: 18px auto 0; color: #fff; font-size: 14px; line-height: 1.65; text-align: center; }
