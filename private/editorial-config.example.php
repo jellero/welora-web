@@ -6,5 +6,6 @@ return [
     'storage_dir' => '/var/www/vhosts/welora.it/editorial-data',
     'admin_user' => '',
     'admin_password_hash' => '', // password_hash() output
+    'github_dispatch_token' => '', // Fine-grained token: Actions write on private welora-social only.
     'runner_token_hash' => '', // hash('sha256', random 32+ byte secret)
 ];
