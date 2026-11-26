@@ -136,3 +136,7 @@ Verificare anche nella proprietà GA4 che le impostazioni di conservazione dei d
 ## Stato dei mockup
 
 I mockup rappresentano l'esperienza di prodotto e possono includere flussi target. La landing deve evitare di confondere una funzione pianificata o dipendente da provider esterni con una funzione già attivabile in produzione.
+
+## Guide e risorse
+
+Sezione editoriale statica integrata nel sito, con hub `/risorse`, percorso `/academy/` e guide `/guide/`. Vedi [EDITORIAL.md](EDITORIAL.md) per routing, integrazione con welora-social e criteri di pubblicazione.
