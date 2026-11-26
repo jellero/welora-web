@@ -140,3 +140,7 @@ I mockup rappresentano l'esperienza di prodotto e possono includere flussi targe
 ## Guide e risorse
 
 Sezione editoriale statica integrata nel sito, con hub `/risorse`, percorso `/academy/` e guide `/guide/`. Vedi [EDITORIAL.md](EDITORIAL.md) per routing, integrazione con welora-social e criteri di pubblicazione.
+
+## Modalità di pagamento del canone (26/11/2026)
+
+Listino mensile invariato; annuale anticipato con sconto 15% anche ai rinnovi, non cumulabile con l’accesso anticipato del 20% sui primi sei mesi di pagamento mensile riservato alle strutture selezionate. Costi dei provider esterni a consumo esclusi. Dettagli e prezzi in [MARKET_AND_PRICING.md](MARKET_AND_PRICING.md). Il sito presenta l’offerta; l’attivazione della fatturazione annuale e le condizioni contrattuali richiedono verifica nel prodotto.
