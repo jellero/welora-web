@@ -4,32 +4,27 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-  if (!document.querySelector('link[href^="nav-flat.css"]')) {
+  if (!document.querySelector('link[href*="nav-flat.css"]')) {
     const navStyles = document.createElement('link');
     navStyles.rel = 'stylesheet';
-    navStyles.href = 'nav-flat.css?v=20261014-2';
+    navStyles.href = '/nav-flat.css?v=20261126-1';
     document.head.appendChild(navStyles);
   }
 
-  const current = (location.pathname.split('/').pop() || './').replace(/\.html$/, '').replace(/^index$/, './');
+  const normalizePath = path => path.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/$/, '') || '/';
+  const current = normalizePath(location.pathname);
   const menu = $('[data-menu]');
   const menuToggle = $('[data-menu-toggle]');
 
   if (menu) {
     menu.setAttribute('aria-label', 'Navigazione principale');
-    menu.innerHTML = `
-      <a href="prodotto">Prodotto</a>
-      <a href="soluzioni">Soluzioni</a>
-      <a href="digital-receptionist">Digital Receptionist</a>
-      <a href="integrazioni">Integrazioni</a>
-      <a href="servizi-siti-web">Siti web</a>
-      <a href="sicurezza">Sicurezza</a>
-      <a href="azienda">Azienda</a>
-      <a href="contatti">Contatti</a>`;
 
     $$('a', menu).forEach(link => {
       const href = link.getAttribute('href') || '';
-      if (href === current) link.setAttribute('aria-current', 'page');
+      const target = normalizePath(new URL(href, location.href).pathname);
+      const editorial = target === '/risorse' && (/^\/(academy|guide)(\/|$)/.test(current));
+      if (target === current || editorial) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
       link.addEventListener('click', () => {
         menu.classList.remove('open');
         menuToggle?.setAttribute('aria-expanded', 'false');
