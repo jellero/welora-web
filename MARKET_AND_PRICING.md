@@ -172,9 +172,22 @@ Welora deve quindi evitare di competere soltanto sul prezzo mensile. La promessa
 
 La data è abbastanza vicina da essere credibile commercialmente e lascia circa quattro mesi per pilot, collaudi provider, supporto, onboarding e adeguamenti della comunicazione.
 
-### Nessuno sconto di lancio
+### Accesso anticipato e pagamento annuale (decisione 26 novembre 2026)
 
-Dal 15 novembre 2026 non ci sono sconti di lancio: il prezzo resta €29/mese + IVA dal lancio e la CTA è la richiesta di demo.
+- Canoni mensili ordinari invariati rispetto al listino pubblico corrente (Light 29 €, Completo 44 €, fasce 59 € e 99 €, IVA esclusa; oltre 30 unità su preventivo).
+- Pagamento anticipato di 12 mesi: **15% di sconto sul canone Welora**, anche ai rinnovi annuali. Non applicabile ai costi dei provider esterni a consumo; non cumulabile con altre promozioni sullo stesso periodo.
+- Accesso anticipato per strutture selezionate: **20% sui primi 6 canoni mensili**, Light 23,20 €/mese, Completo 35,20 €/mese; dal settimo mese canone mensile ordinario oppure pagamento anticipato dei successivi 12 mesi con il 15% di sconto. Chi sceglie subito l’annuale rinuncia allo sconto semestrale. Nessuna sovrapposizione di sconti.
+
+| Mensile ordinario | Annuale anticipato (−15%) | Equivalente mensile | Risparmio annuo |
+|---:|---:|---:|---:|
+| 29 € | 295,80 € | 24,65 € | 52,20 € |
+| 44 € | 448,80 € | 37,40 € | 79,20 € |
+| 59 € | 601,80 € | 50,15 € | 106,20 € |
+| 99 € | 1009,80 € | 84,15 € | 178,20 € |
+
+Importi IVA esclusa. La modalità annuale non cambia i limiti o i moduli dei piani. Il conflitto preesistente tra architettura Base descritta sopra e listino Light/Completo pubblico resta oggetto di allineamento separato (TOCHECK di Welora). Prima della sottoscrizione definire decorrenza, modalità di rinnovo, recesso, adeguamenti in corso d'anno e trattamento degli extra a canone; nessuna automatizzazione di fatturazione implicita in questa decisione.
+
+La decisione del 26/11/2026 sostituisce la precedente indicazione del 15/11 sull’assenza di sconti di accesso anticipato. La CTA resta la richiesta di demo.
 
 ## Sequenza operativa
 
