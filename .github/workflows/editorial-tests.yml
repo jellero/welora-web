@@ -27,6 +27,7 @@ jobs:
           php -l editorial-admin.php
           php -l editorial-media.php
           php -l editorial-public.php
+          php -l editorial-watch.php
           php -l tests/editorial-smoke.php
       - name: Isolated editorial smoke
         run: php tests/editorial-smoke.php
