@@ -17,6 +17,13 @@ RewriteRule ^(.*/)?index\.html$ https://www.welora.it/%1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+([^\s?]+?)\.html[\s?] [NC]
 RewriteRule ^ https://www.welora.it/%1 [R=301,L]
 
+# Editoriale: PHP decide visibilità per data; le pagine statiche restano fallback.
+RewriteRule ^risorse/?$ editorial-public.php?view=risorse [L]
+RewriteRule ^(academy|guide)/?$ editorial-public.php?view=$1 [L]
+RewriteRule ^sitemap\.xml$ editorial-public.php?view=sitemap [L]
+RewriteCond %{REQUEST_FILENAME}.html !-f
+RewriteRule ^(academy|guide)/([a-z0-9]+(?:-[a-z0-9]+)*)/?$ editorial-public.php?view=$1&slug=$2 [L]
+
 # /pagina -> serve pagina.html
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
