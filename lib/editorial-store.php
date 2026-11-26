@@ -136,3 +136,14 @@ function ed_asset_manifest(array $row): array {
     foreach(['video.mp4','thumbnail.jpg','captions.srt'] as $name){$p=$dir.'/'.$name;if(is_file($p))$out[$name]=['bytes'=>filesize($p),'sha256'=>hash_file('sha256',$p)];}
     return $out;
 }
+
+/** Dispatch only an approved revision to the dedicated private runner. */
+function ed_dispatch(array $row): bool {
+    if($row['state']!=='approved')throw new LogicException('Episode is not approved');
+    $token=(string)(ed_config()['github_dispatch_token']??'');
+    if($token==='' || !function_exists('curl_init'))return false;
+    $ch=curl_init('https://api.github.com/repos/jellero/welora-social/actions/workflows/publish-approved.yml/dispatches');
+    curl_setopt_array($ch,[CURLOPT_POST=>true,CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>false,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_TIMEOUT=>15,CURLOPT_HTTPHEADER=>['Accept: application/vnd.github+json','Authorization: Bearer '.$token,'User-Agent: Welora-Editorial','X-GitHub-Api-Version: 2022-11-28','Content-Type: application/json'],CURLOPT_POSTFIELDS=>json_encode(['ref'=>'main','inputs'=>['episode_id'=>$row['id'],'revision'=>(string)$row['revision']]],JSON_THROW_ON_ERROR)]);
+    curl_exec($ch);$status=(int)curl_getinfo($ch,CURLINFO_RESPONSE_CODE);curl_close($ch);
+    return $status===204 || $status===200;
+}
