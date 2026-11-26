@@ -38,7 +38,7 @@ function ed_text(mixed $v, int $max, bool $required=false): string {
 function ed_time(mixed $v): int {
     if (!is_string($v) || !preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/D', $v)) throw new InvalidArgumentException('Use ISO 8601 with timezone');
     $d = new DateTimeImmutable($v);
-    if (DateTimeImmutable::getLastErrors() !== false) throw new InvalidArgumentException('Invalid date');
+    if (($errors=DateTimeImmutable::getLastErrors()) !== false && ($errors['warning_count'] || $errors['error_count'])) throw new InvalidArgumentException('Invalid date');
     return $d->getTimestamp();
 }
 function ed_local(int $timestamp): string { return (new DateTimeImmutable('@'.$timestamp))->setTimezone(new DateTimeZone('Europe/Rome'))->format('d/m/Y H:i'); }
@@ -99,6 +99,8 @@ function ed_save(PDO $db,array $v): array {
     return ed_get($db,$id);
 }
 function ed_approve(PDO $db,string $id,int $revision): array {
+    $row=ed_get($db,$id);
+    if(!$row || !is_file(ed_asset_dir($row).'/video.mp4'))throw new LogicException('Upload the video before approval');
     $s=$db->prepare("UPDATE episodes SET state='approved',revision=revision+1,updated_at=? WHERE id=? AND revision=? AND state='draft' AND publish_at>?");
     $now=time();$s->execute([$now,$id,$revision,$now]);
     if($s->rowCount()!==1)throw new LogicException('Draft changed, missing or date not future');
@@ -107,12 +109,30 @@ function ed_approve(PDO $db,string $id,int $revision): array {
 /** Runner records provider-confirmed schedules only after successful read-back. */
 function ed_schedule(PDO $db,array $v): array {
     $id=ed_text($v['id']??null,40,true);$old=ed_get($db,$id);
-    if(!$old||$old['state']!=='approved'||(int)($v['revision']??0)!==(int)$old['revision'])throw new LogicException('Approval or revision missing');
+    if(!$old)throw new LogicException('Episode missing');
     $yt=ed_text($v['youtube_id']??null,50,true);$fb=ed_text($v['facebook_id']??null,100,true);$url=ed_text($v['facebook_url']??null,1000,true);
     $parts=parse_url($url);
     if(!preg_match('/^[A-Za-z0-9_-]{11}$/D',$yt)||!preg_match('/^[0-9_]+$/D',$fb)||!is_array($parts)||($parts['scheme']??'')!=='https'||!in_array(strtolower($parts['host']??''),['facebook.com','www.facebook.com','fb.watch'],true)||isset($parts['user'])||isset($parts['pass']))throw new InvalidArgumentException('Invalid social receipt');
-    if(ed_time($v['youtube_publish_at']??null)!==(int)$old['publish_at']||ed_time($v['facebook_publish_at']??null)!==(int)$old['publish_at']||(int)$old['publish_at']<=time())throw new LogicException('Schedule mismatch or date elapsed');
+    if(ed_time($v['youtube_publish_at']??null)!==(int)$old['publish_at']||ed_time($v['facebook_publish_at']??null)!==(int)$old['publish_at'])throw new LogicException('Schedule mismatch');
+    if($old['state']==='scheduled' && $old['youtube_id']===$yt && $old['facebook_id']===$fb && $old['facebook_url']===$url)return $old;
+    if($old['state']!=='approved'||(int)($v['revision']??0)!==(int)$old['revision']||(int)$old['publish_at']<=time())throw new LogicException('Approval, revision or future date missing');
     $s=$db->prepare("UPDATE episodes SET state='scheduled',youtube_id=?,facebook_id=?,facebook_url=?,revision=revision+1,updated_at=? WHERE id=? AND revision=? AND state='approved'");
     $s->execute([$yt,$fb,$url,time(),$id,$old['revision']]);if($s->rowCount()!==1)throw new LogicException('Revision conflict');
     return ed_get($db,$id);
+}
+
+function ed_runner_auth(): bool {
+    $c=ed_config();$expected=(string)($c['runner_token_hash']??'');
+    $auth=$_SERVER['HTTP_AUTHORIZATION']??$_SERVER['REDIRECT_HTTP_AUTHORIZATION']??'';
+    return preg_match('/^[a-f0-9]{64}$/D',$expected)===1 && preg_match('/^Bearer ([A-Za-z0-9_-]{32,512})$/D',$auth,$m)===1 && hash_equals($expected,hash('sha256',$m[1]));
+}
+function ed_asset_dir(array $row): string {
+    $dir=realpath((string)(ed_config()['storage_dir']??''));
+    if(!$dir)throw new RuntimeException('Storage unavailable');
+    return $dir.'/media/'.hash('sha256',$row['id']);
+}
+function ed_asset_manifest(array $row): array {
+    $dir=ed_asset_dir($row);$out=[];
+    foreach(['video.mp4','thumbnail.jpg','captions.srt'] as $name){$p=$dir.'/'.$name;if(is_file($p))$out[$name]=['bytes'=>filesize($p),'sha256'=>hash_file('sha256',$p)];}
+    return $out;
 }
