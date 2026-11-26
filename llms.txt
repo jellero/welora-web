@@ -7,7 +7,8 @@
 - Welora Light: 29 €/mese + IVA, da 1 a 3 camere o unità, 1 canale OTA incluso.
 - Welora Completo: 44 €/mese + IVA, fino a 8 camere o unità, 2 canali OTA inclusi (da confermare in sottoscrizione).
 - Da 9 a 15 camere: 59 €/mese; da 16 a 30 camere: 99 €/mese; oltre 30: su preventivo (funzioni del Completo).
-- Accesso anticipato: -20% per i primi 6 mesi per le strutture selezionate (Light 23,20 €, Completo 35,20 €).
+- Pagamento annuale anticipato: 15% di sconto sul canone Welora, anche ai rinnovi annuali, non cumulabile con altre promozioni. Light 295,80 €/anno (24,65 €/mese equivalenti), Completo 448,80 €/anno (37,40 €/mese equivalenti), fasce 9–15 unità 601,80 €/anno, 16–30 unità 1.009,80 €/anno, IVA esclusa. Oltre 30 unità su preventivo. Esclusi i costi esterni a consumo.
+- Accesso anticipato: -20% sui primi 6 canoni mensili per le strutture selezionate (Light 23,20 €/mese, Completo 35,20 €/mese). Dal settimo mese, mensile ordinario oppure annuale anticipato con il 15% di sconto sui successivi 12 mesi. Chi sceglie l’annuale subito non beneficia anche del -20%.
 - Migrazione dei dati inclusa nell'attivazione per dati esportabili in CSV/Excel.
 - Nessuna commissione Welora sulle prenotazioni dirette e sugli incassi.
 - Costi dei provider esterni separati e dichiarati prima: commissioni di pagamento, verifica d'identità a consumo, invio fiscale, commissioni OTA.
