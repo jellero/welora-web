@@ -11,13 +11,18 @@ if($user===''||$hash===''||!hash_equals($user,(string)($_SERVER['PHP_AUTH_USER']
 }
 session_set_cookie_params(['secure'=>true,'httponly'=>true,'samesite'=>'Strict']);
 session_start();$_SESSION['ed_csrf']??=bin2hex(random_bytes(32));
-$e='ed_escape';$msg='';$row=null;
+$e='ed_escape';$msg=(string)($_SESSION['ed_flash']??'');unset($_SESSION['ed_flash']);$row=null;
 try{
     $db=ed_db();
     if($_SERVER['REQUEST_METHOD']==='POST'){
         if(!is_string($_POST['csrf']??null)||!hash_equals($_SESSION['ed_csrf'],$_POST['csrf'])){http_response_code(403);exit('Richiesta non valida');}
         if(($_POST['action']??'')==='approve'){
             $row=ed_approve($db,(string)$_POST['id'],(int)$_POST['revision']);
+            $_SESSION['ed_flash']=ed_dispatch($row)?'Approvato: richiesta di programmazione inoltrata al runner. Attendere la ricevuta.':'Approvato: runner non raggiungibile o non configurato. La pubblicazione non è programmata.';
+        }elseif(($_POST['action']??'')==='dispatch'){
+            $row=ed_get($db,(string)$_POST['id']);
+            if(!$row||(int)$row['revision']!==(int)$_POST['revision'])throw new LogicException('Revision conflict');
+            $_SESSION['ed_flash']=ed_dispatch($row)?'Richiesta inoltrata al runner.':'Runner non raggiungibile o non configurato.';
         }else{
             $row=ed_save($db,$_POST);
         }
@@ -31,13 +36,13 @@ $values=$row??['id'=>'','track'=>'operativa','slug'=>'','title'=>'','subtitle'=>
 function ed_iso(?int $t): string {return $t? (new DateTimeImmutable('@'.$t))->setTimezone(new DateTimeZone('Europe/Rome'))->format('Y-m-d\TH:i:sP'):'';}
 ?>
 <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Redazione Welora</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/calm.css"><style>body{padding:24px;color:#0f172a;background:#f6f8fc}main{max-width:1100px;margin:auto}section{background:white;border:1px solid #e4e9f2;border-radius:16px;padding:24px;margin:20px 0}h1{font-size:32px}h2{font-size:24px}label{display:block;margin:14px 0}input,textarea,select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font:inherit}textarea{min-height:120px}button{padding:12px 18px;background:#1d4ed8;color:white;border:0;border-radius:8px;cursor:pointer}a{color:#1e40af;text-decoration:underline}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:9px;border-bottom:1px solid #e4e9f2}.overflow{overflow:auto}</style></head>
-<body><main><h1>Welora · Backoffice editoriale</h1><p>Orario di riferimento: Europe/Rome. Approvare una bozza non la pubblica; il runner deve registrare la programmazione confermata di entrambi i social.</p>
+<body><main><h1>Welora · Backoffice editoriale</h1><p>Orario di riferimento: Europe/Rome. Approvare una bozza avvia il runner se configurato; il sito pubblica solo dopo le ricevute social e alla data programmata.</p>
 <?php if($msg!==''):?><p role="alert"><?= $e($msg) ?></p><?php endif;?>
 <section><h2>Calendario e stato</h2><p><a href="/editorial-admin.php">Nuova bozza</a></p><div class="overflow"><table><thead><tr><th>Titolo</th><th>Uscita</th><th>Stato</th><th>Social</th></tr></thead><tbody>
 <?php foreach($rows as $item):?><tr><td><a href="?id=<?= $e(rawurlencode($item['id'])) ?>"><?= $e($item['title']) ?></a></td><td><?= $e(ed_local((int)$item['publish_at'])) ?></td><td><?= $e($item['state']) ?></td><td><?= $e($item['youtube_id']?'YouTube ✓':'YouTube —') ?> / <?= $e($item['facebook_id']?'Facebook ✓':'Facebook —') ?></td></tr><?php endforeach;?>
 </tbody></table></div></section>
 <section><h2><?= $row?'Episodio '.$e($row['id']):'Nuovo episodio' ?></h2>
-<?php if($row):?><p>URL canonico: <?= $e(ed_url($row)) ?> · revisione <?= (int)$row['revision'] ?> · <?= $e($row['state']) ?></p><?php endif;?>
+<?php if($row):?><p>File caricati: <?php foreach(ed_asset_manifest($row) as $name=>$asset):?><?= $e($name) ?> (<?= (int)$asset["bytes"] ?> byte) · <?php endforeach;?></p><p>URL canonico: <?= $e(ed_url($row)) ?> · revisione <?= (int)$row['revision'] ?> · <?= $e($row['state']) ?></p><?php endif;?>
 <?php if($editing):?>
 <form method="post"><input type="hidden" name="csrf" value="<?= $e($_SESSION['ed_csrf']) ?>"><input type="hidden" name="revision" value="<?= (int)$values['revision'] ?>"><input type="hidden" name="action" value="save">
 <label>ID episodio<input name="id" required value="<?= $e($values['id']) ?>" <?= $row?'readonly':'' ?>></label>
@@ -49,5 +54,5 @@ function ed_iso(?int $t): string {return $t? (new DateTimeImmutable('@'.$t))->se
 <?php foreach(['content_html'=>'Contenuto HTML (sanitizzato)','youtube_text'=>'Descrizione YouTube','facebook_text'=>'Testo Facebook'] as $key=>$label):?><label><?= $e($label) ?><textarea name="<?= $key ?>" <?= $key==='content_html'?'required':'' ?>><?= $e($values[$key]) ?></textarea></label><?php endforeach;?>
 <button type="submit">Salva bozza</button></form>
 <?php if($row):?><h3>Anteprima contenuto salvato</h3><div><?= ed_clean_html($row['content_html']) ?></div><form method="post"><input type="hidden" name="csrf" value="<?= $e($_SESSION['ed_csrf']) ?>"><input type="hidden" name="id" value="<?= $e($row['id']) ?>"><input type="hidden" name="revision" value="<?= (int)$row['revision'] ?>"><input type="hidden" name="action" value="approve"><p>Approva soltanto dopo QA e verifica fonti. Dopo l'approvazione il contenuto è bloccato.</p><button>Approva per programmazione social</button></form><?php endif;?>
-<?php else:?><h3>Contenuto approvato</h3><div><?= ed_clean_html($row['content_html']) ?></div><p>YouTube ID: <?= $e($row['youtube_id']??'—') ?> · Facebook ID: <?= $e($row['facebook_id']??'—') ?></p><?php endif;?>
+<?php else:?><h3>Contenuto approvato</h3><div><?= ed_clean_html($row['content_html']) ?></div><p>YouTube ID: <?= $e($row['youtube_id']??'—') ?> · Facebook ID: <?= $e($row['facebook_id']??'—') ?></p><?php if($row['state']==='approved'):?><form method="post"><input type="hidden" name="csrf" value="<?= $e($_SESSION['ed_csrf']) ?>"><input type="hidden" name="id" value="<?= $e($row['id']) ?>"><input type="hidden" name="revision" value="<?= (int)$row['revision'] ?>"><input type="hidden" name="action" value="dispatch"><button>Avvia o riprova programmazione</button></form><?php endif;?><?php endif;?>
 </section></main></body></html>
