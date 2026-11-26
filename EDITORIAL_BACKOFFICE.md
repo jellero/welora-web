@@ -20,3 +20,6 @@ PHP 8.1+ con PDO SQLite, DOM, fileinfo, sessioni. HTTPS obbligatorio. Copiare pr
 - Verificare che il link di anteprima social non riveli contenuti prima della data, cache/CDN e redirect. Valutare pagina teaser distinta dalla bozza.
 - Video/thumbnail/subtitle, chiusura narrata con prossimo titolo e data, QA e tracciabilità da runner. Se cambia calendario dopo il render, aggiornare finale e file, non mentire nel video.
 - Non attivare il backoffice in produzione senza test, credenziali separate, hardening del server e controllo amministrativo. Il codice non esegue pubblicazioni da solo: la programmazione è delegata al runner.
+
+## Avvio automatico senza cron
+Configurare cURL e github_dispatch_token nel file privato di Plesk, limitato a Actions write sulla repo privata welora-social. L'approvazione invoca workflow_dispatch del workflow publish-approved.yml, su main; se la chiamata non è accettata, rimane approved e il backoffice permette di riprovare. Un dispatch accettato non è prova di programmazione: il runner dedicato self-hosted, label welora-social, scarica gli artefatti con token e checksum, programma i social e registra le ricevute. Non impostare il token fino a quando ambiente e gate sono verificati. L'azione è per episodio, non periodica. Non aggiungere segreti al repo pubblico.
