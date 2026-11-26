@@ -48,3 +48,11 @@ Revenue Management automatico (RMS), prezzi dinamici basati su domanda e mercato
 
 ## Servizio siti web
 Realizzazione di siti web per hotel, B&B e strutture ricettive a partire da 500 € una tantum, su preventivo. Servizio separato dal canone Welora. Dettagli: https://www.welora.it/servizi-siti-web
+
+
+## Guide e risorse
+
+- [Guide e risorse](https://www.welora.it/risorse): centro editoriale per l'ospitalità.
+- [Welora Academy](https://www.welora.it/academy/): programma formativo in preparazione.
+- [Guide all'ospitalità](https://www.welora.it/guide/)
+- [PMS, channel manager e booking engine: differenze](https://www.welora.it/guide/pms-channel-manager-booking-engine): guida testuale.
