@@ -5,14 +5,12 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex, nofollow');
 function reply(int $status,array $body): never { http_response_code($status);echo json_encode($body,JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR);exit; }
-$c=ed_config();$expected=(string)($c['runner_token_hash']??'');
-$auth=$_SERVER['HTTP_AUTHORIZATION']??'';
-if(!preg_match('/^[a-f0-9]{64}$/D',$expected)||!preg_match('/^Bearer ([A-Za-z0-9_-]{32,512})$/D',$auth,$m)||!hash_equals($expected,hash('sha256',$m[1])))reply(401,['error'=>'Unauthorized']);
+if(!ed_runner_auth())reply(401,['error'=>'Unauthorized']);
 try{
     $db=ed_db();
     if($_SERVER['REQUEST_METHOD']==='GET'){
         $id=$_GET['id']??null;
-        if(is_string($id)){ $row=ed_get($db,$id);reply($row?200:404,$row?['episode'=>$row]:['error'=>'Not found']); }
+        if(is_string($id)){ $row=ed_get($db,$id);reply($row?200:404,$row?['episode'=>$row,'assets'=>ed_asset_manifest($row)]:['error'=>'Not found']); }
         reply(200,['episodes'=>ed_list($db)]);
     }
     if($_SERVER['REQUEST_METHOD']!=='POST')reply(405,['error'=>'Method not allowed']);
